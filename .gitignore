@@ -9,5 +9,6 @@
 *_cache/
 /env/
 /_site/
+/docs/
 /renv/
 /.luarc.json
