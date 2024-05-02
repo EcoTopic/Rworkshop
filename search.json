@@ -36,7 +36,7 @@
     "crumbs": [
       "Installation",
       "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling and visualization with the <code>tidyverse</code>"
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
     ]
   },
   {
@@ -44,19 +44,175 @@
     "href": "materials/1-workshop1/3-tidyverse-101/index.html#transition-to-r",
     "title": "Intro to data wrangling and visualization with the\ntidyverse",
     "section": "Transition to R",
-    "text": "Transition to R\n##Tidyverse\n\nlibrary(tidyverse)",
+    "text": "Transition to R",
     "crumbs": [
       "Installation",
       "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling and visualization with the <code>tidyverse</code>"
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
     ]
   },
   {
-    "objectID": "materials/1-workshop1/1-before-we-start/index.html",
-    "href": "materials/1-workshop1/1-before-we-start/index.html",
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#tidyverse",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#tidyverse",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Tidyverse",
+    "text": "Tidyverse\n\nlibrary(tidyverse)\n\n\nImport raw data\n\nlibrary(readxl)\nlinelist_raw &lt;- read_excel(\"./../../../datasets/linelist_raw.xlsx\")\nfacilities &lt;- read_excel(\"./../../../datasets/facilities.xlsx\")",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#view-the-data",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#view-the-data",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "View the data",
+    "text": "View the data\n\nlinelist_raw\n\n# A tibble: 6,611 × 28\n   case_id generation `infection date`    `date onset` `hosp date`        \n   &lt;chr&gt;        &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;        &lt;dttm&gt;             \n 1 5fe599           4 2014-05-08 00:00:00 2014-05-13   2014-05-15 00:00:00\n 2 8689b7           4 NA                  2014-05-13   2014-05-14 00:00:00\n 3 11f8ea           2 NA                  2014-05-16   2014-05-18 00:00:00\n 4 b8812a           3 2014-05-04 00:00:00 2014-05-18   2014-05-20 00:00:00\n 5 893f25           3 2014-05-18 00:00:00 2014-05-21   2014-05-22 00:00:00\n 6 be99c8           3 2014-05-03 00:00:00 2014-05-22   2014-05-23 00:00:00\n 7 07e3e8           4 2014-05-22 00:00:00 2014-05-27   2014-05-29 00:00:00\n 8 369449           4 2014-05-28 00:00:00 2014-06-02   2014-06-03 00:00:00\n 9 f393b4           4 NA                  2014-06-05   2014-06-06 00:00:00\n10 1389ca           4 NA                  2014-06-05   2014-06-07 00:00:00\n# ℹ 6,601 more rows\n# ℹ 23 more variables: date_of_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,\n#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,\n#   age &lt;chr&gt;, age_unit &lt;chr&gt;, row_num &lt;dbl&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;,\n#   ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;,\n#   vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, merged_header &lt;chr&gt;,\n#   ...28 &lt;chr&gt;\n\n\n\nfacilities\n\n# A tibble: 7 × 2\n  facility_id facility_name                      \n        &lt;dbl&gt; &lt;chr&gt;                              \n1           1 central hospital                   \n2           2 hospital a                         \n3           3 hospital b                         \n4           4 military hospital                  \n5           5 other                              \n6           6 port hospital                      \n7           7 st. marks maternity hospital (smmh)",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#inspecting-the-data",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#inspecting-the-data",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Inspecting the data",
+    "text": "Inspecting the data\n\nstr(linelist_raw)\n\ntibble [6,611 × 28] (S3: tbl_df/tbl/data.frame)\n $ case_id        : chr [1:6611] \"5fe599\" \"8689b7\" \"11f8ea\" \"b8812a\" ...\n $ generation     : num [1:6611] 4 4 2 3 3 3 4 4 4 4 ...\n $ infection date : POSIXct[1:6611], format: \"2014-05-08\" NA ...\n $ date onset     : chr [1:6611] \"2014-05-13\" \"2014-05-13\" \"2014-05-16\" \"2014-05-18\" ...\n $ hosp date      : POSIXct[1:6611], format: \"2014-05-15\" \"2014-05-14\" ...\n $ date_of_outcome: POSIXct[1:6611], format: NA \"2014-05-18\" ...\n $ outcome        : chr [1:6611] NA \"Recover\" \"Recover\" NA ...\n $ gender         : chr [1:6611] \"m\" \"f\" \"m\" \"f\" ...\n $ facility_id    : num [1:6611] 5 NA 7 6 4 6 NA NA NA NA ...\n $ lon            : num [1:6611] -13.2 -13.2 -13.2 -13.2 -13.2 ...\n $ lat            : num [1:6611] 8.47 8.45 8.46 8.48 8.46 ...\n $ infector       : chr [1:6611] \"f547d6\" NA NA \"f90f5f\" ...\n $ source         : chr [1:6611] \"other\" NA NA \"other\" ...\n $ age            : chr [1:6611] \"2\" \"3\" \"56\" \"18\" ...\n $ age_unit       : chr [1:6611] \"years\" \"years\" \"years\" \"years\" ...\n $ row_num        : num [1:6611] 1 2 3 4 5 6 7 8 9 10 ...\n $ wt_kg          : num [1:6611] 27 25 91 41 36 56 47 0 86 69 ...\n $ ht_cm          : num [1:6611] 48 59 238 135 71 116 87 11 226 174 ...\n $ ct_blood       : num [1:6611] 22 22 21 23 23 21 21 22 22 22 ...\n $ fever          : chr [1:6611] \"no\" NA NA \"no\" ...\n $ chills         : chr [1:6611] \"no\" NA NA \"no\" ...\n $ cough          : chr [1:6611] \"yes\" NA NA \"no\" ...\n $ aches          : chr [1:6611] \"no\" NA NA \"no\" ...\n $ vomit          : chr [1:6611] \"yes\" NA NA \"no\" ...\n $ temp           : num [1:6611] 36.8 36.9 36.9 36.8 36.9 37.6 37.3 37 36.4 35.9 ...\n $ time_admission : chr [1:6611] NA \"09:36\" \"16:48\" \"11:22\" ...\n $ merged_header  : chr [1:6611] \"a\" \"a\" \"a\" \"a\" ...\n $ ...28          : chr [1:6611] \"b\" \"b\" \"b\" \"b\" ...",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#automatic-cleaning",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#automatic-cleaning",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Automatic cleaning",
+    "text": "Automatic cleaning\nThe function clean_names() from the package janitor standardizes column names and makes them unique by doing the following:\n\nConverts all names to consist of only underscores, numbers, and letters\nAccented characters are transliterated to ASCII (e.g. german o with umlaut becomes “o”, spanish “enye” becomes “n”)\nCapitalization preference for the new column names can be specified using the case = argument (“snake” is default, alternatives include “sentence”, “title”, “small_camel”…)\n\nHere is an online vignette\n\n# pipe the raw dataset through the function clean_names(), assign result as \"linelist\"  \nlinelist &lt;- linelist_raw %&gt;% \n  janitor::clean_names()\n\n# see the new column names\nnames(linelist)\n\n [1] \"case_id\"         \"generation\"      \"infection_date\"  \"date_onset\"     \n [5] \"hosp_date\"       \"date_of_outcome\" \"outcome\"         \"gender\"         \n [9] \"facility_id\"     \"lon\"             \"lat\"             \"infector\"       \n[13] \"source\"          \"age\"             \"age_unit\"        \"row_num\"        \n[17] \"wt_kg\"           \"ht_cm\"           \"ct_blood\"        \"fever\"          \n[21] \"chills\"          \"cough\"           \"aches\"           \"vomit\"          \n[25] \"temp\"            \"time_admission\"  \"merged_header\"   \"x28\"            \n\n\n\nManual name cleaning\n\n# CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)\n##################################################################################\nlinelist &lt;- linelist_raw %&gt;%\n    \n    # standardize column name syntax\n    janitor::clean_names() %&gt;% \n    \n    # manually re-name columns\n           # NEW name             # OLD name\n    rename(date_infection       = infection_date,\n           date_hospitalisation = hosp_date,\n           date_outcome         = date_of_outcome)\n\n\n\nSelecting some columns\n\nlinelist %&gt;% \n  select(date_infection, date_hospitalisation, date_outcome)\n\n# A tibble: 6,611 × 3\n   date_infection      date_hospitalisation date_outcome       \n   &lt;dttm&gt;              &lt;dttm&gt;               &lt;dttm&gt;             \n 1 2014-05-08 00:00:00 2014-05-15 00:00:00  NA                 \n 2 NA                  2014-05-14 00:00:00  2014-05-18 00:00:00\n 3 NA                  2014-05-18 00:00:00  2014-05-30 00:00:00\n 4 2014-05-04 00:00:00 2014-05-20 00:00:00  NA                 \n 5 2014-05-18 00:00:00 2014-05-22 00:00:00  2014-05-29 00:00:00\n 6 2014-05-03 00:00:00 2014-05-23 00:00:00  2014-05-24 00:00:00\n 7 2014-05-22 00:00:00 2014-05-29 00:00:00  2014-06-01 00:00:00\n 8 2014-05-28 00:00:00 2014-06-03 00:00:00  2014-06-07 00:00:00\n 9 NA                  2014-06-06 00:00:00  2014-06-18 00:00:00\n10 NA                  2014-06-07 00:00:00  2014-06-09 00:00:00\n# ℹ 6,601 more rows",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#keep-columns",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#keep-columns",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Keep columns",
+    "text": "Keep columns\nSelect only the columns you want to remain\nPut their names in the select() command, with no quotation marks. They will appear in the data frame in the order you provide. Note that if you include a column that does not exist, R will return an error (see use of any_of() below if you want no error in this situation).\n\n# linelist dataset is piped through select() command, and names() prints just the column names\nlinelist %&gt;% \n  select(case_id, date_onset, date_hospitalisation, fever) %&gt;% \n  names()  # display the column names\n\n[1] \"case_id\"              \"date_onset\"           \"date_hospitalisation\"\n[4] \"fever\"               \n\n# Also, by using the 'minus' sign (-) you can deselect columns\nlinelist %&gt;% \n  select(-x28)\n\n# A tibble: 6,611 × 27\n   case_id generation date_infection      date_onset date_hospitalisation\n   &lt;chr&gt;        &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;      &lt;dttm&gt;              \n 1 5fe599           4 2014-05-08 00:00:00 2014-05-13 2014-05-15 00:00:00 \n 2 8689b7           4 NA                  2014-05-13 2014-05-14 00:00:00 \n 3 11f8ea           2 NA                  2014-05-16 2014-05-18 00:00:00 \n 4 b8812a           3 2014-05-04 00:00:00 2014-05-18 2014-05-20 00:00:00 \n 5 893f25           3 2014-05-18 00:00:00 2014-05-21 2014-05-22 00:00:00 \n 6 be99c8           3 2014-05-03 00:00:00 2014-05-22 2014-05-23 00:00:00 \n 7 07e3e8           4 2014-05-22 00:00:00 2014-05-27 2014-05-29 00:00:00 \n 8 369449           4 2014-05-28 00:00:00 2014-06-02 2014-06-03 00:00:00 \n 9 f393b4           4 NA                  2014-06-05 2014-06-06 00:00:00 \n10 1389ca           4 NA                  2014-06-05 2014-06-07 00:00:00 \n# ℹ 6,601 more rows\n# ℹ 22 more variables: date_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,\n#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,\n#   age &lt;chr&gt;, age_unit &lt;chr&gt;, row_num &lt;dbl&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;,\n#   ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;,\n#   vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, merged_header &lt;chr&gt;",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#deduplication",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#deduplication",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Deduplication",
+    "text": "Deduplication\nThe package dplyr offers the distinct() function. This function examines every row and reduce the data frame to only the unique rows. That is, it removes rows that are 100% duplicates.\n\n# CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)\n##################################################################################\n\n# begin cleaning pipe chain\n###########################\nlinelist &lt;- linelist_raw %&gt;%\n    \n    # standardize column name syntax\n    janitor::clean_names() %&gt;% \n    \n    # manually re-name columns\n           # NEW name             # OLD name\n    rename(date_infection       = infection_date,\n           date_hospitalisation = hosp_date,\n           date_outcome         = date_of_outcome) %&gt;% \n    \n    # remove column\n    select(-c(row_num, merged_header, x28)) %&gt;% \n    # de-duplicate\n    distinct()",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#column-creation-and-transformation",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#column-creation-and-transformation",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Column creation and transformation",
+    "text": "Column creation and transformation\nWe recommend using the dplyr function mutate() to add a new column, or to modify an existing one.\n\nlinelist &lt;- linelist %&gt;% \n  mutate(bmi = wt_kg / (ht_cm/100)^2)",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#transform-data-type",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#transform-data-type",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Transform data type",
+    "text": "Transform data type\n\n# age is stored as character\nlinelist %&gt;% \n  select(age)\n\n# A tibble: 6,608 × 1\n   age  \n   &lt;chr&gt;\n 1 2    \n 2 3    \n 3 56   \n 4 18   \n 5 3    \n 6 16   \n 7 16   \n 8 0    \n 9 61   \n10 27   \n# ℹ 6,598 more rows\n\n# use mutate to change\nlinelist &lt;- linelist %&gt;% \n  mutate(age = as.numeric(age),\n         date_infection = ymd(date_infection))",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#filter-rows",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#filter-rows",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Filter rows",
+    "text": "Filter rows\n\nlinelist_female &lt;- linelist %&gt;% \n  filter(gender == \"f\")   # keep only rows where gender is equal to \"f\"\n\nlinelist_female\n\n# A tibble: 3,139 × 26\n   case_id generation date_infection date_onset date_hospitalisation\n   &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;         &lt;chr&gt;      &lt;dttm&gt;              \n 1 8689b7           4 NA             2014-05-13 2014-05-14 00:00:00 \n 2 b8812a           3 2014-05-04     2014-05-18 2014-05-20 00:00:00 \n 3 be99c8           3 2014-05-03     2014-05-22 2014-05-23 00:00:00 \n 4 07e3e8           4 2014-05-22     2014-05-27 2014-05-29 00:00:00 \n 5 369449           4 2014-05-28     2014-06-02 2014-06-03 00:00:00 \n 6 1389ca           4 NA             2014-06-05 2014-06-07 00:00:00 \n 7 2eaa9a           5 2014-06-07     2014-06-17 2014-06-17 00:00:00 \n 8 bbfa93           6 2014-06-09     2014-06-18 2014-06-20 00:00:00 \n 9 f50e8a          10 NA             2014-06-22 2014-06-23 00:00:00 \n10 3a7673           8 NA             2014-06-23 2014-06-24 00:00:00 \n# ℹ 3,129 more rows\n# ℹ 21 more variables: date_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,\n#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,\n#   age &lt;dbl&gt;, age_unit &lt;chr&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;, ct_blood &lt;dbl&gt;,\n#   fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;, vomit &lt;chr&gt;,\n#   temp &lt;dbl&gt;, time_admission &lt;chr&gt;, bmi &lt;dbl&gt;",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#count",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#count",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "count",
+    "text": "count\n\nlinelist %&gt;% \n  count(gender)\n\n# A tibble: 3 × 2\n  gender     n\n  &lt;chr&gt;  &lt;int&gt;\n1 f       3139\n2 m       3146\n3 &lt;NA&gt;     323",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#summarise",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#summarise",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "summarise",
+    "text": "summarise\n\nlinelist %&gt;% \n  summarise(min_infection_date = min(date_infection, na.rm = T),\n            max_infection_date = max(date_infection, na.rm = T),\n            mean_age = mean(age, na.rm =T))\n\n# A tibble: 1 × 3\n  min_infection_date max_infection_date mean_age\n  &lt;date&gt;             &lt;date&gt;                &lt;dbl&gt;\n1 2012-04-09         2015-04-27             16.1\n\n\n\nsummarise grouped\n\nlinelist %&gt;% \n  group_by(gender) %&gt;% \n  summarise(min_infection_date = min(date_infection, na.rm = T),\n            max_infection_date = max(date_infection, na.rm = T),\n            mean_age = mean(age, na.rm =T))\n\n# A tibble: 3 × 4\n  gender min_infection_date max_infection_date mean_age\n  &lt;chr&gt;  &lt;date&gt;             &lt;date&gt;                &lt;dbl&gt;\n1 f      2012-05-16         2015-04-27             12.7\n2 m      2012-04-09         2015-04-24             19.5\n3 &lt;NA&gt;   2012-09-13         2015-04-17             15.4",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#save-you-data-for-later",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#save-you-data-for-later",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Save you data for later",
+    "text": "Save you data for later\n\nsaveRDS(linelist, \"./data/clean_linelist.rds\")",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/1-before-we-start/index.html#what-is-r-and-rstudio",
+    "href": "materials/1-workshop1/1-before-we-start/index.html#what-is-r-and-rstudio",
     "title": "Before we start",
-    "section": "",
-    "text": "## What is R? What is RStudio?\nThe term “R” is used to refer to both the programming language and the software that interprets the scripts written using it.\nRStudio is a popular way to write R scripts and interact with the R software. To function correctly, RStudio needs R and therefore both need to be installed on your computer.",
+    "section": "What is R and RStudio?",
+    "text": "What is R and RStudio?\n\nquestions\n\nWhat is a working directory?\nHow should files be set up to import into R?\nHow can I look for help with R functions? :::\n\n\n\nobjectives\n\nExplain what R and RStudio are, what they are used for, and how they relate to each other.\nDescribe the purpose of the RStudio Script, Console, Environment, and Plots panes.\nOrganize files and directories for a set of analyses as an R Project, and understand the purpose of the working directory.\nUse the built-in RStudio help interface to search for more information on R functions.\nDemonstrate how to provide sufficient information for troubleshooting with the R user community.",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 1</b>: Before we start"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/1-before-we-start/index.html#what-is-r-what-is-rstudio",
+    "href": "materials/1-workshop1/1-before-we-start/index.html#what-is-r-what-is-rstudio",
+    "title": "Before we start",
+    "section": "What is R? What is RStudio?",
+    "text": "What is R? What is RStudio?\nThe term “R” is used to refer to both the programming language and the software that interprets the scripts written using it.\nRStudio is a popular way to write R scripts and interact with the R software. To function correctly, RStudio needs R and therefore both need to be installed on your computer.",
     "crumbs": [
       "Installation",
       "<em>1. Reproducible Data Analysis with R</em>",
@@ -92,7 +248,7 @@
     "href": "materials/1-workshop1/1-before-we-start/index.html#getting-set-up",
     "title": "Before we start",
     "section": "Getting set up",
-    "text": "Getting set up\nIt is good practice to keep a set of related data, analyses, and text self-contained in a single folder, called the working directory. All of the scripts within this folder can then use relative paths to files that indicate where inside the project a file is located (as opposed to absolute paths, which point to where a file is on a specific computer). Working this way allows you to move your project around on your computer and share it with others without worrying about whether or not the underlying scripts will still work.\nRStudio provides a helpful set of tools to do this through its “Projects” interface, which not only creates a working directory for you, but also remembers its location (allowing you to quickly navigate to it) and optionally preserves custom settings and (re-)open files to assist resume work after a break. Go through the steps for creating an “R Project” for this tutorial below.\n\nStart RStudio.\nUnder the File menu, click on New Project. Choose New Directory, then New Project.\nEnter a name for this new folder (or “directory”), and choose a convenient location for it. This will be your working directory for the rest of the day (e.g., ~/data-carpentry).\nClick on Create Project.\nDownload the code handout, place it in your working directory and rename it (e.g., data-carpentry-script.R).\n(Optional) Set Preferences to ‘Never’ save workspace in RStudio.\n\nA workspace is your current working environment in R which includes any user-defined object. By default, all of these objects will be saved, and automatically loaded, when you reopen your project. Saving a workspace to .RData can be cumbersome, especially if you are working with larger datasets, and it can lead to hard to debug errors by having objects in memory you forgot you had. Therefore, it is often a good idea to turn this off. To do so, go to Tools –&gt; ‘Global Options’ and select the ‘Never’ option for ‘Save workspace to .RData’ on exit.’\n\n\nOrganizing your working directory\nUsing a consistent folder structure across your projects will help keep things organized, and will help you to find/file things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for scripts, data, and documents.\n\ndata_raw/ & data/ Use these folders to store raw data and intermediate datasets you may create for the need of a particular analysis. For the sake of transparency and provenance, you should always keep a copy of your raw data accessible and do as much of your data cleanup and preprocessing programmatically (i.e., with scripts, rather than manually) as possible. Separating raw data from processed data is also a good idea. For example, you could have files data_raw/tree_survey.plot1.txt and ...plot2.txt kept separate from a data/tree.survey.csv file generated by the scripts/01.preprocess.tree_survey.R script.\ndocuments/ This would be a place to keep outlines, drafts, and other text.\nscripts/ This would be the location to keep your R scripts for different analyses or plotting, and potentially a separate folder for your functions (more on that later).\nAdditional (sub)directories depending on your project needs.\n\nFor this workshop, we will need a data_raw/ folder to store our raw data, and we will use data/ for when we learn how to export data as CSV files, and a fig/ folder for the figures that we will save.\n\nUnder the Files tab on the right of the screen, click on New Folder and create a folder named data_raw within your newly created working directory (e.g., ~/data-carpentry/). (Alternatively, type dir.create(\"data_raw\") at your R console.) Repeat these operations to create a data and a fig folder.\n\nWe are going to keep the script in the root of our working directory because we are only going to use one file. Later, when you start create more complex projects, it might make sense to organize scripts in sub-directories.\nYour working directory should now look like this:\n\n\n\n\n\nHow it should look like at the beginning of this lesson\n\n\n\n\n\n\nThe working directory\nThe working directory is an important concept to understand. It is the place from where R will be looking for and saving the files. When you write code for your project, it should refer to files in relation to the root of your working directory and only need files within this structure.\nRStudio assists you in this regard and sets the working directory automatically to the directory where you have placed your project in. If you need to check it, you can use getwd(). If for some reason your working directory is not what it should be, you can change it in the RStudio interface by navigating in the file browser where your working directory should be, and clicking on the blue gear icon “More”, and select “Set As Working Directory”. Alternatively you can use setwd(\"/path/to/working/directory\") to reset your working directory. However, your scripts should not include this line because it will fail on someone else’s computer.",
+    "text": "Getting set up\nIt is good practice to keep a set of related data, analyses, and text self-contained in a single folder, called the working directory. All of the scripts within this folder can then use relative paths to files that indicate where inside the project a file is located (as opposed to absolute paths, which point to where a file is on a specific computer). Working this way allows you to move your project around on your computer and share it with others without worrying about whether or not the underlying scripts will still work.\nRStudio provides a helpful set of tools to do this through its “Projects” interface, which not only creates a working directory for you, but also remembers its location (allowing you to quickly navigate to it) and optionally preserves custom settings and (re-)open files to assist resume work after a break. Go through the steps for creating an “R Project” for this tutorial below.\n\nStart RStudio.\nUnder the File menu, click on New Project. Choose New Directory, then New Project.\nEnter a name for this new folder (or “directory”), and choose a convenient location for it. This will be your working directory for the rest of the day (e.g., ~/r-workshop).\nClick on Create Project.\n(Optional) Set Preferences to ‘Never’ save workspace in RStudio.\n\nA workspace is your current working environment in R which includes any user-defined object. By default, all of these objects will be saved, and automatically loaded, when you reopen your project. Saving a workspace to .RData can be cumbersome, especially if you are working with larger datasets, and it can lead to hard to debug errors by having objects in memory you forgot you had. Therefore, it is often a good idea to turn this off. To do so, go to Tools –&gt; ‘Global Options’ and select the ‘Never’ option for ‘Save workspace to .RData’ on exit.’\n\n\nOrganizing your working directory\nUsing a consistent folder structure across your projects will help keep things organized, and will help you to find/file things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for scripts, data, and documents.\n\ndata_raw/ & data/ Use these folders to store raw data and intermediate datasets you may create for the need of a particular analysis. For the sake of transparency and provenance, you should always keep a copy of your raw data accessible and do as much of your data cleanup and preprocessing programmatically (i.e., with scripts, rather than manually) as possible. Separating raw data from processed data is also a good idea. For example, you could have files data_raw/tree_survey.plot1.txt and ...plot2.txt kept separate from a data/tree.survey.csv file generated by the scripts/01.preprocess.tree_survey.R script.\ndocuments/ This would be a place to keep outlines, drafts, and other text.\nscripts/ This would be the location to keep your R scripts for different analyses or plotting, and potentially a separate folder for your functions (more on that later).\nAdditional (sub)directories depending on your project needs.\n\nFor this workshop, we will need a data_raw/ folder to store our raw data, and we will use data/ for when we learn how to export data as CSV files, and a fig/ folder for the figures that we will save.\n\nUnder the Files tab on the right of the screen, click on New Folder and create a folder named data_raw within your newly created working directory (e.g., ~/data-carpentry/). (Alternatively, type dir.create(\"data_raw\") at your R console.) Repeat these operations to create a data and a fig folder.\n\nWe are going to keep the script in the root of our working directory because we are only going to use one file. Later, when you start create more complex projects, it might make sense to organize scripts in sub-directories.\nYour working directory should now look like this:\n\n\n\n\n\nHow it should look like at the beginning of this lesson\n\n\n\n\n\n\nThe working directory\nThe working directory is an important concept to understand. It is the place from where R will be looking for and saving the files. When you write code for your project, it should refer to files in relation to the root of your working directory and only need files within this structure.\nRStudio assists you in this regard and sets the working directory automatically to the directory where you have placed your project in. If you need to check it, you can use getwd(). If for some reason your working directory is not what it should be, you can change it in the RStudio interface by navigating in the file browser where your working directory should be, and clicking on the blue gear icon “More”, and select “Set As Working Directory”. Alternatively you can use setwd(\"/path/to/working/directory\") to reset your working directory. However, your scripts should not include this line because it will fail on someone else’s computer.",
     "crumbs": [
       "Installation",
       "<em>1. Reproducible Data Analysis with R</em>",
@@ -184,46 +340,11 @@
     ]
   },
   {
-    "objectID": "instance_ips.html",
-    "href": "instance_ips.html",
-    "title": "AWS Instance IP addresses",
-    "section": "",
-    "text": "To get on your instance, find the address associated with your name. Copy the link into your browser and it will take you to navigate to RStudio\n\nEnter the login credentials\nUsername: genomics\nPassword: evomics2024\n\nCopy the link into your browser to navigate to RStudio\n\n\n\n\n\n\n\n\n\nIP\nName\nGroup\n\n\n\n\nhttp://44.211.168.167:8787\nAdijat Jimoh\nA-1\n\n\nhttp://44.210.123.188:8787\nAGANZE GLOIRE-AIME MUSHEBENGE\nB-2\n\n\nhttp://18.204.198.2:8787\nAlbert Rock Anasthase Gangbadja\nA-3\n\n\nhttp://44.202.141.220:8787\nAlice Piller\nB-1\n\n\nhttp://3.83.54.110:8787\nAlicia Pillay\nA-2\n\n\nhttp://50.16.77.204:8787\nArthur John Mazhandu\nB-3\n\n\nhttp://107.23.249.203:8787\nArthur Shem Kasambula\nA-1\n\n\nhttp://3.88.252.155:8787\nIssac Singini\nB-2\n\n\nhttp://54.210.28.4:8787\nBOI KONE\nA-3\n\n\nhttp://3.88.132.37:8787\nBolaji F Oyeyemi\nB-1\n\n\nhttp://44.201.212.46:8787\nConstance Himukumbwa\nA-2\n\n\nhttp://52.73.235.249:8787\nNA\nB-3\n\n\nhttp://3.84.9.71:8787\nDieketseng Palesa Shemfe\nA-1\n\n\nhttp://54.210.27.224:8787\nEnock Kofi Amoako\nB-2\n\n\nhttp://34.207.162.31:8787\nEnock Mulowa Mumbula\nA-3\n\n\nhttp://54.92.166.20:8787\nEsihle Monelo\nB-1\n\n\nhttp://3.92.196.20:8787\nFatema Hariff\nA-2\n\n\nhttp://3.86.162.143:8787\nFLEURIANE METISSA DJONDJI KAMGA\nB-3\n\n\nhttp://18.206.114.184:8787\nFredrick Elishama Kakembo\nA-1\n\n\nhttp://18.206.55.59:8787\nJacob Apibilla Ayembilla\nB-2\n\n\nhttp://3.82.148.252:8787\nJesca Medrine Lunkuse\nA-3\n\n\nhttp://54.243.8.154:8787\nJoyce Sakala\nB-1\n\n\nhttp://3.85.107.121:8787\nKENFACK ZANGUIM MARIE JOSIANE\nA-2\n\n\nhttp://54.86.49.29:8787\nLEATITIA KAMPIIRE-SAN\nB-3\n\n\nhttp://44.212.77.44:8787\nLoveness Mukuka\nA-1\n\n\nhttp://44.202.243.74:8787\nMARGARET KASARO\nB-2\n\n\nhttp://184.72.97.41:8787\nMartin Gaël OYONO\nA-3\n\n\nhttp://52.23.227.214:8787\nMaureen Mburu\nB-1\n\n\nhttp://18.234.165.128:8787\nMaureen Osano\nA-2\n\n\nhttp://54.173.36.251:8787\nMunsaka Siankuku\nB-3\n\n\nhttp://54.210.143.254:8787\nNatasha Onalenna Moraka\nA-1\n\n\nhttp://52.90.40.187:8787\nNolwando Babalwa Nyide\nB-2\n\n\nhttp://54.209.211.188:8787\nOmolara O. Baiyegunhi\nA-3\n\n\nhttp://52.87.227.117:8787\nPaul Mbavu\nB-1\n\n\nhttp://54.164.91.50:8787\nPrivilege Tendai Munjoma\nA-2\n\n\nhttp://44.201.123.199:8787\nRoussel Moise WOKAM NJOMGANG\nB-3\n\n\nhttp://54.175.104.87:8787\nSamuel Chima Ugbaja\nA-1\n\n\nhttp://34.201.136.220:8787\nSanele Mbeje\nB-2\n\n\nhttp://54.161.84.120:8787\nSEUMKO'O NDEUMOU MEDOUEN REINE\nA-3\n\n\nhttp://54.159.147.228:8787\nSilondoloze Mtanjana\nB-1\n\n\nhttp://3.88.208.20:8787\nTerishia Hariram\nA-2\n\n\nhttp://54.157.49.144:8787\nTimothy Makori\nB-3\n\n\nhttp://54.208.76.28:8787\nZekhethelo Mkhwanazi\nA-1\n\n\nhttp://54.144.209.135:8787\nClyde Mulenga\nB-2\n\n\nhttp://18.206.249.64:8787\nGolden Seulu Sandala\nA-3\n\n\nhttp://44.206.232.167:8787\nDorcas Maruapula\nB-1\n\n\nhttp://18.206.246.193:8787\nTumelo Moshoette\nA-2\n\n\nhttp://3.82.139.97:8787\nNdivhuwo Nemukondeni\nB-3\n\n\nhttp://44.201.251.190:8787\nYanga Mdleleni\nA-1\n\n\nhttp://18.212.196.38:8787\nHaley Dion\nB-2\n\n\nhttp://44.208.33.12:8787\nJudie Magura\nA-3\n\n\nhttp://44.202.41.176:8787\nGeoffrey Kwenda\nB-1\n\n\nhttp://54.209.163.211:8787\nShantel Claassen\nA-2\n\n\nhttp://107.23.252.190:8787\nDelories Sikuku\nB-3\n\n\nhttp://54.161.162.161:8787\nWenkosi Qulu\nA-1\n\n\nhttp://34.201.117.25:8787\nLindsay Droit\n-\n\n\nhttp://44.212.19.24:8787\nJoseph Elsherbini\n-\n\n\nhttp://3.83.104.15:8787\nJohnathan Shih\n-\n\n\nhttp://184.72.115.251:8787\nMichael France\n-\n\n\nhttp://52.90.82.220:8787\nLiz Costello\n-\n\n\nhttp://18.233.96.190:8787\nAaron Abai\n-\n\n\nhttp://44.211.159.243:8787\nAsavela Kama\n-\n\n\nhttp://3.89.19.83:8787\nAfrah Khairallah\n-\n\n\nhttp://44.204.53.249:8787\nDerek Tshiabuila\n-\n\n\nhttp://18.207.189.119:8787\nJohan van der Molen\n-\n\n\nhttp://54.158.112.181:8787\nWassim Abdool Karim\n-\n\n\nNA\nBernard Marie BITYE ZAMBO\n-\n\n\nNA\nAnjili Peter Mshelia\n-"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Workshop: Introduction to Data Analysis in R",
     "section": "",
     "text": "Workshop: Introduction to Data Analysis in R\n\n\n\n\n\n\n\n\n\nRetrieving and running your workshop files\n\n\n\nFollow the detailed instructions here to install R and RStudio on your computer. Ensure you are on R version 4.2 or higher.\nRun the following command to install the necessary packages in the R terminal\n\n\ninstall.packages(c(\"tidyverse\", \"skimr\", \"janitor\"))\n\n\n\n\nSchedule\n\n\n\n\n\n\n\nDate/Time\nTopic\nInstructor\n\n\n\n\nMonday, April 22nd\n————————————————————–\n————————————————————–\n\n\nAM\nWorkshop Introduction\nScott Handley (Wash U School of Medicine)\n\n\n\nKeynote\nSinaye Ngcapu (CAPRISA)\n\n\n\nSequencing and Library Preperation\nLindsay Droit (Wash U School of Medicine)\n\n\nPM\nR Refresher (tidyverse/summary tables/data visualization)\nScott Handley (Wash U School of Medicine)\n\n\nTuesday, April 23th\n————————————————————–\n————————————————————–\n\n\nAM\n16S Data Preprocessing\nAsavela Kama (CAPRISA)\n\n\nPM\nExploring High Dimensional Data\nElizabeth Costello (Stanford University)\n\n\nWednesday, April 24th\n————————————————————–\n————————————————————–\n\n\nAM\nExploring High Dimensional Data\nElizabeth Costello (Stanford University)\n\n\n\nCorrelations and Differential Abundance Testing\nJoseph Elsherbini (Ragon Institute)\n\n\nPM\nGroup Activity I\nJohnathan Shih (Ragon Institute)\n\n\nThursday, April 25th\n————————————————————–\n————————————————————–\n\n\nAM\nVIRGO / Shotgun Metagenomics\nMichael France (UMD School of Medicine)\n\n\nPM\nGroup Activity II\nJohnathan Shih (Ragon Institute)\n\n\nEvening\nReception\n\n\n\nFriday, April 26th\n————————————————————–\n————————————————————–\n\n\nAM\nKeynote\nJacques Ravel (UMD School of Medicine)\n\n\n\nGroup Activity review\n\n\n\nPM\nGroup Presentations\nParticipants\n\n\n\nDataset Demo\n\n\n\n\nWorkshop Outro\nScott Handley (Wash U School of Medicine)\n\n\n\n————————————————————–\n————————————————————–"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Series Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Jacques Ravel\nProfessor\nUniversity of Maryland School of Medicine Department of Microbiology and Immunology\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Sinaye Ngcapu\nSenior Scientist\nCAPRISA\nHIV Mucosal Immunology Laboratory\n\n\n\n\n\n\n\n\n\nInstructor\nLindsay Droit\nResearch Laboratory Manager Washington University School of Medicine\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Elizabeth Costello\nResearch Scientist\nStanford University\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Michael France\nBioinformatician\nUniversity of Maryland School of Medicine\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nInstructor\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nInstructor\nJohnathan Shih\nBioinformatics\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nRenee Schumm\nStaff Assistant II\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAaron Abai\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDr. Afrah Khairallah\nPostdoctoral Research Fellow Africa Health Research Institute (AHRI) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nJohan van der Molen\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nWasim Abdool Karim\nBioinformatician\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch"
-  },
-  {
-    "objectID": "about.html#working-with-high-dimensional-data-in-r---teaching-team",
-    "href": "about.html#working-with-high-dimensional-data-in-r---teaching-team",
-    "title": "About",
-    "section": "",
-    "text": "Series Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Jacques Ravel\nProfessor\nUniversity of Maryland School of Medicine Department of Microbiology and Immunology\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Sinaye Ngcapu\nSenior Scientist\nCAPRISA\nHIV Mucosal Immunology Laboratory\n\n\n\n\n\n\n\n\n\nInstructor\nLindsay Droit\nResearch Laboratory Manager Washington University School of Medicine\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Elizabeth Costello\nResearch Scientist\nStanford University\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Michael France\nBioinformatician\nUniversity of Maryland School of Medicine\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nInstructor\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nInstructor\nJohnathan Shih\nBioinformatics\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nRenee Schumm\nStaff Assistant II\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAaron Abai\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDr. Afrah Khairallah\nPostdoctoral Research Fellow Africa Health Research Institute (AHRI) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nJohan van der Molen\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nWasim Abdool Karim\nBioinformatician\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch"
-  },
-  {
-    "objectID": "about.html#reproducible-data-analysis-with-r---teaching-team",
-    "href": "about.html#reproducible-data-analysis-with-r---teaching-team",
-    "title": "About",
-    "section": "Reproducible Data Analysis with R - Teaching Team",
-    "text": "Reproducible Data Analysis with R - Teaching Team\n\n\n\n\n\n\n\n\n\nKeynote Speaker\nDr. Lenine Liebenberg\nChief Researcher\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nDr. Laura Symul\nAssistant Professor\nUCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nMarothi Peter Letsoalo\nSenior Biostatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAfrah Khairallah\nPostdoctoral research fellow Africa Health Research Institute (AHRI) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nKwabena Asare\nStatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nJohan van der Molen\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nWasim Abdool Karim\nBioinformatician Centre for Epidemic Response and Innovation (CERI) - Stellenbosch"
-  },
-  {
-    "objectID": "about.html#about-these-materials",
-    "href": "about.html#about-these-materials",
-    "title": "About",
-    "section": "About these materials",
-    "text": "About these materials\nThis website started with the code from Andrew P. Bray’s workshop website and much of the R content has been remixed and adapted from SDS375, a course by Claus O. Wilke."
   },
   {
     "objectID": "datasets.html",
@@ -238,48 +359,6 @@
     "title": "Datasets",
     "section": "",
     "text": "The main data set for use in lectures is split into 2 tables. This is a data on a fictional Ebola outbreak, expanded by the handbook team from the ebola_sim practice dataset in the outbreaks package.\n\nlinelist_raw.xlsx\n\n\nlibrary(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.3.2\n\n\nWarning: package 'tidyr' was built under R version 4.3.3\n\n\nWarning: package 'readr' was built under R version 4.3.3\n\n\nWarning: package 'dplyr' was built under R version 4.3.3\n\n\nWarning: package 'stringr' was built under R version 4.3.3\n\n\nWarning: package 'lubridate' was built under R version 4.3.3\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(openxlsx)\n\nWarning: package 'openxlsx' was built under R version 4.3.2\n\nlibrary(skimr)\n\nWarning: package 'skimr' was built under R version 4.3.3\n\nopenxlsx::read.xlsx(\"./datasets/linelist_raw.xlsx\") %&gt;% \n  skim()\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n6611\n\n\nNumber of columns\n28\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n16\n\n\nnumeric\n12\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\ncase_id\n137\n0.98\n6\n6\n0\n5888\n0\n\n\ndate.onset\n293\n0.96\n10\n10\n0\n580\n0\n\n\noutcome\n1500\n0.77\n5\n7\n0\n2\n0\n\n\ngender\n324\n0.95\n1\n1\n0\n2\n0\n\n\ninfector\n2323\n0.65\n6\n6\n0\n2697\n0\n\n\nsource\n2323\n0.65\n5\n7\n0\n2\n0\n\n\nage\n107\n0.98\n1\n2\n0\n75\n0\n\n\nage_unit\n7\n1.00\n5\n6\n0\n2\n0\n\n\nfever\n258\n0.96\n2\n3\n0\n2\n0\n\n\nchills\n258\n0.96\n2\n3\n0\n2\n0\n\n\ncough\n258\n0.96\n2\n3\n0\n2\n0\n\n\naches\n258\n0.96\n2\n3\n0\n2\n0\n\n\nvomit\n258\n0.96\n2\n3\n0\n2\n0\n\n\ntime_admission\n844\n0.87\n5\n5\n0\n1091\n0\n\n\nmerged_header\n0\n1.00\n1\n1\n0\n1\n0\n\n\n…28\n0\n1.00\n1\n1\n0\n1\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\ngeneration\n7\n1.00\n16.60\n5.71\n0.00\n13.00\n16.00\n20.00\n37.00\n▁▆▇▂▁\n\n\ninfection.date\n2322\n0.65\n41868.65\n221.02\n41008.00\n41876.00\n41916.00\n41969.00\n42121.00\n▁▁▁▃▇\n\n\nhosp.date\n7\n1.00\n41882.22\n218.91\n41019.00\n41889.00\n41927.00\n41983.00\n42124.00\n▁▁▁▃▇\n\n\ndate_of_outcome\n1068\n0.84\n41893.00\n217.58\n41043.00\n41896.00\n41938.00\n41994.00\n42159.00\n▁▁▁▆▇\n\n\nfacility_id\n1512\n0.77\n4.69\n1.73\n1.00\n4.00\n5.00\n6.00\n7.00\n▃▁▃▃▇\n\n\nlon\n7\n1.00\n-13.23\n0.02\n-13.27\n-13.25\n-13.23\n-13.22\n-13.21\n▅▃▃▅▇\n\n\nlat\n7\n1.00\n8.47\n0.01\n8.45\n8.46\n8.47\n8.48\n8.49\n▅▇▇▇▆\n\n\nrow_num\n0\n1.00\n3240.91\n1857.83\n1.00\n1647.50\n3241.00\n4836.50\n6481.00\n▇▇▇▇▇\n\n\nwt_kg\n7\n1.00\n52.69\n18.59\n-11.00\n41.00\n54.00\n66.00\n111.00\n▁▃▇▅▁\n\n\nht_cm\n7\n1.00\n125.25\n49.57\n4.00\n91.00\n130.00\n159.00\n295.00\n▂▅▇▂▁\n\n\nct_blood\n7\n1.00\n21.26\n1.67\n16.00\n20.00\n22.00\n22.00\n26.00\n▁▃▇▃▁\n\n\ntemp\n158\n0.98\n38.60\n0.95\n35.20\n38.30\n38.80\n39.20\n40.80\n▁▂▂▇▁\n\n\n\n\n\n\nfacilities.xlsx\n\n\nopenxlsx::read.xlsx(\"./datasets/facilities.xlsx\") %&gt;% \n  skim()\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n7\n\n\nNumber of columns\n2\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n1\n\n\nnumeric\n1\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nfacility_name\n0\n1\n5\n35\n0\n7\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nfacility_id\n0\n1\n4\n2.16\n1\n2.5\n4\n5.5\n7\n▇▃▃▃▇"
-  },
-  {
-    "objectID": "installation-instructions.html",
-    "href": "installation-instructions.html",
-    "title": "Installing R and RStudio",
-    "section": "",
-    "text": "adapted from datacarpentry.org\nFor this workshop, we will need R as well RStudio. R and RStudio are both completely free and open source software. While R is the underlying statistical computing environment, RStudio is the graphical IDE (integrated development environment) that makes using R easier, more intuitive, and interactive. Both are separate downloads and installations, and you will need to install R first, followed by RStudio. Once both are installed, you would just open and work in RStudio, which will run R in the background. Then you will install some R packages (collections of functions you can use in your own coding) which we are using for this workshop. Please install R version 4.3.1 or later and RStudio version 2023.09.0 or later."
-  },
-  {
-    "objectID": "installation-instructions.html#step-1---follow-instructions-for-your-operating-system",
-    "href": "installation-instructions.html#step-1---follow-instructions-for-your-operating-system",
-    "title": "Installing R and RStudio",
-    "section": "1 Step 1 - follow instructions for your operating system",
-    "text": "1 Step 1 - follow instructions for your operating system\n\n1.0.1 For Windows see Section 3\n\n\n1.0.2 For MacOS see Section 4\n\n\n1.0.3 For Linux see Section 5"
-  },
-  {
-    "objectID": "installation-instructions.html#step-2---install-r-packages",
-    "href": "installation-instructions.html#step-2---install-r-packages",
-    "title": "Installing R and RStudio",
-    "section": "2 Step 2 - install R packages",
-    "text": "2 Step 2 - install R packages\nOpen RStudio and Paste the following into your console on the left/bottom-left.\ninstall.packages(c(\"broom\", \"cluster\", \"colorspace\", \"cowplot\", \"distill\", \"gapminder\", \"GGally\", \"gganimate\", \"ggbeeswarm\", \"ggiraph\", \"ggdendro\", \"ggdist\", \"ggforce\",\"ggplot2movies\", \"ggrepel\", \"ggridges\", \"ggthemes\", \"gifski\", \"glue\",\"knitr\", \"learnr\", \"naniar\", \"margins\", \"MASS\", \"Matrix\",\"nycflights13\", \"palmerpenguins\", \"patchwork\", \"quarto\", \"rgdal\", \"rmarkdown\",\"rnaturalearth\", \"sf\", \"shinyjs\", \"tableone\", \"tidyverse\", \"transformr\", \"umap\"))"
-  },
-  {
-    "objectID": "installation-instructions.html#sec-windows",
-    "href": "installation-instructions.html#sec-windows",
-    "title": "Installing R and RStudio",
-    "section": "3 Windows",
-    "text": "3 Windows\n\n3.1 If you don’t have R and RStudio installed:\nGo to https://posit.co/download/rstudio-desktop/ and follow this instruction for windows.\n\n\n3.2 If you already have R and RStudio installed, check to see if updates are available.\nRStudio: Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.\nR: Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() in the console to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. You can update R using the installr package, by running:\n# installr is for windows only!\nif( !(\"installr\" %in% installed.packages()) ){install.packages(\"installr\")} \n\ninstallr::updateR(TRUE)"
-  },
-  {
-    "objectID": "installation-instructions.html#sec-mac",
-    "href": "installation-instructions.html#sec-mac",
-    "title": "Installing R and RStudio",
-    "section": "4 MacOs",
-    "text": "4 MacOs\n\n4.1 Check your processor\nadapted from https://docs.cse.lehigh.edu/determine-mac-architecture/\nMake sure you are downloading and installing the right version of R and R Studio for your laptop’s CPU. Some Macs have an intel chip (also known as x64 or x86_64 architecture), while the newest macs have M1 or M2 chips (also known as ARM architecture).\nTo determine whether a Mac is running an Intel Processor or Apple ARM M1 or M2, click on the  Apple Menu and select ‘About this Mac’:\n\n\n\nclick about this mac\n\n\nFrom the ‘About this Mac’ screen, on the ‘Overview’ tab, look for a line that indicates either ‘Chip’ or ‘Processor’. If the line contains M1 or M2, the machine is running Apple Silicon. Alternatively, the word Intel indicates that the machine is running an Intel-based Core series processor.\n\n\n\nM1 or M2\n\n\n\n\n\nintel\n\n\n\n\n4.2 If you don’t have R and RStudio installed:\nGo to https://posit.co/download/rstudio-desktop/ and follow this instruction for MacOS.\n\n\n4.3 If you already have R and RStudio installed, check to see if updates are available.\nRStudio: Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.\nR: Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. For this workshop install version 4.3.1 of R"
-  },
-  {
-    "objectID": "installation-instructions.html#sec-linux",
-    "href": "installation-instructions.html#sec-linux",
-    "title": "Installing R and RStudio",
-    "section": "5 Linux",
-    "text": "5 Linux\n\n5.1 If you don’t have R and RStudio installed:\nGo to https://posit.co/download/rstudio-desktop/ and follow this instruction for your Linux OS.\n\n\n5.2 If you already have R and RStudio installed, check to see if updates are available.\nRStudio: Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.\nR: Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. For this workshop install version 4.3.1 of R"
   },
   {
     "objectID": "materials/1-workshop1/0-welcome/exercise_1.html#activity",
@@ -386,17 +465,123 @@
     ]
   },
   {
-    "objectID": "past_workshops.html",
-    "href": "past_workshops.html",
-    "title": "Data Science for Biology Workshop Series",
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html",
+    "title": "More data wrangling and data visualization with the tidyverse",
     "section": "",
-    "text": "Workshop 1: October 16th-20th 2023 at UKZN School of Medicine in Durban, SA"
+    "text": "malaria_district_month\n\n# A tibble: 4 × 5\n  District   May   Jun   Jul   Aug\n  &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 Dingo       73  2168 16934  5381\n2 Spring     397  2236 24974  6726\n3 Barnard     NA   282  9870  3434\n4 Bolo        NA  4371 21286  6538\n\nmalaria_long &lt;- malaria_district_month %&gt;% \n  pivot_longer(\n    cols = May:Aug,\n    names_to = \"month\",\n    values_to = \"cases\"\n  )\n\nmalaria_long\n\n# A tibble: 16 × 3\n   District month cases\n   &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;\n 1 Dingo    May      73\n 2 Dingo    Jun    2168\n 3 Dingo    Jul   16934\n 4 Dingo    Aug    5381\n 5 Spring   May     397\n 6 Spring   Jun    2236\n 7 Spring   Jul   24974\n 8 Spring   Aug    6726\n 9 Barnard  May      NA\n10 Barnard  Jun     282\n11 Barnard  Jul    9870\n12 Barnard  Aug    3434\n13 Bolo     May      NA\n14 Bolo     Jun    4371\n15 Bolo     Jul   21286\n16 Bolo     Aug    6538",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
   },
   {
-    "objectID": "past_workshops.html#workshop-i---r-rstudio-and-quarto-for-clinical-research",
-    "href": "past_workshops.html#workshop-i---r-rstudio-and-quarto-for-clinical-research",
-    "title": "Data Science for Biology Workshop Series",
-    "section": "Workshop I - R, RStudio, and Quarto for clinical research",
-    "text": "Workshop I - R, RStudio, and Quarto for clinical research\nThank you for participating in the workshop!\nOur week together was amazing, thank you so much for making the workshop a success by participating all week long.\n\nIf you haven’t already, please fill out this survey\nIf you have any photos of the workshop you’d like to share, go to #photos on the workshop discord\nPlease post on Discord or email us if you have any questions or comments!\n\n\n\n\n\nTable 1: Schedule\n\n\n\n\n\n\n\n\n\n\nDate/Time\nTopic\nInstructor\n\n\n\n\nMonday, October 16th\n–\n–\n\n\nAM\nCourse Introduction & Introduction to data types\nSalina Hussain and Suuba Demby (Ragon Institute)\n\n\nPM\nIntro to R, Rstudio, and Quarto\nChandani Desai and Joseph Elsherbini (Ragon Institute)\n\n\nTuesday, October 17th\n–\n–\n\n\nAM\nIntro to data visualizaion with the tidyverse\nScott Handley (Wash U School of Medicine)\n\n\nPM\nData wrangling and more data visualization\nJoseph Elsherbini (Ragon Institute)\n\n\nWednesday, October 18th\n–\n–\n\n\nAM\ntableone and statistics for clinical data\nMarothi Letsoalo (CAPRISA)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nThursday, October 19th\n–\n–\n\n\nAM\nHypothesis testing and data transformations\nLaura Symul (UCLouvain)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nEvening\nReception\n\n\n\nFriday, October 20th\n–\n–\n\n\nAM\nKeynote\nLenine Liebenberg (CERI Stellenbosch)\n\n\n\nSmall group work time\nParticipants\n\n\nPM\nSmall group presentations"
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-data",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-data",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "",
+    "text": "malaria_district_month\n\n# A tibble: 4 × 5\n  District   May   Jun   Jul   Aug\n  &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 Dingo       73  2168 16934  5381\n2 Spring     397  2236 24974  6726\n3 Barnard     NA   282  9870  3434\n4 Bolo        NA  4371 21286  6538\n\nmalaria_long &lt;- malaria_district_month %&gt;% \n  pivot_longer(\n    cols = May:Aug,\n    names_to = \"month\",\n    values_to = \"cases\"\n  )\n\nmalaria_long\n\n# A tibble: 16 × 3\n   District month cases\n   &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;\n 1 Dingo    May      73\n 2 Dingo    Jun    2168\n 3 Dingo    Jul   16934\n 4 Dingo    Aug    5381\n 5 Spring   May     397\n 6 Spring   Jun    2236\n 7 Spring   Jul   24974\n 8 Spring   Aug    6726\n 9 Barnard  May      NA\n10 Barnard  Jun     282\n11 Barnard  Jul    9870\n12 Barnard  Aug    3434\n13 Bolo     May      NA\n14 Bolo     Jun    4371\n15 Bolo     Jul   21286\n16 Bolo     Aug    6538",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-longer",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-longer",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "pivot longer",
+    "text": "pivot longer\n\nmalaria_facility_count_data &lt;- readRDS(\"./../../../datasets/malaria_facility_count_data.rds\")\n\nmalaria_facility_count_data\n\n# A tibble: 3,038 × 10\n   location_name data_date  submitted_date Province District `malaria_rdt_0-4`\n   &lt;chr&gt;         &lt;date&gt;     &lt;date&gt;         &lt;chr&gt;    &lt;chr&gt;                &lt;int&gt;\n 1 Facility 1    2020-08-11 2020-08-12     North    Spring                  11\n 2 Facility 2    2020-08-11 2020-08-12     North    Bolo                    11\n 3 Facility 3    2020-08-11 2020-08-12     North    Dingo                    8\n 4 Facility 4    2020-08-11 2020-08-12     North    Bolo                    16\n 5 Facility 5    2020-08-11 2020-08-12     North    Bolo                     9\n 6 Facility 6    2020-08-11 2020-08-12     North    Dingo                    3\n 7 Facility 6    2020-08-10 2020-08-12     North    Dingo                    4\n 8 Facility 5    2020-08-10 2020-08-12     North    Bolo                    15\n 9 Facility 5    2020-08-09 2020-08-12     North    Bolo                    11\n10 Facility 5    2020-08-08 2020-08-12     North    Bolo                    19\n# ℹ 3,028 more rows\n# ℹ 4 more variables: `malaria_rdt_5-14` &lt;int&gt;, malaria_rdt_15 &lt;int&gt;,\n#   malaria_tot &lt;int&gt;, newid &lt;int&gt;\n\n# provide column with a tidyselect helper function\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    )\n\n# A tibble: 12,152 × 8\n   location_name data_date  submitted_date Province District newid name    value\n   &lt;chr&gt;         &lt;date&gt;     &lt;date&gt;         &lt;chr&gt;    &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;int&gt;\n 1 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    11\n 2 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    12\n 3 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    23\n 4 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    46\n 5 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…    11\n 6 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…    10\n 7 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…     5\n 8 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…    26\n 9 Facility 3    2020-08-11 2020-08-12     North    Dingo        3 malari…     8\n10 Facility 3    2020-08-11 2020-08-12     North    Dingo        3 malari…     5\n# ℹ 12,142 more rows",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#plot",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#plot",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "plot",
+    "text": "plot\n\nmalaria_facility_count_data %&gt;% \n  ggplot(aes(x = data_date, y = malaria_tot)) + geom_col()\n\nWarning: Removed 686 rows containing missing values or values outside the scale range\n(`geom_col()`).",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#plot-order",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#plot-order",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "plot order",
+    "text": "plot order\nSay you want to plot the amount of cases per age group\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  #mutate(month = factor(month, levels = c(\"May\", \"Jun\", \"Jul\", \"Aug\"))) %&gt;% \n  ggplot(aes(x = name, y = value)) + geom_col()\n\nWarning: Removed 2744 rows containing missing values or values outside the scale range\n(`geom_col()`).\n\n\n\n\n\n\n\n\n\nThe order on the x-axis is not right\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  ggplot(aes(x = name, y = value)) + geom_col()\n\nWarning: Removed 2744 rows containing missing values or values outside the scale range\n(`geom_col()`).",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#add-labels",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#add-labels",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "add labels",
+    "text": "add labels\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  ggplot(aes(x = name, y = value)) + \n  geom_col() + \n  labs(x = \"age category\",\n       y = \"cases\")\n\nWarning: Removed 2744 rows containing missing values or values outside the scale range\n(`geom_col()`).",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#exclude-totals",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#exclude-totals",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Exclude Totals",
+    "text": "Exclude Totals\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  filter(name != \"malaria_tot\") %&gt;% \n  ggplot(aes(x = name, y = value)) + \n  geom_col() + \n  labs(x = \"age category\",\n       y = \"cases\")\n\nWarning: Removed 2058 rows containing missing values or values outside the scale range\n(`geom_col()`).",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#categorise-by-district",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#categorise-by-district",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "categorise by District",
+    "text": "categorise by District\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  filter(name != \"malaria_tot\") %&gt;% \n  ggplot(aes(x = name, y = value, fill = District)) + \n  geom_col() + \n  labs(x = \"age category\",\n       y = \"cases\")\n\nWarning: Removed 2058 rows containing missing values or values outside the scale range\n(`geom_col()`).",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#joining",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#joining",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Joining",
+    "text": "Joining",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#table-1",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#table-1",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Table 1",
+    "text": "Table 1\nhttps://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html\n\nlibrary(gtsummary)\n\nlinelist_cleaned &lt;- readRDS(\"./../../../datasets/linelist_cleaned.rds\")\n\nlinelist_cleaned %&gt;% \n  select(gender, age_cat, hospital, bmi) %&gt;% \n  tbl_summary(by = gender) %&gt;% \n  add_p() %&gt;% \n  bold_labels()\n\n278 observations missing `gender` have been removed. To include these observations, use `forcats::fct_na_value_to_level()` on `gender` column before passing to `tbl_summary()`.\n\n\nThere was an error in 'add_p()/add_difference()' for variable 'age_cat', p-value omitted:\nError in stats::fisher.test(structure(c(1L, 1L, 7L, 4L, 1L, 4L, 4L, 1L, : FEXACT error 7(location). LDSTP=17610 is too small for this problem,\n  (pastp=410.112, ipn_0:=ipoin[itp=246]=5459, stp[ipn_0]=419.544).\nIncrease workspace or consider using 'simulate.p.value=TRUE'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nf, N = 2,8071\nm, N = 2,8031\np-value2\n\n\n\n\nage_cat\n\n\n\n\n\n\n\n\n    0-4\n640 (23%)\n416 (15%)\n\n\n\n\n    5-9\n641 (23%)\n412 (15%)\n\n\n\n\n    10-14\n518 (18%)\n383 (14%)\n\n\n\n\n    15-19\n359 (13%)\n364 (13%)\n\n\n\n\n    20-29\n468 (17%)\n575 (21%)\n\n\n\n\n    30-49\n179 (6.4%)\n557 (20%)\n\n\n\n\n    50-69\n2 (&lt;0.1%)\n91 (3.2%)\n\n\n\n\n    70+\n0 (0%)\n5 (0.2%)\n\n\n\n\nhospital\n\n\n\n\n0.7\n\n\n    Central Hospital\n202 (7.2%)\n230 (8.2%)\n\n\n\n\n    Military Hospital\n421 (15%)\n435 (16%)\n\n\n\n\n    Missing\n700 (25%)\n696 (25%)\n\n\n\n\n    Other\n418 (15%)\n423 (15%)\n\n\n\n\n    Port Hospital\n857 (31%)\n823 (29%)\n\n\n\n\n    St. Mark's Maternity Hospital (SMMH)\n209 (7.4%)\n196 (7.0%)\n\n\n\n\nbmi\n37 (27, 63)\n29 (23, 40)\n&lt;0.001\n\n\n\n1 n (%); Median (IQR)\n\n\n2 Pearson’s Chi-squared test; Wilcoxon rank sum test",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
   }
 ]

@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../materials/1-workshop1/4-tidyverse-201/index.html" rel="next">
 <link href="../../../materials/1-workshop1/2-intro-to-r/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -151,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><em>1. Reproducible Data Analysis with R</em></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/3-tidyverse-101/index.html"><b>Module 3</b>: Intro to data wrangling and visualization with the <code>tidyverse</code></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><em>1. Reproducible Data Analysis with R</em></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/3-tidyverse-101/index.html"><b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -193,7 +194,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><b>Module 3</b>: Intro to data wrangling and visualization with the <code>tidyverse</code></span></a>
+ <span class="menu-text"><b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/4-tidyverse-201/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 4</b>: More data wrangling and data visualization</span></a>
   </div>
 </li>
       </ul>
@@ -209,13 +216,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#transition-to-r" id="toc-transition-to-r" class="nav-link active" data-scroll-target="#transition-to-r">Transition to R</a></li>
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse">Tidyverse</a>
+  <ul class="collapse">
+  <li><a href="#import-raw-data" id="toc-import-raw-data" class="nav-link" data-scroll-target="#import-raw-data">Import raw data</a></li>
+  </ul></li>
+  <li><a href="#view-the-data" id="toc-view-the-data" class="nav-link" data-scroll-target="#view-the-data">View the data</a></li>
+  <li><a href="#inspecting-the-data" id="toc-inspecting-the-data" class="nav-link" data-scroll-target="#inspecting-the-data">Inspecting the data</a></li>
+  <li><a href="#automatic-cleaning" id="toc-automatic-cleaning" class="nav-link" data-scroll-target="#automatic-cleaning">Automatic cleaning</a>
+  <ul class="collapse">
+  <li><a href="#manual-name-cleaning" id="toc-manual-name-cleaning" class="nav-link" data-scroll-target="#manual-name-cleaning">Manual name cleaning</a></li>
+  <li><a href="#selecting-some-columns" id="toc-selecting-some-columns" class="nav-link" data-scroll-target="#selecting-some-columns">Selecting some columns</a></li>
+  </ul></li>
+  <li><a href="#keep-columns" id="toc-keep-columns" class="nav-link" data-scroll-target="#keep-columns">Keep columns</a></li>
+  <li><a href="#deduplication" id="toc-deduplication" class="nav-link" data-scroll-target="#deduplication">Deduplication</a></li>
+  <li><a href="#column-creation-and-transformation" id="toc-column-creation-and-transformation" class="nav-link" data-scroll-target="#column-creation-and-transformation">Column creation and transformation</a></li>
+  <li><a href="#transform-data-type" id="toc-transform-data-type" class="nav-link" data-scroll-target="#transform-data-type">Transform data type</a></li>
+  <li><a href="#filter-rows" id="toc-filter-rows" class="nav-link" data-scroll-target="#filter-rows">Filter rows</a></li>
+  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count">count</a></li>
+  <li><a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise">summarise</a>
+  <ul class="collapse">
+  <li><a href="#summarise-grouped" id="toc-summarise-grouped" class="nav-link" data-scroll-target="#summarise-grouped">summarise grouped</a></li>
+  </ul></li>
+  <li><a href="#save-you-data-for-later" id="toc-save-you-data-for-later" class="nav-link" data-scroll-target="#save-you-data-for-later">Save you data for later</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><em>1. Reproducible Data Analysis with R</em></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/3-tidyverse-101/index.html"><b>Module 3</b>: Intro to data wrangling and visualization with the <code>tidyverse</code></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><em>1. Reproducible Data Analysis with R</em></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/3-tidyverse-101/index.html"><b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Intro to data wrangling and visualization with the<br>
 <pre>tidyverse</pre></h1>
@@ -240,9 +269,351 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <section id="transition-to-r" class="level2">
 <h2 class="anchored" data-anchor-id="transition-to-r"><a href="https://www.epirhandbook.com/en/transition-to-r.html#transition-to-r">Transition to R</a></h2>
-<p>##Tidyverse</p>
+</section>
+<section id="tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverse">Tidyverse</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="import-raw-data" class="level3">
+<h3 class="anchored" data-anchor-id="import-raw-data">Import raw data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>linelist_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"./../../../datasets/linelist_raw.xlsx"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>facilities <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"./../../../datasets/facilities.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="view-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="view-the-data">View the data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>linelist_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,611 × 28
+   case_id generation `infection date`    `date onset` `hosp date`        
+   &lt;chr&gt;        &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;        &lt;dttm&gt;             
+ 1 5fe599           4 2014-05-08 00:00:00 2014-05-13   2014-05-15 00:00:00
+ 2 8689b7           4 NA                  2014-05-13   2014-05-14 00:00:00
+ 3 11f8ea           2 NA                  2014-05-16   2014-05-18 00:00:00
+ 4 b8812a           3 2014-05-04 00:00:00 2014-05-18   2014-05-20 00:00:00
+ 5 893f25           3 2014-05-18 00:00:00 2014-05-21   2014-05-22 00:00:00
+ 6 be99c8           3 2014-05-03 00:00:00 2014-05-22   2014-05-23 00:00:00
+ 7 07e3e8           4 2014-05-22 00:00:00 2014-05-27   2014-05-29 00:00:00
+ 8 369449           4 2014-05-28 00:00:00 2014-06-02   2014-06-03 00:00:00
+ 9 f393b4           4 NA                  2014-06-05   2014-06-06 00:00:00
+10 1389ca           4 NA                  2014-06-05   2014-06-07 00:00:00
+# ℹ 6,601 more rows
+# ℹ 23 more variables: date_of_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,
+#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,
+#   age &lt;chr&gt;, age_unit &lt;chr&gt;, row_num &lt;dbl&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;,
+#   ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;,
+#   vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, merged_header &lt;chr&gt;,
+#   ...28 &lt;chr&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>facilities</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 2
+  facility_id facility_name                      
+        &lt;dbl&gt; &lt;chr&gt;                              
+1           1 central hospital                   
+2           2 hospital a                         
+3           3 hospital b                         
+4           4 military hospital                  
+5           5 other                              
+6           6 port hospital                      
+7           7 st. marks maternity hospital (smmh)</code></pre>
+</div>
+</div>
+</section>
+<section id="inspecting-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="inspecting-the-data">Inspecting the data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(linelist_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [6,611 × 28] (S3: tbl_df/tbl/data.frame)
+ $ case_id        : chr [1:6611] "5fe599" "8689b7" "11f8ea" "b8812a" ...
+ $ generation     : num [1:6611] 4 4 2 3 3 3 4 4 4 4 ...
+ $ infection date : POSIXct[1:6611], format: "2014-05-08" NA ...
+ $ date onset     : chr [1:6611] "2014-05-13" "2014-05-13" "2014-05-16" "2014-05-18" ...
+ $ hosp date      : POSIXct[1:6611], format: "2014-05-15" "2014-05-14" ...
+ $ date_of_outcome: POSIXct[1:6611], format: NA "2014-05-18" ...
+ $ outcome        : chr [1:6611] NA "Recover" "Recover" NA ...
+ $ gender         : chr [1:6611] "m" "f" "m" "f" ...
+ $ facility_id    : num [1:6611] 5 NA 7 6 4 6 NA NA NA NA ...
+ $ lon            : num [1:6611] -13.2 -13.2 -13.2 -13.2 -13.2 ...
+ $ lat            : num [1:6611] 8.47 8.45 8.46 8.48 8.46 ...
+ $ infector       : chr [1:6611] "f547d6" NA NA "f90f5f" ...
+ $ source         : chr [1:6611] "other" NA NA "other" ...
+ $ age            : chr [1:6611] "2" "3" "56" "18" ...
+ $ age_unit       : chr [1:6611] "years" "years" "years" "years" ...
+ $ row_num        : num [1:6611] 1 2 3 4 5 6 7 8 9 10 ...
+ $ wt_kg          : num [1:6611] 27 25 91 41 36 56 47 0 86 69 ...
+ $ ht_cm          : num [1:6611] 48 59 238 135 71 116 87 11 226 174 ...
+ $ ct_blood       : num [1:6611] 22 22 21 23 23 21 21 22 22 22 ...
+ $ fever          : chr [1:6611] "no" NA NA "no" ...
+ $ chills         : chr [1:6611] "no" NA NA "no" ...
+ $ cough          : chr [1:6611] "yes" NA NA "no" ...
+ $ aches          : chr [1:6611] "no" NA NA "no" ...
+ $ vomit          : chr [1:6611] "yes" NA NA "no" ...
+ $ temp           : num [1:6611] 36.8 36.9 36.9 36.8 36.9 37.6 37.3 37 36.4 35.9 ...
+ $ time_admission : chr [1:6611] NA "09:36" "16:48" "11:22" ...
+ $ merged_header  : chr [1:6611] "a" "a" "a" "a" ...
+ $ ...28          : chr [1:6611] "b" "b" "b" "b" ...</code></pre>
+</div>
+</div>
+</section>
+<section id="automatic-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="automatic-cleaning">Automatic cleaning</h2>
+<p>The function clean_names() from the package <strong>janitor</strong> standardizes column names and makes them unique by doing the following:</p>
+<ul>
+<li>Converts all names to consist of only underscores, numbers, and letters</li>
+<li>Accented characters are transliterated to ASCII (e.g.&nbsp;german o with umlaut becomes “o”, spanish “enye” becomes “n”)</li>
+<li>Capitalization preference for the new column names can be specified using the case = argument (“snake” is default, alternatives include “sentence”, “title”, “small_camel”…)</li>
+</ul>
+<p>Here is an online <a href="https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#cleaning">vignette</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe the raw dataset through the function clean_names(), assign result as "linelist"  </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> linelist_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># see the new column names</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(linelist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "case_id"         "generation"      "infection_date"  "date_onset"     
+ [5] "hosp_date"       "date_of_outcome" "outcome"         "gender"         
+ [9] "facility_id"     "lon"             "lat"             "infector"       
+[13] "source"          "age"             "age_unit"        "row_num"        
+[17] "wt_kg"           "ht_cm"           "ct_blood"        "fever"          
+[21] "chills"          "cough"           "aches"           "vomit"          
+[25] "temp"            "time_admission"  "merged_header"   "x28"            </code></pre>
+</div>
+</div>
+<section id="manual-name-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="manual-name-cleaning">Manual name cleaning</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">##################################################################################</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> linelist_raw <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># standardize column name syntax</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># manually re-name columns</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>           <span class="co"># NEW name             # OLD name</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">date_infection       =</span> infection_date,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">date_hospitalisation =</span> hosp_date,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">date_outcome         =</span> date_of_outcome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="selecting-some-columns" class="level3">
+<h3 class="anchored" data-anchor-id="selecting-some-columns">Selecting some columns</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date_infection, date_hospitalisation, date_outcome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,611 × 3
+   date_infection      date_hospitalisation date_outcome       
+   &lt;dttm&gt;              &lt;dttm&gt;               &lt;dttm&gt;             
+ 1 2014-05-08 00:00:00 2014-05-15 00:00:00  NA                 
+ 2 NA                  2014-05-14 00:00:00  2014-05-18 00:00:00
+ 3 NA                  2014-05-18 00:00:00  2014-05-30 00:00:00
+ 4 2014-05-04 00:00:00 2014-05-20 00:00:00  NA                 
+ 5 2014-05-18 00:00:00 2014-05-22 00:00:00  2014-05-29 00:00:00
+ 6 2014-05-03 00:00:00 2014-05-23 00:00:00  2014-05-24 00:00:00
+ 7 2014-05-22 00:00:00 2014-05-29 00:00:00  2014-06-01 00:00:00
+ 8 2014-05-28 00:00:00 2014-06-03 00:00:00  2014-06-07 00:00:00
+ 9 NA                  2014-06-06 00:00:00  2014-06-18 00:00:00
+10 NA                  2014-06-07 00:00:00  2014-06-09 00:00:00
+# ℹ 6,601 more rows</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="keep-columns" class="level2">
+<h2 class="anchored" data-anchor-id="keep-columns">Keep columns</h2>
+<p>Select only the columns you want to remain</p>
+<p>Put their names in the select() command, with no quotation marks. They will appear in the data frame in the order you provide. Note that if you include a column that does not exist, R will return an error (see use of any_of() below if you want no error in this situation).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># linelist dataset is piped through select() command, and names() prints just the column names</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(case_id, date_onset, date_hospitalisation, fever) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>()  <span class="co"># display the column names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "case_id"              "date_onset"           "date_hospitalisation"
+[4] "fever"               </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Also, by using the 'minus' sign (-) you can deselect columns</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x28)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,611 × 27
+   case_id generation date_infection      date_onset date_hospitalisation
+   &lt;chr&gt;        &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;      &lt;dttm&gt;              
+ 1 5fe599           4 2014-05-08 00:00:00 2014-05-13 2014-05-15 00:00:00 
+ 2 8689b7           4 NA                  2014-05-13 2014-05-14 00:00:00 
+ 3 11f8ea           2 NA                  2014-05-16 2014-05-18 00:00:00 
+ 4 b8812a           3 2014-05-04 00:00:00 2014-05-18 2014-05-20 00:00:00 
+ 5 893f25           3 2014-05-18 00:00:00 2014-05-21 2014-05-22 00:00:00 
+ 6 be99c8           3 2014-05-03 00:00:00 2014-05-22 2014-05-23 00:00:00 
+ 7 07e3e8           4 2014-05-22 00:00:00 2014-05-27 2014-05-29 00:00:00 
+ 8 369449           4 2014-05-28 00:00:00 2014-06-02 2014-06-03 00:00:00 
+ 9 f393b4           4 NA                  2014-06-05 2014-06-06 00:00:00 
+10 1389ca           4 NA                  2014-06-05 2014-06-07 00:00:00 
+# ℹ 6,601 more rows
+# ℹ 22 more variables: date_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,
+#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,
+#   age &lt;chr&gt;, age_unit &lt;chr&gt;, row_num &lt;dbl&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;,
+#   ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;,
+#   vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, merged_header &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="deduplication" class="level2">
+<h2 class="anchored" data-anchor-id="deduplication">Deduplication</h2>
+<p>The package dplyr offers the distinct() function. This function examines every row and reduce the data frame to only the unique rows. That is, it removes rows that are 100% duplicates.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="do">##################################################################################</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># begin cleaning pipe chain</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="do">###########################</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> linelist_raw <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># standardize column name syntax</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># manually re-name columns</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>           <span class="co"># NEW name             # OLD name</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">date_infection       =</span> infection_date,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">date_hospitalisation =</span> hosp_date,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">date_outcome         =</span> date_of_outcome) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove column</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(row_num, merged_header, x28)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># de-duplicate</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="column-creation-and-transformation" class="level2">
+<h2 class="anchored" data-anchor-id="column-creation-and-transformation">Column creation and transformation</h2>
+<p>We recommend using the dplyr function mutate() to add a new column, or to modify an existing one.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi =</span> wt_kg <span class="sc">/</span> (ht_cm<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="transform-data-type" class="level2">
+<h2 class="anchored" data-anchor-id="transform-data-type">Transform data type</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># age is stored as character</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,608 × 1
+   age  
+   &lt;chr&gt;
+ 1 2    
+ 2 3    
+ 3 56   
+ 4 18   
+ 5 3    
+ 6 16   
+ 7 16   
+ 8 0    
+ 9 61   
+10 27   
+# ℹ 6,598 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate to change</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">as.numeric</span>(age),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">date_infection =</span> <span class="fu">ymd</span>(date_infection))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="filter-rows" class="level2">
+<h2 class="anchored" data-anchor-id="filter-rows">Filter rows</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>linelist_female <span class="ot">&lt;-</span> linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"f"</span>)   <span class="co"># keep only rows where gender is equal to "f"</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>linelist_female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,139 × 26
+   case_id generation date_infection date_onset date_hospitalisation
+   &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;         &lt;chr&gt;      &lt;dttm&gt;              
+ 1 8689b7           4 NA             2014-05-13 2014-05-14 00:00:00 
+ 2 b8812a           3 2014-05-04     2014-05-18 2014-05-20 00:00:00 
+ 3 be99c8           3 2014-05-03     2014-05-22 2014-05-23 00:00:00 
+ 4 07e3e8           4 2014-05-22     2014-05-27 2014-05-29 00:00:00 
+ 5 369449           4 2014-05-28     2014-06-02 2014-06-03 00:00:00 
+ 6 1389ca           4 NA             2014-06-05 2014-06-07 00:00:00 
+ 7 2eaa9a           5 2014-06-07     2014-06-17 2014-06-17 00:00:00 
+ 8 bbfa93           6 2014-06-09     2014-06-18 2014-06-20 00:00:00 
+ 9 f50e8a          10 NA             2014-06-22 2014-06-23 00:00:00 
+10 3a7673           8 NA             2014-06-23 2014-06-24 00:00:00 
+# ℹ 3,129 more rows
+# ℹ 21 more variables: date_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,
+#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,
+#   age &lt;dbl&gt;, age_unit &lt;chr&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;, ct_blood &lt;dbl&gt;,
+#   fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;, vomit &lt;chr&gt;,
+#   temp &lt;dbl&gt;, time_admission &lt;chr&gt;, bmi &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="count" class="level2">
+<h2 class="anchored" data-anchor-id="count">count</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  gender     n
+  &lt;chr&gt;  &lt;int&gt;
+1 f       3139
+2 m       3146
+3 &lt;NA&gt;     323</code></pre>
+</div>
+</div>
+</section>
+<section id="summarise" class="level2">
+<h2 class="anchored" data-anchor-id="summarise">summarise</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min_infection_date =</span> <span class="fu">min</span>(date_infection, <span class="at">na.rm =</span> T),</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_infection_date =</span> <span class="fu">max</span>(date_infection, <span class="at">na.rm =</span> T),</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_age =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  min_infection_date max_infection_date mean_age
+  &lt;date&gt;             &lt;date&gt;                &lt;dbl&gt;
+1 2012-04-09         2015-04-27             16.1</code></pre>
+</div>
+</div>
+<section id="summarise-grouped" class="level3">
+<h3 class="anchored" data-anchor-id="summarise-grouped">summarise grouped</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min_infection_date =</span> <span class="fu">min</span>(date_infection, <span class="at">na.rm =</span> T),</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_infection_date =</span> <span class="fu">max</span>(date_infection, <span class="at">na.rm =</span> T),</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_age =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  gender min_infection_date max_infection_date mean_age
+  &lt;chr&gt;  &lt;date&gt;             &lt;date&gt;                &lt;dbl&gt;
+1 f      2012-05-16         2015-04-27             12.7
+2 m      2012-04-09         2015-04-24             19.5
+3 &lt;NA&gt;   2012-09-13         2015-04-17             15.4</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="save-you-data-for-later" class="level2">
+<h2 class="anchored" data-anchor-id="save-you-data-for-later">Save you data for later</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(linelist, <span class="st">"./data/clean_linelist.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -665,6 +1036,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../../materials/1-workshop1/4-tidyverse-201/index.html" class="pagination-link" aria-label="<b>Module 4</b>: More data wrangling and data visualization">
+        <span class="nav-page-text"><b>Module 4</b>: More data wrangling and data visualization</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

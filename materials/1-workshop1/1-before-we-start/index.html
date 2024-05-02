@@ -195,7 +195,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 3</b>: Intro to data wrangling and visualization with the <code>tidyverse</code></span></a>
+ <span class="menu-text"><b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/4-tidyverse-201/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 4</b>: More data wrangling and data visualization</span></a>
   </div>
 </li>
       </ul>
@@ -235,15 +241,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <hr>
-<div class="questions">
-<p>##What is R and RStudio?</p>
+<section id="what-is-r-and-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-r-and-rstudio">What is R and RStudio?</h2>
+<section id="questions" class="level3">
+<h3 class="anchored" data-anchor-id="questions">questions</h3>
 <ul>
 <li>What is a working directory?</li>
 <li>How should files be set up to import into R?</li>
-<li>How can I look for help with R functions?</li>
+<li>How can I look for help with R functions? :::</li>
 </ul>
-</div>
-<div class="objectives">
+</section>
+<section id="objectives" class="level3">
+<h3 class="anchored" data-anchor-id="objectives">objectives</h3>
 <ul>
 <li><p>Explain what R and RStudio are, what they are used for, and how they relate to each other.</p></li>
 <li><p>Describe the purpose of the RStudio Script, Console, Environment, and Plots panes.</p></li>
@@ -251,11 +260,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Use the built-in RStudio help interface to search for more information on R functions.</p></li>
 <li><p>Demonstrate how to provide sufficient information for troubleshooting with the R user community.</p></li>
 </ul>
-</div>
 <hr>
-<p>## What is R? What is RStudio?</p>
+</section>
+</section>
+<section id="what-is-r-what-is-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-r-what-is-rstudio">What is R? What is RStudio?</h2>
 <p>The term “<code>R</code>” is used to refer to both the programming language and the software that interprets the scripts written using it.</p>
 <p><a href="https://rstudio.com">RStudio</a> is a popular way to write R scripts and interact with the R software. To function correctly, RStudio needs R and therefore both need to be installed on your computer.</p>
+</section>
 <section id="why-learn-r" class="level2">
 <h2 class="anchored" data-anchor-id="why-learn-r">Why learn R?</h2>
 <section id="r-does-not-involve-lots-of-pointing-and-clicking-and-thats-a-good-thing" class="level3">
@@ -316,9 +328,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Start RStudio.</li>
 <li>Under the <code>File</code> menu, click on <code>New Project</code>. Choose <code>New Directory</code>, then <code>New Project</code>.</li>
-<li>Enter a name for this new folder (or “directory”), and choose a convenient location for it. This will be your <strong>working directory</strong> for the rest of the day (e.g., <code>~/data-carpentry</code>).</li>
+<li>Enter a name for this new folder (or “directory”), and choose a convenient location for it. This will be your <strong>working directory</strong> for the rest of the day (e.g., <code>~/r-workshop</code>).</li>
 <li>Click on <code>Create Project</code>.</li>
-<li>Download the <a href="files/code-handout.R">code handout</a>, place it in your working directory and rename it (e.g., <code>data-carpentry-script.R</code>).</li>
 <li>(Optional) Set Preferences to ‘Never’ save workspace in RStudio.</li>
 </ol>
 <p>A workspace is your current working environment in R which includes any user-defined object. By default, all of these objects will be saved, and automatically loaded, when you reopen your project. Saving a workspace to <code>.RData</code> can be cumbersome, especially if you are working with larger datasets, and it can lead to hard to debug errors by having objects in memory you forgot you had. Therefore, it is often a good idea to turn this off. To do so, go to Tools –&gt; ‘Global Options’ and select the ‘Never’ option for ‘Save workspace to .RData’ on exit.’</p>
