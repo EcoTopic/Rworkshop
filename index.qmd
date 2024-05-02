@@ -9,17 +9,17 @@ toc: false
 
 ::: {.g-col-12}
 
-# Data Science for Biology Workshop Series
+# Workshop: Introduction to Data Analysis in R
 :::
 
 ::: {.g-col-6}
-#### Workshop II - Working with High Dimensional Data
-<!-- This week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research. -->
+<!--#### Workshop II - Working with High Dimensional Data
+ This week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research. -->
 :::
 
 ::: {.g-col-6 .text-start}
 
-![](assets/images/durban_workshop_stickers_front_page.png){width=50%} 
+<!--![](assets/images/durban_workshop_stickers_front_page.png){width=50%} -->
 
 :::
 
@@ -32,28 +32,29 @@ toc: false
 2. [Join the discord here](https://discord.gg/Mb7pRTptqm) (once you've joined, you can bookmark [https://discord.com/channels/1158136582201692202/](https://discord.com/channels/1227264067899621427) to go straight to the channel.)  
 3. Await instructions on logging into your AWS instance.
 
-\ -->
+\ 
 
 
 ## Thank you for participating in Workshop II!
 #### [Fill out the post-workshop survey here](https://docs.google.com/forms/d/e/1FAIpQLSfgMquCfq-CPnj96dfMcCfQTRBH8eZlAqw7r5ItYVaibA4b4Q/viewform?usp=sf_link){target="_blank"}
 Before you leave, we have some questions for you to understand if the workshop was valuable and how we can improve it.
 
-\
+\ -->
 
-### Retreiving and running your workshop files \
-**The instances will be going down, but your work has been saved!** \
+### Retrieving and running your workshop files \
+<!--**The instances will be going down, but your work has been saved!** \
 
-1. Navigate to this link to download the contents of your workshop folder from your IP [Workshop II instance files here](https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-29-2200){target="_blank"}\
-2. Follow the detailed instructions [here](installation-instructions.qmd) to install R and RStudio on your computer. Ensure you are on R version 4.2 or higher.
+1. Navigate to this link to download the contents of your workshop folder from your IP [Workshop II instance files here](https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-29-2200){target="_blank"}\ -->
+2. Follow the detailed instructions [here](Install_R_and_R-studio.pdf) to install R and RStudio on your computer. Ensure you are on R version 4.2 or higher.
 3. Run the following command to install the necessary packages in the R terminal
+
+
 ```{r}
 #| eval: false
-install.packages(c("dada2", "here", "tidyverse", "phyloseq", "rstatix", "micoViz", "ggpubr", "ggbeeswarm", "ggside", "vegan", "reshape2", "pander", "gplots", "RColorBrewer", "GUniFrac")) if (!require("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-BiocManager::install("Heatplus", ask=TRUE).
+install.packages(c("tidyverse", "skimr", "janitor"))
+  
 ```
-
+<!--
 ## Group Dataset Example Workflows
 [Asavela's Demo](materials/2-workshop2/8-group-project/asavela_grp_b_analysis.qmd) \
 [Liz's Demo](materials/2-workshop2/8-group-project/liz_yogurt.qmd) \
@@ -63,7 +64,7 @@ BiocManager::install("Heatplus", ask=TRUE).
 **Workshop II Discord** \
 [Join the discord here](https://discord.gg/Mb7pRTptqm){target="_blank"} \
 Once you've joined, you can bookmark [https://discord.com/channels/1158136582201692202/](https://discord.com/channels/1227264067899621427){target="_blank"} to go straight to the channel
-
+-->
 
 
 

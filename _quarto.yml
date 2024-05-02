@@ -11,25 +11,25 @@ project:
 from: markdown+emoji
 
 website:
-  bread-crumbs: false
-  title: "Data Science for Biology Workshop Series"
+  #bread-crumbs: false
+  title: "Introduction to Data Analysis in R"
   page-navigation: true
   navbar:
     background: light
     foreground: dark
     right:
-      - text: "AWS Instance IPs"
-        href: instance_ips.qmd
+      # - text: "AWS Instance IPs"
+      #   href: instance_ips.qmd
       - text: "Installation"
-        href: installation-instructions.qmd
+        href: Install_R_and_R-studio.pdf
       - text: "Datasets"
         href: datasets.qmd
       - text: "Resources"
         href: resources.qmd
-      - text: "Past Workshops"
-        href: past_workshops.qmd
-      - text: "About"
-        href: about.qmd
+      # - text: "Past Workshops"
+      #   href: past_workshops.qmd
+      # - text: "About"
+      #   href: about.qmd
       - icon: github
         href: https://github.com/elsherbini/durban-data-science-for-biology
         aria-label: GitHub
@@ -44,62 +44,62 @@ website:
             - text: "<b>Module 0:</b> Welcome to the workshop"
               contents:
               href: materials/1-workshop1/0-welcome/index.qmd
-            - text: "<b>Module 1</b>: How data analysis is informed by data generation"
+            - text: "<b>Module 1</b>: Before we start"
               contents:
-              href: materials/1-workshop1/1-data-generation/index.qmd
-            - text: "<b>Module 2</b>: Intro to R, Rstudio, and Quarto"
+              href: materials/1-workshop1/1-before-we-start/index.qmd
+            - text: "<b>Module 2</b>: Intro to R and Rstudio"
               contents:
               href: materials/1-workshop1/2-intro-to-r/index.qmd
-            - text: "<b>Module 3</b>: Intro to data visualization and data wrangling with the <code>tidyverse</code>"
+            - text: "<b>Module 3</b>: Intro to data wrangling and visualization with the <code>tidyverse</code>"
               contents:
               href: materials/1-workshop1/3-tidyverse-101/index.qmd
-            - text: "<b>Module 4</b>: Data wrangling and more data visualization"
-              contents:
-              href: materials/1-workshop1/4-tidyverse-201/index.qmd
-            - text: "<b>Module 5</b>: <code>tableone</code> and its Basic Statistics"
-              contents:
-              href: materials/1-workshop1/5-tableone/index.qmd
-            - text: "<b>Module 6</b>: Data transformations and more statistics"
-              contents:
-              href: materials/1-workshop1/6-hypothesis-testing/index.qmd
-            - text: "<b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code>"
-              contents:
-              href: materials/1-workshop1/7-custom-data-visualizations/index.qmd
-            - text: "<b>Group Project</b> -Applying what you've learned to new data"
-              contents:
-              href: materials/1-workshop1/8-group-projects/index.qmd
-
-          - section: "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>"
-            contents:
-            - text: "<b>Module 0:</b> Welcome to the workshop"
-              contents:
-              href: materials/2-workshop2/0-welcome/index.qmd
-            - text: "<b>Module 1</b>: Sequencing Library Preparation"
-              contents:
-              href: materials/2-workshop2/1-library-prep/index.qmd
-            - text: "<b>Module 2</b>: R Refresher"
-              contents:
-              href: materials/2-workshop2/2-r-refresher/index.qmd
-            - text: "<b>Module 3</b>: 16S Data Processing"
-              contents:
-              href: materials/2-workshop2/3-16s_processing/index.qmd
-            - text: "<b>Module 4</b>: Exploring High Dimensional Data"
-              contents:
-              href: materials/2-workshop2/4-16s-pt1/index.qmd
-            - text: "<b>Module 5</b>: Correlations and Ordinations"
-              contents:
-              href: materials/2-workshop2/5-16s-pt2/index.qmd
-            - text: "<b>Module 6</b>: Shotgun Metagenomics and VIRGO"
-              contents:
-              href: materials/2-workshop2/6-virgo/index.qmd
-            - text: "<b>Module 7</b>: Keynote "
-              contents:
-              href: materials/2-workshop2/7-keynote/index.qmd
-            - text: "<b>Group Activity:</b> Applying what you've learned to new data"
-              contents:
-              href: materials/2-workshop2/8-group-project/index.qmd
-
-          - section: "<em>3. Bioinformatics and Transcriptomics Data Analysis - Coming October 2024</em>"
+            # - text: "<b>Module 4</b>: Data wrangling and more data visualization"
+            #   contents:
+            #   href: materials/1-workshop1/4-tidyverse-201/index.qmd
+            # - text: "<b>Module 5</b>: <code>tableone</code> and its Basic Statistics"
+            #   contents:
+            #   href: materials/1-workshop1/5-tableone/index.qmd
+            # - text: "<b>Module 6</b>: Data transformations and more statistics"
+            #   contents:
+            #   href: materials/1-workshop1/6-hypothesis-testing/index.qmd
+          #   - text: "<b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code>"
+          #     contents:
+          #     href: materials/1-workshop1/7-custom-data-visualizations/index.qmd
+          #   - text: "<b>Group Project</b> -Applying what you've learned to new data"
+          #     contents:
+          #     href: materials/1-workshop1/8-group-projects/index.qmd
+          # 
+          # - section: "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>"
+          #   contents:
+          #   - text: "<b>Module 0:</b> Welcome to the workshop"
+          #     contents:
+          #     href: materials/2-workshop2/0-welcome/index.qmd
+          #   - text: "<b>Module 1</b>: Sequencing Library Preparation"
+          #     contents:
+          #     href: materials/2-workshop2/1-library-prep/index.qmd
+          #   - text: "<b>Module 2</b>: R Refresher"
+          #     contents:
+          #     href: materials/2-workshop2/2-r-refresher/index.qmd
+          #   - text: "<b>Module 3</b>: 16S Data Processing"
+          #     contents:
+          #     href: materials/2-workshop2/3-16s_processing/index.qmd
+          #   - text: "<b>Module 4</b>: Exploring High Dimensional Data"
+          #     contents:
+          #     href: materials/2-workshop2/4-16s-pt1/index.qmd
+          #   - text: "<b>Module 5</b>: Correlations and Ordinations"
+          #     contents:
+          #     href: materials/2-workshop2/5-16s-pt2/index.qmd
+          #   - text: "<b>Module 6</b>: Shotgun Metagenomics and VIRGO"
+          #     contents:
+          #     href: materials/2-workshop2/6-virgo/index.qmd
+          #   - text: "<b>Module 7</b>: Keynote "
+          #     contents:
+          #     href: materials/2-workshop2/7-keynote/index.qmd
+          #   - text: "<b>Group Activity:</b> Applying what you've learned to new data"
+          #     contents:
+          #     href: materials/2-workshop2/8-group-project/index.qmd
+          # 
+          # - section: "<em>3. Bioinformatics and Transcriptomics Data Analysis - Coming October 2024</em>"
   page-footer:
     right: "This page is built with {{< fa heart >}} and [Quarto](https://quarto.org/)."
     left: "&copy; 2023. Huge thanks to [Andrew P. Bray](https://github.com/andrewpbray) and [Claus O. Wilke](https://github.com/clauswilke) for open source code and sharing content."

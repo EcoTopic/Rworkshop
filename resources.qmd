@@ -7,13 +7,17 @@ format:
 
 ## Before the workshop: Installing R and RStudio
 
-Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install `R version 4.3.1` and `RStudio version 2023.09.0` [Click here for instructions on installing R and RStudio](installation-instructions.qmd)
+Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install `R version 4.4.x` and `RStudio version 2024.x.0` [Click here for instructions on installing R and RStudio](Install_R_and_R-studio.pdf)
 
 
 ## Textbooks  
 ![](images/R_for_data_science.png){fig-align="left" width=15%}  
 R for Data Science: Import, Tidy, Transform, Visualize, and Model Data by Garrett Grolemund and Hadley Wickham  
 [Link](https://r4ds.had.co.nz/)
+
+![](https://www.epirhandbook.com/en/images/Epi%20R%20Handbook%20Banner%20Beige%201500x500.png){fig-align="left" width=35%}  
+The Epidemiologist R Handbook
+[Link](https://www.epirhandbook.com/en/index.html)
 
 ## Definitions from Glosario
 Further definitions at [Glosario](https://glosario.carpentries.org/)  
