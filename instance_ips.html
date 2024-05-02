@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introduction to Data Analysis in R - AWS Instance IP addresses</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Introduction to Data Analysis in R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./Install_R_and_R-studio.pdf" rel="" target="">
+ <span class="menu-text">Installation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./datasets.html" rel="" target="">
+ <span class="menu-text">Datasets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/elsherbini/durban-data-science-for-biology" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">AWS Instance IP addresses</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>To get on your instance, find the address associated with your name. Copy the link into your browser and it will take you to navigate to RStudio</p>
+<p><br>
+Enter the login credentials<br>
+<strong>Username:</strong> genomics<br>
+<strong>Password:</strong> evomics2024</p>
+<section id="copy-the-link-into-your-browser-to-navigate-to-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="copy-the-link-into-your-browser-to-navigate-to-rstudio">Copy the link into your browser to navigate to RStudio</h3>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="iryairdmts" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iryairdmts table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#iryairdmts thead, #iryairdmts tbody, #iryairdmts tfoot, #iryairdmts tr, #iryairdmts td, #iryairdmts th {
+  border-style: none;
+}
+
+#iryairdmts p {
+  margin: 0;
+  padding: 0;
+}
+
+#iryairdmts .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#iryairdmts .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#iryairdmts .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#iryairdmts .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#iryairdmts .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#iryairdmts .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#iryairdmts .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#iryairdmts .gt_col_heading {
+  color: #FFFFFF;
+  background-color: #5F5F5F;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#iryairdmts .gt_column_spanner_outer {
+  color: #FFFFFF;
+  background-color: #5F5F5F;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#iryairdmts .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#iryairdmts .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#iryairdmts .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#iryairdmts .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#iryairdmts .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#iryairdmts .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: middle;
+}
+
+#iryairdmts .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#iryairdmts .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#iryairdmts .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D5D5D5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D5D5D5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D5D5D5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#iryairdmts .gt_stub {
+  color: #333333;
+  background-color: #D5D5D5;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D5D5D5;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iryairdmts .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#iryairdmts .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#iryairdmts .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#iryairdmts .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iryairdmts .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #5F5F5F;
+}
+
+#iryairdmts .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#iryairdmts .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#iryairdmts .gt_grand_summary_row {
+  color: #333333;
+  background-color: #D5D5D5;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iryairdmts .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #5F5F5F;
+}
+
+#iryairdmts .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #5F5F5F;
+}
+
+#iryairdmts .gt_striped {
+  background-color: #F4F4F4;
+}
+
+#iryairdmts .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#iryairdmts .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#iryairdmts .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iryairdmts .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#iryairdmts .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#iryairdmts .gt_left {
+  text-align: left;
+}
+
+#iryairdmts .gt_center {
+  text-align: center;
+}
+
+#iryairdmts .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#iryairdmts .gt_font_normal {
+  font-weight: normal;
+}
+
+#iryairdmts .gt_font_bold {
+  font-weight: bold;
+}
+
+#iryairdmts .gt_font_italic {
+  font-style: italic;
+}
+
+#iryairdmts .gt_super {
+  font-size: 65%;
+}
+
+#iryairdmts .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#iryairdmts .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#iryairdmts .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#iryairdmts .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#iryairdmts .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#iryairdmts .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#iryairdmts .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="IP">IP</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Name">Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Group">Group</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="IP" class="gt_row gt_left">http://44.211.168.167:8787</td>
+<td headers="Name" class="gt_row gt_left">Adijat Jimoh</td>
+<td headers="Group" class="gt_row gt_left">A-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://44.210.123.188:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">AGANZE GLOIRE-AIME MUSHEBENGE</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://18.204.198.2:8787</td>
+<td headers="Name" class="gt_row gt_left">Albert Rock Anasthase Gangbadja</td>
+<td headers="Group" class="gt_row gt_left">A-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://44.202.141.220:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Alice Piller</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://3.83.54.110:8787</td>
+<td headers="Name" class="gt_row gt_left">Alicia Pillay</td>
+<td headers="Group" class="gt_row gt_left">A-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://50.16.77.204:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Arthur John Mazhandu</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://107.23.249.203:8787</td>
+<td headers="Name" class="gt_row gt_left">Arthur Shem Kasambula</td>
+<td headers="Group" class="gt_row gt_left">A-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://3.88.252.155:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Issac Singini</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://54.210.28.4:8787</td>
+<td headers="Name" class="gt_row gt_left">BOI KONE</td>
+<td headers="Group" class="gt_row gt_left">A-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://3.88.132.37:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Bolaji F Oyeyemi</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://44.201.212.46:8787</td>
+<td headers="Name" class="gt_row gt_left">Constance Himukumbwa</td>
+<td headers="Group" class="gt_row gt_left">A-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://52.73.235.249:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">NA</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://3.84.9.71:8787</td>
+<td headers="Name" class="gt_row gt_left">Dieketseng Palesa Shemfe</td>
+<td headers="Group" class="gt_row gt_left">A-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://54.210.27.224:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Enock Kofi Amoako</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://34.207.162.31:8787</td>
+<td headers="Name" class="gt_row gt_left">Enock Mulowa Mumbula</td>
+<td headers="Group" class="gt_row gt_left">A-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://54.92.166.20:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Esihle Monelo</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://3.92.196.20:8787</td>
+<td headers="Name" class="gt_row gt_left">Fatema Hariff</td>
+<td headers="Group" class="gt_row gt_left">A-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://3.86.162.143:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">FLEURIANE METISSA DJONDJI KAMGA</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://18.206.114.184:8787</td>
+<td headers="Name" class="gt_row gt_left">Fredrick Elishama Kakembo</td>
+<td headers="Group" class="gt_row gt_left">A-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://18.206.55.59:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Jacob Apibilla Ayembilla</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://3.82.148.252:8787</td>
+<td headers="Name" class="gt_row gt_left">Jesca Medrine Lunkuse</td>
+<td headers="Group" class="gt_row gt_left">A-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://54.243.8.154:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Joyce Sakala</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://3.85.107.121:8787</td>
+<td headers="Name" class="gt_row gt_left">KENFACK ZANGUIM MARIE JOSIANE</td>
+<td headers="Group" class="gt_row gt_left">A-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://54.86.49.29:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">LEATITIA KAMPIIRE-SAN</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://44.212.77.44:8787</td>
+<td headers="Name" class="gt_row gt_left">Loveness Mukuka</td>
+<td headers="Group" class="gt_row gt_left">A-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://44.202.243.74:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">MARGARET KASARO</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://184.72.97.41:8787</td>
+<td headers="Name" class="gt_row gt_left">Martin Gaël OYONO</td>
+<td headers="Group" class="gt_row gt_left">A-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://52.23.227.214:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Maureen Mburu</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://18.234.165.128:8787</td>
+<td headers="Name" class="gt_row gt_left">Maureen Osano</td>
+<td headers="Group" class="gt_row gt_left">A-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://54.173.36.251:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Munsaka Siankuku</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://54.210.143.254:8787</td>
+<td headers="Name" class="gt_row gt_left">Natasha Onalenna Moraka</td>
+<td headers="Group" class="gt_row gt_left">A-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://52.90.40.187:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Nolwando Babalwa Nyide</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://54.209.211.188:8787</td>
+<td headers="Name" class="gt_row gt_left">Omolara O. Baiyegunhi</td>
+<td headers="Group" class="gt_row gt_left">A-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://52.87.227.117:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Paul Mbavu</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://54.164.91.50:8787</td>
+<td headers="Name" class="gt_row gt_left">Privilege Tendai Munjoma</td>
+<td headers="Group" class="gt_row gt_left">A-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://44.201.123.199:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Roussel Moise WOKAM NJOMGANG</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://54.175.104.87:8787</td>
+<td headers="Name" class="gt_row gt_left">Samuel Chima Ugbaja</td>
+<td headers="Group" class="gt_row gt_left">A-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://34.201.136.220:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Sanele Mbeje</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://54.161.84.120:8787</td>
+<td headers="Name" class="gt_row gt_left">SEUMKO'O NDEUMOU MEDOUEN REINE</td>
+<td headers="Group" class="gt_row gt_left">A-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://54.159.147.228:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Silondoloze Mtanjana</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://3.88.208.20:8787</td>
+<td headers="Name" class="gt_row gt_left">Terishia Hariram</td>
+<td headers="Group" class="gt_row gt_left">A-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://54.157.49.144:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Timothy Makori</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://54.208.76.28:8787</td>
+<td headers="Name" class="gt_row gt_left">Zekhethelo Mkhwanazi</td>
+<td headers="Group" class="gt_row gt_left">A-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://54.144.209.135:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Clyde Mulenga</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://18.206.249.64:8787</td>
+<td headers="Name" class="gt_row gt_left">Golden Seulu Sandala</td>
+<td headers="Group" class="gt_row gt_left">A-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://44.206.232.167:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Dorcas Maruapula</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://18.206.246.193:8787</td>
+<td headers="Name" class="gt_row gt_left">Tumelo Moshoette</td>
+<td headers="Group" class="gt_row gt_left">A-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://3.82.139.97:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Ndivhuwo Nemukondeni</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://44.201.251.190:8787</td>
+<td headers="Name" class="gt_row gt_left">Yanga Mdleleni</td>
+<td headers="Group" class="gt_row gt_left">A-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://18.212.196.38:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Haley Dion</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://44.208.33.12:8787</td>
+<td headers="Name" class="gt_row gt_left">Judie Magura</td>
+<td headers="Group" class="gt_row gt_left">A-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://44.202.41.176:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Geoffrey Kwenda</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://54.209.163.211:8787</td>
+<td headers="Name" class="gt_row gt_left">Shantel Claassen</td>
+<td headers="Group" class="gt_row gt_left">A-2</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://107.23.252.190:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Delories Sikuku</td>
+<td headers="Group" class="gt_row gt_left gt_striped">B-3</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://54.161.162.161:8787</td>
+<td headers="Name" class="gt_row gt_left">Wenkosi Qulu</td>
+<td headers="Group" class="gt_row gt_left">A-1</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://34.201.117.25:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Lindsay Droit</td>
+<td headers="Group" class="gt_row gt_left gt_striped">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://44.212.19.24:8787</td>
+<td headers="Name" class="gt_row gt_left">Joseph Elsherbini</td>
+<td headers="Group" class="gt_row gt_left">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://3.83.104.15:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Johnathan Shih</td>
+<td headers="Group" class="gt_row gt_left gt_striped">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://184.72.115.251:8787</td>
+<td headers="Name" class="gt_row gt_left">Michael France</td>
+<td headers="Group" class="gt_row gt_left">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://52.90.82.220:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Liz Costello</td>
+<td headers="Group" class="gt_row gt_left gt_striped">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://18.233.96.190:8787</td>
+<td headers="Name" class="gt_row gt_left">Aaron Abai</td>
+<td headers="Group" class="gt_row gt_left">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://44.211.159.243:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Asavela Kama</td>
+<td headers="Group" class="gt_row gt_left gt_striped">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://3.89.19.83:8787</td>
+<td headers="Name" class="gt_row gt_left">Afrah Khairallah</td>
+<td headers="Group" class="gt_row gt_left">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://44.204.53.249:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Derek Tshiabuila</td>
+<td headers="Group" class="gt_row gt_left gt_striped">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">http://18.207.189.119:8787</td>
+<td headers="Name" class="gt_row gt_left">Johan van der Molen</td>
+<td headers="Group" class="gt_row gt_left">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">http://54.158.112.181:8787</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Wassim Abdool Karim</td>
+<td headers="Group" class="gt_row gt_left gt_striped">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left">NA</td>
+<td headers="Name" class="gt_row gt_left">Bernard Marie BITYE ZAMBO</td>
+<td headers="Group" class="gt_row gt_left">-</td></tr>
+    <tr><td headers="IP" class="gt_row gt_left gt_striped">NA</td>
+<td headers="Name" class="gt_row gt_left gt_striped">Anjili Peter Mshelia</td>
+<td headers="Group" class="gt_row gt_left gt_striped">-</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<!-- ```{r}
+
+# read_csv("durban-data-science-for-biology/datasets/ips_for_workshop.csv") %>%
+#         arrange(Present, First) %>%
+#         mutate(Name = str_c(First, Last, sep = " ")) %>%
+#         # select(-c(First,Last))
+#         mutate(Dataset = c(rep(c("A","B"), 28), rep("", 12))) %>%
+#         mutate(group_id = c(rep(1:3, 19), rep("", 11))) %>%
+#         mutate(Group = str_c(Dataset, group_id, sep = "-")) %>%
+#         select(-c(First,Last, Dataset, group_id)) %>%
+#         mutate(Group = ifelse(row_number() %in% c(56,57), "-", Group)) %>%
+#         filter(!is.na(Present)) %>%
+#         count(Group)
+
+# #Groups appear even with present participants
+
+``` -->
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© 2023. Huge thanks to <a href="https://github.com/andrewpbray">Andrew P. Bray</a> and <a href="https://github.com/clauswilke">Claus O. Wilke</a> for open source code and sharing content.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This page is built with <i class="fa-solid fa-heart"></i> and <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>
