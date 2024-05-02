@@ -22,12 +22,182 @@ library(here)
 
 ## [Transition to R](https://www.epirhandbook.com/en/transition-to-r.html#transition-to-r)
 
-##Tidyverse
-
+## Tidyverse
 
 ```{r}
 library(tidyverse)
 ```
 
+### Import raw data
+
+```{r}
+library(readxl)
+linelist_raw <- read_excel("./../../../datasets/linelist_raw.xlsx")
+facilities <- read_excel("./../../../datasets/facilities.xlsx")
+```
+
+## View the data
+
+```{r}
+linelist_raw
+```
+
+```{r}
+facilities
+```
+
+## Inspecting the data
+
+```{r}
+str(linelist_raw)
+```
+
+## Automatic cleaning
+
+The function clean_names() from the package **janitor** standardizes column names and makes them unique by doing the following:
+
+-   Converts all names to consist of only underscores, numbers, and letters
+-   Accented characters are transliterated to ASCII (e.g. german o with umlaut becomes “o”, spanish “enye” becomes “n”)
+-   Capitalization preference for the new column names can be specified using the case = argument (“snake” is default, alternatives include “sentence”, “title”, “small_camel”…)
+
+Here is an online [vignette](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#cleaning)
+
+```{r}
+# pipe the raw dataset through the function clean_names(), assign result as "linelist"  
+linelist <- linelist_raw %>% 
+  janitor::clean_names()
+
+# see the new column names
+names(linelist)
+```
+
+### Manual name cleaning
+```{r}
+# CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)
+##################################################################################
+linelist <- linelist_raw %>%
+    
+    # standardize column name syntax
+    janitor::clean_names() %>% 
+    
+    # manually re-name columns
+           # NEW name             # OLD name
+    rename(date_infection       = infection_date,
+           date_hospitalisation = hosp_date,
+           date_outcome         = date_of_outcome)
+```
+
+### Selecting some columns
+```{r}
+linelist %>% 
+  select(date_infection, date_hospitalisation, date_outcome)
+```
+
+
+
+## Keep columns
+Select only the columns you want to remain
+
+Put their names in the select() command, with no quotation marks. They will appear in the data frame in the order you provide. Note that if you include a column that does not exist, R will return an error (see use of any_of() below if you want no error in this situation).
+
+
+```{r}
+# linelist dataset is piped through select() command, and names() prints just the column names
+linelist %>% 
+  select(case_id, date_onset, date_hospitalisation, fever) %>% 
+  names()  # display the column names
+
+# Also, by using the 'minus' sign (-) you can deselect columns
+linelist %>% 
+  select(-x28)
+```
+
+
+## Deduplication
+The package dplyr offers the distinct() function. This function examines every row and reduce the data frame to only the unique rows. That is, it removes rows that are 100% duplicates.
+
+```{r}
+# CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)
+##################################################################################
+
+# begin cleaning pipe chain
+###########################
+linelist <- linelist_raw %>%
+    
+    # standardize column name syntax
+    janitor::clean_names() %>% 
+    
+    # manually re-name columns
+           # NEW name             # OLD name
+    rename(date_infection       = infection_date,
+           date_hospitalisation = hosp_date,
+           date_outcome         = date_of_outcome) %>% 
+    
+    # remove column
+    select(-c(row_num, merged_header, x28)) %>% 
+    # de-duplicate
+    distinct()
+```
+
+## Column creation and transformation
+We recommend using the dplyr function mutate() to add a new column, or to modify an existing one.
+
+```{r}
+linelist <- linelist %>% 
+  mutate(bmi = wt_kg / (ht_cm/100)^2)
+```
+
+## Transform data type
+```{r}
+# age is stored as character
+linelist %>% 
+  select(age)
+
+# use mutate to change
+linelist <- linelist %>% 
+  mutate(age = as.numeric(age),
+         date_infection = ymd(date_infection))
+
+```
+
+
+## Filter rows
+
+```{r}
+linelist_female <- linelist %>% 
+  filter(gender == "f")   # keep only rows where gender is equal to "f"
+
+linelist_female
+```
+
+## count
+```{r}
+linelist %>% 
+  count(gender)
+
+```
+
+## summarise
+```{r}
+linelist %>% 
+  summarise(min_infection_date = min(date_infection, na.rm = T),
+            max_infection_date = max(date_infection, na.rm = T),
+            mean_age = mean(age, na.rm =T))
+```
+
+### summarise grouped
+```{r}
+linelist %>% 
+  group_by(gender) %>% 
+  summarise(min_infection_date = min(date_infection, na.rm = T),
+            max_infection_date = max(date_infection, na.rm = T),
+            mean_age = mean(age, na.rm =T))
+```
+
+
+## Save you data for later
+```{r eval=FALSE}
+saveRDS(linelist, "./data/clean_linelist.rds")
+```
 
 

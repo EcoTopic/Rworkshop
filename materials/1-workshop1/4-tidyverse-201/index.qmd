@@ -1,5 +1,5 @@
 ---
-title: "More data wrangling and data visualization with the <pre>tidyverse</pre>"
+title: "More data wrangling and data visualization with the <code>tidyverse</code>"
 format:
   html:
     toc: true
@@ -10,7 +10,6 @@ format:
 #| warning: false
 #| message: false
 
-library(countdown)
 library(tidyverse)
 library(cowplot)
 library(colorspace)
@@ -18,12 +17,137 @@ library(here)
 
 ```
 
+## Pivot data
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
 
-## Slides  
-[Make slides full screen](slides.qmd)
+malaria_facility_count_data <- readRDS("./../../../datasets/malaria_facility_count_data.rds")
 
-```{=html}
-<iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+malaria_district_month <- malaria_facility_count_data %>% 
+  group_by(District, month = month(data_date, label = T)) %>% 
+  summarise(sum_malaria = sum(malaria_tot, na.rm=T), .groups = "keep") %>% 
+  arrange(month) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = month,
+              values_from = sum_malaria)
+
 ```
 
-{{< include _01_data_wrangling_2.qmd >}}
+### Wide-to-long
+```{r}
+malaria_district_month
+
+malaria_long <- malaria_district_month %>% 
+  pivot_longer(
+    cols = May:Aug,
+    names_to = "month",
+    values_to = "cases"
+  )
+
+malaria_long
+```
+
+## pivot longer
+```{r}
+malaria_facility_count_data <- readRDS("./../../../datasets/malaria_facility_count_data.rds")
+
+malaria_facility_count_data
+
+# provide column with a tidyselect helper function
+malaria_facility_count_data %>% 
+  pivot_longer(
+    cols = starts_with("malaria_")
+    )
+```
+
+
+## plot
+```{r}
+malaria_facility_count_data %>% 
+  ggplot(aes(x = data_date, y = malaria_tot)) + geom_col()
+
+```
+
+## plot order
+Say you want to plot the amount of cases per age group
+```{r}
+malaria_facility_count_data %>% 
+  pivot_longer(
+    cols = starts_with("malaria_")
+    ) %>% 
+  #mutate(month = factor(month, levels = c("May", "Jun", "Jul", "Aug"))) %>% 
+  ggplot(aes(x = name, y = value)) + geom_col()
+
+```
+
+The order on the x-axis is not right
+```{r}
+malaria_facility_count_data %>% 
+  pivot_longer(
+    cols = starts_with("malaria_")
+    ) %>% 
+  mutate(name = factor(name, levels = c("malaria_rdt_0-4", "malaria_rdt_5-14", "malaria_rdt_15", "malaria_tot"))) %>% 
+  ggplot(aes(x = name, y = value)) + geom_col()
+```
+
+## add labels
+```{r}
+malaria_facility_count_data %>% 
+  pivot_longer(
+    cols = starts_with("malaria_")
+    ) %>% 
+  mutate(name = factor(name, levels = c("malaria_rdt_0-4", "malaria_rdt_5-14", "malaria_rdt_15", "malaria_tot"))) %>% 
+  ggplot(aes(x = name, y = value)) + 
+  geom_col() + 
+  labs(x = "age category",
+       y = "cases")
+```
+
+## Exclude Totals
+```{r}
+malaria_facility_count_data %>% 
+  pivot_longer(
+    cols = starts_with("malaria_")
+    ) %>% 
+  mutate(name = factor(name, levels = c("malaria_rdt_0-4", "malaria_rdt_5-14", "malaria_rdt_15", "malaria_tot"))) %>% 
+  filter(name != "malaria_tot") %>% 
+  ggplot(aes(x = name, y = value)) + 
+  geom_col() + 
+  labs(x = "age category",
+       y = "cases")
+```
+
+## categorise by District
+```{r}
+malaria_facility_count_data %>% 
+  pivot_longer(
+    cols = starts_with("malaria_")
+    ) %>% 
+  mutate(name = factor(name, levels = c("malaria_rdt_0-4", "malaria_rdt_5-14", "malaria_rdt_15", "malaria_tot"))) %>% 
+  filter(name != "malaria_tot") %>% 
+  ggplot(aes(x = name, y = value, fill = District)) + 
+  geom_col() + 
+  labs(x = "age category",
+       y = "cases")
+```
+
+## Joining
+
+
+## Table 1
+https://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html
+```{r}
+library(gtsummary)
+
+linelist_cleaned <- readRDS("./../../../datasets/linelist_cleaned.rds")
+
+linelist_cleaned %>% 
+  select(gender, age_cat, hospital, bmi) %>% 
+  tbl_summary(by = gender) %>% 
+  add_p() %>% 
+  bold_labels()
+  
+```
+

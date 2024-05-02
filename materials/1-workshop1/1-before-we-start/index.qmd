@@ -16,15 +16,16 @@ editor:
 
 ------------------------------------------------------------------------
 
-::: questions
-##What is R and RStudio?
+## What is R and RStudio?
+
+### questions
 
 -   What is a working directory?
 -   How should files be set up to import into R?
--   How can I look for help with R functions?
-:::
+-   How can I look for help with R functions? :::
 
-::: objectives
+### objectives
+
 -   Explain what R and RStudio are, what they are used for, and how they
     relate to each other.
 
@@ -39,11 +40,10 @@ editor:
 
 -   Demonstrate how to provide sufficient information for
     troubleshooting with the R user community.
-:::
 
 ------------------------------------------------------------------------
 
-\## What is R? What is RStudio?
+## What is R? What is RStudio?
 
 The term "`R`" is used to refer to both the programming language and the
 software that interprets the scripts written using it.
@@ -192,11 +192,9 @@ assist resume work after a break. Go through the steps for creating an
     `New Directory`, then `New Project`.
 3.  Enter a name for this new folder (or "directory"), and choose a
     convenient location for it. This will be your **working directory**
-    for the rest of the day (e.g., `~/data-carpentry`).
+    for the rest of the day (e.g., `~/r-workshop`).
 4.  Click on `Create Project`.
-5.  Download the [code handout](files/code-handout.R), place it in your
-    working directory and rename it (e.g., `data-carpentry-script.R`).
-6.  (Optional) Set Preferences to 'Never' save workspace in RStudio.
+5.  (Optional) Set Preferences to 'Never' save workspace in RStudio.
 
 A workspace is your current working environment in R which includes any
 user-defined object. By default, all of these objects will be saved, and
