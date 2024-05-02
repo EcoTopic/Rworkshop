@@ -1,5 +1,5 @@
 ---
-title: "Intro to data visualization and data wrangling with the <pre>tidyverse</pre>"
+title: "Intro to data wrangling and visualization with the <pre>tidyverse</pre>"
 format:
   html:
     toc: true
@@ -17,15 +17,17 @@ library(colorspace)
 library(here)
 
 ```
-> Learn the elements of scientific data visualization and how to use them with `ggplot2`
 
-## Slides  
-[Make slides full screen](slides.qmd)
+> Learn about importing messy data, making it tidy and making plots
 
-```{=html}
-<iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+## [Transition to R](https://www.epirhandbook.com/en/transition-to-r.html#transition-to-r)
+
+##Tidyverse
+
+
+```{r}
+library(tidyverse)
 ```
 
-{{< include _01_pen_and_paper.qmd >}}
 
-{{< include _02_ggplot_exercise.qmd >}}
+
