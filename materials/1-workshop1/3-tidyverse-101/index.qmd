@@ -54,7 +54,7 @@ str(linelist_raw)
 
 ## Automatic cleaning
 
-The function clean_names() from the package **janitor** standardizes column names and makes them unique by doing the following:
+The function `clean_names()` from the package **janitor** standardizes column names and makes them unique by doing the following:
 
 -   Converts all names to consist of only underscores, numbers, and letters
 -   Accented characters are transliterated to ASCII (e.g. german o with umlaut becomes “o”, spanish “enye” becomes “n”)
@@ -72,6 +72,7 @@ names(linelist)
 ```
 
 ### Manual name cleaning
+
 ```{r}
 # CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)
 ##################################################################################
@@ -88,18 +89,17 @@ linelist <- linelist_raw %>%
 ```
 
 ### Selecting some columns
+
 ```{r}
 linelist %>% 
   select(date_infection, date_hospitalisation, date_outcome)
 ```
 
-
-
 ## Keep columns
+
 Select only the columns you want to remain
 
-Put their names in the select() command, with no quotation marks. They will appear in the data frame in the order you provide. Note that if you include a column that does not exist, R will return an error (see use of any_of() below if you want no error in this situation).
-
+Put their names in the `select()` command, with no quotation marks. They will appear in the data frame in the order you provide. Note that if you include a column that does not exist, R will return an error (see use of `any_of()` below if you want no error in this situation).
 
 ```{r}
 # linelist dataset is piped through select() command, and names() prints just the column names
@@ -110,11 +110,16 @@ linelist %>%
 # Also, by using the 'minus' sign (-) you can deselect columns
 linelist %>% 
   select(-x28)
+
+# use any_of() to ignore none existent column names
+linelist %>% 
+  select(any_of(c("case_id", "peanut_butter", "date_onset", "date_hospitalisation", "fever"))) %>% 
+  names()  
 ```
 
-
 ## Deduplication
-The package dplyr offers the distinct() function. This function examines every row and reduce the data frame to only the unique rows. That is, it removes rows that are 100% duplicates.
+
+The package dplyr offers the `distinct()` function. This function examines every row and reduce the data frame to only the unique rows. That is, it removes rows that are 100% duplicates.
 
 ```{r}
 # CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)
@@ -140,7 +145,8 @@ linelist <- linelist_raw %>%
 ```
 
 ## Column creation and transformation
-We recommend using the dplyr function mutate() to add a new column, or to modify an existing one.
+
+We recommend using the dplyr function `mutate()` to add a new column, or to modify an existing one.
 
 ```{r}
 linelist <- linelist %>% 
@@ -148,6 +154,7 @@ linelist <- linelist %>%
 ```
 
 ## Transform data type
+
 ```{r}
 # age is stored as character
 linelist %>% 
@@ -160,7 +167,6 @@ linelist <- linelist %>%
 
 ```
 
-
 ## Filter rows
 
 ```{r}
@@ -171,6 +177,7 @@ linelist_female
 ```
 
 ## count
+
 ```{r}
 linelist %>% 
   count(gender)
@@ -178,6 +185,7 @@ linelist %>%
 ```
 
 ## summarise
+
 ```{r}
 linelist %>% 
   summarise(min_infection_date = min(date_infection, na.rm = T),
@@ -186,6 +194,7 @@ linelist %>%
 ```
 
 ### summarise grouped
+
 ```{r}
 linelist %>% 
   group_by(gender) %>% 
@@ -194,10 +203,8 @@ linelist %>%
             mean_age = mean(age, na.rm =T))
 ```
 
-
 ## Save you data for later
+
 ```{r eval=FALSE}
 saveRDS(linelist, "./data/clean_linelist.rds")
 ```
-
-

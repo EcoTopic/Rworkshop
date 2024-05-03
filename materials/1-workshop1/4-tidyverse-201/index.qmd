@@ -18,6 +18,7 @@ library(here)
 ```
 
 ## Pivot data
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -29,13 +30,25 @@ malaria_district_month <- malaria_facility_count_data %>%
   group_by(District, month = month(data_date, label = T)) %>% 
   summarise(sum_malaria = sum(malaria_tot, na.rm=T), .groups = "keep") %>% 
   arrange(month) %>% 
-  ungroup() %>% 
+  ungroup() 
+
+```
+
+### long-to-wide
+
+```{r}
+malaria_district_month
+
+malaria_district_month <- malaria_district_month %>% 
   pivot_wider(names_from = month,
               values_from = sum_malaria)
+
+malaria_district_month
 
 ```
 
 ### Wide-to-long
+
 ```{r}
 malaria_district_month
 
@@ -50,6 +63,7 @@ malaria_long
 ```
 
 ## pivot longer
+
 ```{r}
 malaria_facility_count_data <- readRDS("./../../../datasets/malaria_facility_count_data.rds")
 
@@ -62,16 +76,22 @@ malaria_facility_count_data %>%
     )
 ```
 
-
 ## plot
+
 ```{r}
 malaria_facility_count_data %>% 
   ggplot(aes(x = data_date, y = malaria_tot)) + geom_col()
 
 ```
 
+## Other plot types
+
+See **Cheat Sheets**   - Help \> Cheat Sheets \> Data visualization with ggplot2
+
 ## plot order
+
 Say you want to plot the amount of cases per age group
+
 ```{r}
 malaria_facility_count_data %>% 
   pivot_longer(
@@ -83,6 +103,7 @@ malaria_facility_count_data %>%
 ```
 
 The order on the x-axis is not right
+
 ```{r}
 malaria_facility_count_data %>% 
   pivot_longer(
@@ -93,6 +114,7 @@ malaria_facility_count_data %>%
 ```
 
 ## add labels
+
 ```{r}
 malaria_facility_count_data %>% 
   pivot_longer(
@@ -106,6 +128,7 @@ malaria_facility_count_data %>%
 ```
 
 ## Exclude Totals
+
 ```{r}
 malaria_facility_count_data %>% 
   pivot_longer(
@@ -120,6 +143,7 @@ malaria_facility_count_data %>%
 ```
 
 ## categorise by District
+
 ```{r}
 malaria_facility_count_data %>% 
   pivot_longer(
@@ -135,13 +159,50 @@ malaria_facility_count_data %>%
 
 ## Joining
 
+```{r}
+#| echo: false
+#| eval: false
+
+facilities <- linelist_cleaned %>% 
+  distinct(hospital) %>% 
+  rename(facility = hospital) %>% 
+  arrange(facility) %>% 
+  mutate(facility_id = row_number()) %>% 
+  relocate(facility_id)
+
+writexl::write_xlsx(facilities, "./datasets/facilities.xlsx")
+
+linelist_cleaned %>% 
+  left_join(facilities, by = c("hospital" = "facility")) %>% 
+  relocate(facility_id) %>% 
+  select(-hospital) %>% 
+  as_tibble() %>% 
+  saveRDS("./datasets/linelist_cleaned.rds")
+
+```
+
+```{r}
+library(readxl)
+linelist_cleaned <- readRDS("./../../../datasets/linelist_cleaned.rds")
+facilities <- read_excel("./../../../datasets/facilities.xlsx")
+
+linelist_cleaned
+facilities
+
+linelist_cleaned <- linelist_cleaned %>% 
+  left_join(facilities, by = "facility_id") %>% 
+  relocate(facility) %>% 
+  rename(hospital = facility)
+
+
+```
 
 ## Table 1
-https://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html
+
+[tbl_summary](https://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html)
+
 ```{r}
 library(gtsummary)
-
-linelist_cleaned <- readRDS("./../../../datasets/linelist_cleaned.rds")
 
 linelist_cleaned %>% 
   select(gender, age_cat, hospital, bmi) %>% 
@@ -150,4 +211,3 @@ linelist_cleaned %>%
   bold_labels()
   
 ```
-

@@ -84,11 +84,11 @@ Who are we?
 ## Let's make this workshop work for all
 
 ::: {.incremental style="font-size: 1.2em"}
-1.  You belong here. This workshop is intended for a wide-audience with a focus on beginners. If you feel out of place - it's our problem, not yours!
+-   You belong here. This workshop is intended for a wide-audience with a focus on beginners. If you feel out of place - it's our problem, not yours!
 
-2.  Stay committed. This workshop is intended to show you some data-analysis tools and leave you with skills you can really use. With practice you will hone these skills. Commit to stay engaged for best results, for you and those around you!
+-   Stay committed. This workshop is intended to show you some data-analysis tools and leave you with skills you can really use. With practice you will hone these skills. Commit to stay engaged for best results, for you and those around you!
 
-3.  This is a challenging but friendly environment. We are here to learn and grow. In order to make the right environment please follow "[the 4 social rules](https://www.recurse.com/social-rules)" and [code-of-conduct](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html).
+
 :::
 
 ## The premise of the workshop

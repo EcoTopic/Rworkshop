@@ -22,7 +22,7 @@ editor:
 
 -   What is a working directory?
 -   How should files be set up to import into R?
--   How can I look for help with R functions? :::
+-   How can I look for help with R functions?
 
 ### objectives
 

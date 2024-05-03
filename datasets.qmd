@@ -10,8 +10,11 @@ format:
 The main data set for use in lectures is split into 2 tables. This is a data on a fictional Ebola outbreak, expanded by the handbook team from the ebola_sim practice dataset in the **outbreaks** package.
 
 -   [`linelist_raw.xlsx`](datasets/linelist_raw.xlsx)
+-   [`facilities.xlsx`](datasets/facilities.xlsx)
+-   [`linelist_cleaned.rds`](datasets/linelist_cleaned.rds)
+-   [`malaria_facility_count_data.rds`](datasets/malaria_facility_count_data.rds)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(openxlsx)
 library(skimr)
@@ -21,7 +24,7 @@ openxlsx::read.xlsx("./datasets/linelist_raw.xlsx") %>%
 
 ```
 
--   [`facilities.xlsx`](datasets/facilities.xlsx)
+
 
 ```{r}
 openxlsx::read.xlsx("./datasets/facilities.xlsx") %>% 
