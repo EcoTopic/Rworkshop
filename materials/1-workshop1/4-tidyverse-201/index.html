@@ -216,10 +216,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#pivot-data" id="toc-pivot-data" class="nav-link active" data-scroll-target="#pivot-data">Pivot data</a>
   <ul class="collapse">
+  <li><a href="#long-to-wide" id="toc-long-to-wide" class="nav-link" data-scroll-target="#long-to-wide">long-to-wide</a></li>
   <li><a href="#wide-to-long" id="toc-wide-to-long" class="nav-link" data-scroll-target="#wide-to-long">Wide-to-long</a></li>
   </ul></li>
   <li><a href="#pivot-longer" id="toc-pivot-longer" class="nav-link" data-scroll-target="#pivot-longer">pivot longer</a></li>
   <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">plot</a></li>
+  <li><a href="#other-plot-types" id="toc-other-plot-types" class="nav-link" data-scroll-target="#other-plot-types">Other plot types</a></li>
   <li><a href="#plot-order" id="toc-plot-order" class="nav-link" data-scroll-target="#plot-order">plot order</a></li>
   <li><a href="#add-labels" id="toc-add-labels" class="nav-link" data-scroll-target="#add-labels">add labels</a></li>
   <li><a href="#exclude-totals" id="toc-exclude-totals" class="nav-link" data-scroll-target="#exclude-totals">Exclude Totals</a></li>
@@ -253,10 +255,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="pivot-data" class="level2">
 <h2 class="anchored" data-anchor-id="pivot-data">Pivot data</h2>
-<section id="wide-to-long" class="level3">
-<h3 class="anchored" data-anchor-id="wide-to-long">Wide-to-long</h3>
+<section id="long-to-wide" class="level3">
+<h3 class="anchored" data-anchor-id="long-to-wide">long-to-wide</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>malaria_district_month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14 × 3
+   District month sum_malaria
+   &lt;chr&gt;    &lt;ord&gt;       &lt;int&gt;
+ 1 Dingo    May            73
+ 2 Spring   May           397
+ 3 Barnard  Jun           282
+ 4 Bolo     Jun          4371
+ 5 Dingo    Jun          2168
+ 6 Spring   Jun          2236
+ 7 Barnard  Jul          9870
+ 8 Bolo     Jul         21286
+ 9 Dingo    Jul         16934
+10 Spring   Jul         24974
+11 Barnard  Aug          3434
+12 Bolo     Aug          6538
+13 Dingo    Aug          5381
+14 Spring   Aug          6726</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>malaria_district_month <span class="ot">&lt;-</span> malaria_district_month <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> month,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> sum_malaria)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>malaria_district_month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
   District   May   Jun   Jul   Aug
@@ -266,14 +292,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3 Barnard     NA   282  9870  3434
 4 Bolo        NA  4371 21286  6538</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>malaria_long <span class="ot">&lt;-</span> malaria_district_month <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> May<span class="sc">:</span>Aug,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"month"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"cases"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>malaria_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wide-to-long" class="level3">
+<h3 class="anchored" data-anchor-id="wide-to-long">Wide-to-long</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>malaria_district_month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  District   May   Jun   Jul   Aug
+  &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1 Dingo       73  2168 16934  5381
+2 Spring     397  2236 24974  6726
+3 Barnard     NA   282  9870  3434
+4 Bolo        NA  4371 21286  6538</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>malaria_long <span class="ot">&lt;-</span> malaria_district_month <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> May<span class="sc">:</span>Aug,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"month"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"cases"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>malaria_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 16 × 3
    District month cases
@@ -301,9 +342,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="pivot-longer" class="level2">
 <h2 class="anchored" data-anchor-id="pivot-longer">pivot longer</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"./../../../datasets/malaria_facility_count_data.rds"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"./../../../datasets/malaria_facility_count_data.rds"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3,038 × 10
    location_name data_date  submitted_date Province District `malaria_rdt_0-4`
@@ -322,11 +363,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 # ℹ 4 more variables: `malaria_rdt_5-14` &lt;int&gt;, malaria_rdt_15 &lt;int&gt;,
 #   malaria_tot &lt;int&gt;, newid &lt;int&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># provide column with a tidyselect helper function</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># provide column with a tidyselect helper function</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12,152 × 8
    location_name data_date  submitted_date Province District newid name    value
@@ -348,33 +389,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="plot" class="level2">
 <h2 class="anchored" data-anchor-id="plot">plot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> data_date, <span class="at">y =</span> malaria_tot)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> data_date, <span class="at">y =</span> malaria_tot)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 686 rows containing missing values or values outside the scale range
-(`geom_col()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="plot-order" class="level2">
-<h2 class="anchored" data-anchor-id="plot-order">plot order</h2>
-<p>Say you want to plot the amount of cases per age group</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(month = factor(month, levels = c("May", "Jun", "Jul", "Aug"))) %&gt;% </span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2744 rows containing missing values or values outside the scale range
 (`geom_col()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -385,14 +403,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The order on the x-axis is not right</p>
+</section>
+<section id="other-plot-types" class="level2">
+<h2 class="anchored" data-anchor-id="other-plot-types">Other plot types</h2>
+<p>See <strong>Cheat Sheets</strong> &nbsp; - Help &gt; Cheat Sheets &gt; Data visualization with ggplot2</p>
+</section>
+<section id="plot-order" class="level2">
+<h2 class="anchored" data-anchor-id="plot-order">plot order</h2>
+<p>Say you want to plot the amount of cases per age group</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">factor</span>(name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"malaria_rdt_0-4"</span>, <span class="st">"malaria_rdt_5-14"</span>, <span class="st">"malaria_rdt_15"</span>, <span class="st">"malaria_tot"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(month = factor(month, levels = c("May", "Jun", "Jul", "Aug"))) %&gt;% </span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2744 rows containing missing values or values outside the scale range
 (`geom_col()`).</code></pre>
@@ -405,19 +430,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="add-labels" class="level2">
-<h2 class="anchored" data-anchor-id="add-labels">add labels</h2>
+<p>The order on the x-axis is not right</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">factor</span>(name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"malaria_rdt_0-4"</span>, <span class="st">"malaria_rdt_5-14"</span>, <span class="st">"malaria_rdt_15"</span>, <span class="st">"malaria_tot"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value)) <span class="sc">+</span> </span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"age category"</span>,</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"cases"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">factor</span>(name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"malaria_rdt_0-4"</span>, <span class="st">"malaria_rdt_5-14"</span>, <span class="st">"malaria_rdt_15"</span>, <span class="st">"malaria_tot"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2744 rows containing missing values or values outside the scale range
 (`geom_col()`).</code></pre>
@@ -431,21 +451,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="exclude-totals" class="level2">
-<h2 class="anchored" data-anchor-id="exclude-totals">Exclude Totals</h2>
+<section id="add-labels" class="level2">
+<h2 class="anchored" data-anchor-id="add-labels">add labels</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">factor</span>(name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"malaria_rdt_0-4"</span>, <span class="st">"malaria_rdt_5-14"</span>, <span class="st">"malaria_rdt_15"</span>, <span class="st">"malaria_tot"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">"malaria_tot"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value)) <span class="sc">+</span> </span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"age category"</span>,</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"cases"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">factor</span>(name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"malaria_rdt_0-4"</span>, <span class="st">"malaria_rdt_5-14"</span>, <span class="st">"malaria_rdt_15"</span>, <span class="st">"malaria_tot"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value)) <span class="sc">+</span> </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"age category"</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"cases"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2058 rows containing missing values or values outside the scale range
+<pre><code>Warning: Removed 2744 rows containing missing values or values outside the scale range
 (`geom_col()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -457,19 +476,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="categorise-by-district" class="level2">
-<h2 class="anchored" data-anchor-id="categorise-by-district">categorise by District</h2>
+<section id="exclude-totals" class="level2">
+<h2 class="anchored" data-anchor-id="exclude-totals">Exclude Totals</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">factor</span>(name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"malaria_rdt_0-4"</span>, <span class="st">"malaria_rdt_5-14"</span>, <span class="st">"malaria_rdt_15"</span>, <span class="st">"malaria_tot"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">"malaria_tot"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value, <span class="at">fill =</span> District)) <span class="sc">+</span> </span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"age category"</span>,</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"cases"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">factor</span>(name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"malaria_rdt_0-4"</span>, <span class="st">"malaria_rdt_5-14"</span>, <span class="st">"malaria_rdt_15"</span>, <span class="st">"malaria_tot"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">"malaria_tot"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value)) <span class="sc">+</span> </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"age category"</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"cases"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2058 rows containing missing values or values outside the scale range
 (`geom_col()`).</code></pre>
@@ -483,22 +502,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+<section id="categorise-by-district" class="level2">
+<h2 class="anchored" data-anchor-id="categorise-by-district">categorise by District</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>malaria_facility_count_data <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"malaria_"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">factor</span>(name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"malaria_rdt_0-4"</span>, <span class="st">"malaria_rdt_5-14"</span>, <span class="st">"malaria_rdt_15"</span>, <span class="st">"malaria_tot"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">!=</span> <span class="st">"malaria_tot"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value, <span class="at">fill =</span> District)) <span class="sc">+</span> </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"age category"</span>,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"cases"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2058 rows containing missing values or values outside the scale range
+(`geom_col()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 <section id="joining" class="level2">
 <h2 class="anchored" data-anchor-id="joining">Joining</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>linelist_cleaned <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"./../../../datasets/linelist_cleaned.rds"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>facilities <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"./../../../datasets/facilities.xlsx"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>linelist_cleaned</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5,888 × 30
+   facility_id case_id generation date_infection date_onset date_hospitalisation
+         &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;         &lt;date&gt;     &lt;date&gt;              
+ 1           4 5fe599           4 2014-05-08     2014-05-13 2014-05-15          
+ 2           3 8689b7           4 NA             2014-05-13 2014-05-14          
+ 3           6 11f8ea           2 NA             2014-05-16 2014-05-18          
+ 4           5 b8812a           3 2014-05-04     2014-05-18 2014-05-20          
+ 5           2 893f25           3 2014-05-18     2014-05-21 2014-05-22          
+ 6           5 be99c8           3 2014-05-03     2014-05-22 2014-05-23          
+ 7           3 07e3e8           4 2014-05-22     2014-05-27 2014-05-29          
+ 8           3 369449           4 2014-05-28     2014-06-02 2014-06-03          
+ 9           3 f393b4           4 NA             2014-06-05 2014-06-06          
+10           3 1389ca           4 NA             2014-06-05 2014-06-07          
+# ℹ 5,878 more rows
+# ℹ 24 more variables: date_outcome &lt;date&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,
+#   age &lt;dbl&gt;, age_unit &lt;chr&gt;, age_years &lt;dbl&gt;, age_cat &lt;fct&gt;, age_cat5 &lt;fct&gt;,
+#   lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;, wt_kg &lt;dbl&gt;,
+#   ht_cm &lt;dbl&gt;, ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;,
+#   aches &lt;chr&gt;, vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, bmi &lt;dbl&gt;,
+#   days_onset_hosp &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>facilities</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  facility_id facility                            
+        &lt;dbl&gt; &lt;chr&gt;                               
+1           1 Central Hospital                    
+2           2 Military Hospital                   
+3           3 Missing                             
+4           4 Other                               
+5           5 Port Hospital                       
+6           6 St. Mark's Maternity Hospital (SMMH)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>linelist_cleaned <span class="ot">&lt;-</span> linelist_cleaned <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(facilities, <span class="at">by =</span> <span class="st">"facility_id"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(facility) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">hospital =</span> facility)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="table-1" class="level2">
 <h2 class="anchored" data-anchor-id="table-1">Table 1</h2>
-<p>https://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html</p>
+<p><a href="https://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html">tbl_summary</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>linelist_cleaned <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"./../../../datasets/linelist_cleaned.rds"</span>)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>linelist_cleaned <span class="sc">%&gt;%</span> </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gender, age_cat, hospital, bmi) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#Uighur</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>linelist_cleaned <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gender, age_cat, hospital, bmi) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>278 observations missing `gender` have been removed. To include these observations, use `forcats::fct_na_value_to_level()` on `gender` column before passing to `tbl_summary()`.</code></pre>
 </div>
@@ -510,23 +600,23 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
-<div id="vpyaslpvza" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vpyaslpvza table {
+<div id="bvloyfkqke" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bvloyfkqke table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vpyaslpvza thead, #vpyaslpvza tbody, #vpyaslpvza tfoot, #vpyaslpvza tr, #vpyaslpvza td, #vpyaslpvza th {
+#bvloyfkqke thead, #bvloyfkqke tbody, #bvloyfkqke tfoot, #bvloyfkqke tr, #bvloyfkqke td, #bvloyfkqke th {
   border-style: none;
 }
 
-#vpyaslpvza p {
+#bvloyfkqke p {
   margin: 0;
   padding: 0;
 }
 
-#vpyaslpvza .gt_table {
+#bvloyfkqke .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -552,12 +642,12 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#vpyaslpvza .gt_caption {
+#bvloyfkqke .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vpyaslpvza .gt_title {
+#bvloyfkqke .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -569,7 +659,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-bottom-width: 0;
 }
 
-#vpyaslpvza .gt_subtitle {
+#bvloyfkqke .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -581,7 +671,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-top-width: 0;
 }
 
-#vpyaslpvza .gt_heading {
+#bvloyfkqke .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -593,13 +683,13 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vpyaslpvza .gt_bottom_border {
+#bvloyfkqke .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vpyaslpvza .gt_col_headings {
+#bvloyfkqke .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -614,7 +704,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vpyaslpvza .gt_col_heading {
+#bvloyfkqke .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -634,7 +724,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   overflow-x: hidden;
 }
 
-#vpyaslpvza .gt_column_spanner_outer {
+#bvloyfkqke .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -646,15 +736,15 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 4px;
 }
 
-#vpyaslpvza .gt_column_spanner_outer:first-child {
+#bvloyfkqke .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vpyaslpvza .gt_column_spanner_outer:last-child {
+#bvloyfkqke .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vpyaslpvza .gt_column_spanner {
+#bvloyfkqke .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -666,11 +756,11 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   width: 100%;
 }
 
-#vpyaslpvza .gt_spanner_row {
+#bvloyfkqke .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vpyaslpvza .gt_group_heading {
+#bvloyfkqke .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -696,7 +786,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   text-align: left;
 }
 
-#vpyaslpvza .gt_empty_group_heading {
+#bvloyfkqke .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -711,15 +801,15 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   vertical-align: middle;
 }
 
-#vpyaslpvza .gt_from_md > :first-child {
+#bvloyfkqke .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vpyaslpvza .gt_from_md > :last-child {
+#bvloyfkqke .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vpyaslpvza .gt_row {
+#bvloyfkqke .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -738,7 +828,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   overflow-x: hidden;
 }
 
-#vpyaslpvza .gt_stub {
+#bvloyfkqke .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -751,7 +841,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 5px;
 }
 
-#vpyaslpvza .gt_stub_row_group {
+#bvloyfkqke .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -765,15 +855,15 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   vertical-align: top;
 }
 
-#vpyaslpvza .gt_row_group_first td {
+#bvloyfkqke .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vpyaslpvza .gt_row_group_first th {
+#bvloyfkqke .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vpyaslpvza .gt_summary_row {
+#bvloyfkqke .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -783,16 +873,16 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 5px;
 }
 
-#vpyaslpvza .gt_first_summary_row {
+#bvloyfkqke .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vpyaslpvza .gt_first_summary_row.thick {
+#bvloyfkqke .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vpyaslpvza .gt_last_summary_row {
+#bvloyfkqke .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -802,7 +892,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vpyaslpvza .gt_grand_summary_row {
+#bvloyfkqke .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -812,7 +902,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 5px;
 }
 
-#vpyaslpvza .gt_first_grand_summary_row {
+#bvloyfkqke .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -822,7 +912,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#vpyaslpvza .gt_last_grand_summary_row_top {
+#bvloyfkqke .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -832,11 +922,11 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vpyaslpvza .gt_striped {
+#bvloyfkqke .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vpyaslpvza .gt_table_body {
+#bvloyfkqke .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -845,7 +935,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vpyaslpvza .gt_footnotes {
+#bvloyfkqke .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -859,7 +949,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vpyaslpvza .gt_footnote {
+#bvloyfkqke .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -868,7 +958,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 5px;
 }
 
-#vpyaslpvza .gt_sourcenotes {
+#bvloyfkqke .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -882,7 +972,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vpyaslpvza .gt_sourcenote {
+#bvloyfkqke .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -890,63 +980,63 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 5px;
 }
 
-#vpyaslpvza .gt_left {
+#bvloyfkqke .gt_left {
   text-align: left;
 }
 
-#vpyaslpvza .gt_center {
+#bvloyfkqke .gt_center {
   text-align: center;
 }
 
-#vpyaslpvza .gt_right {
+#bvloyfkqke .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vpyaslpvza .gt_font_normal {
+#bvloyfkqke .gt_font_normal {
   font-weight: normal;
 }
 
-#vpyaslpvza .gt_font_bold {
+#bvloyfkqke .gt_font_bold {
   font-weight: bold;
 }
 
-#vpyaslpvza .gt_font_italic {
+#bvloyfkqke .gt_font_italic {
   font-style: italic;
 }
 
-#vpyaslpvza .gt_super {
+#bvloyfkqke .gt_super {
   font-size: 65%;
 }
 
-#vpyaslpvza .gt_footnote_marks {
+#bvloyfkqke .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vpyaslpvza .gt_asterisk {
+#bvloyfkqke .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vpyaslpvza .gt_indent_1 {
+#bvloyfkqke .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vpyaslpvza .gt_indent_2 {
+#bvloyfkqke .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vpyaslpvza .gt_indent_3 {
+#bvloyfkqke .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vpyaslpvza .gt_indent_4 {
+#bvloyfkqke .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vpyaslpvza .gt_indent_5 {
+#bvloyfkqke .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -246,14 +212,22 @@ Before you leave, we have some questions for you to understand if the workshop w
 <!--**The instances will be going down, but your work has been saved!** \
 
 1. Navigate to this link to download the contents of your workshop folder from your IP [Workshop II instance files here](https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-29-2200){target="_blank"}\ -->
-<ol start="2" type="1">
-<li>Follow the detailed instructions <a href="Install_R_and_R-studio.pdf">here</a> to install R and RStudio on your computer. Ensure you are on R version 4.2 or higher.</li>
-<li>Run the following command to install the necessary packages in the R terminal</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"skimr"</span>, <span class="st">"janitor"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<ul>
+<li>Follow the detailed instructions <a href="Install_R_and_R-studio.pdf">here</a> to install R and RStudio on your computer. Ensure you are on R version 4.2 or higher. <!-- 3. Run the following command to install the necessary packages in the R terminal --></li>
+</ul>
+<h2 id="slides">Slides</h2>
+<p><a href="./slides.html">Make slides full screen</a></p>
+<iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 <!--
+
+::: {.cell}
+
+```{.r .cell-code}
+install.packages(c("tidyverse", "skimr", "janitor"))
+```
+:::
+
+
 ## Group Dataset Example Workflows
 [Asavela's Demo](materials/2-workshop2/8-group-project/asavela_grp_b_analysis.qmd) \
 [Liz's Demo](materials/2-workshop2/8-group-project/liz_yogurt.qmd) \
@@ -270,139 +244,36 @@ Once you've joined, you can bookmark [https://discord.com/channels/1158136582201
 2. Click the house or "Home" to return the the home directory
 3. Select the "workshop_2" directory by clicking the white box next to it
 4. Click the gear or "More"
-5. Select Export and Download -->
-<table class="table">
-<caption><b>Schedule</b></caption>
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date/Time</th>
-<th>Topic</th>
-<th>Instructor</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Monday, April 22<sup>nd</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="even">
-<td>AM</td>
-<td>Workshop Introduction</td>
-<td>Scott Handley (Wash U School of Medicine)</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Keynote</td>
-<td>Sinaye Ngcapu (CAPRISA)</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Sequencing and Library Preperation</td>
-<td>Lindsay Droit (Wash U School of Medicine)</td>
-</tr>
-<tr class="odd">
-<td>PM</td>
-<td>R Refresher (<code>tidyverse</code>/summary tables/data visualization)</td>
-<td>Scott Handley (Wash U School of Medicine)</td>
-</tr>
-<tr class="even">
-<td><strong>Tuesday, April 23<sup>th</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="odd">
-<td>AM</td>
-<td>16S Data Preprocessing</td>
-<td>Asavela Kama (CAPRISA)</td>
-</tr>
-<tr class="even">
-<td>PM</td>
-<td>Exploring High Dimensional Data</td>
-<td>Elizabeth Costello (Stanford University)</td>
-</tr>
-<tr class="odd">
-<td><strong>Wednesday, April 24<sup>th</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="even">
-<td>AM</td>
-<td>Exploring High Dimensional Data</td>
-<td>Elizabeth Costello (Stanford University)</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Correlations and Differential Abundance Testing</td>
-<td>Joseph Elsherbini (Ragon Institute)</td>
-</tr>
-<tr class="even">
-<td>PM</td>
-<td>Group Activity I</td>
-<td>Johnathan Shih (Ragon Institute)</td>
-</tr>
-<tr class="odd">
-<td><strong>Thursday, April 25<sup>th</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="even">
-<td>AM</td>
-<td>VIRGO / Shotgun Metagenomics</td>
-<td>Michael France (UMD School of Medicine)</td>
-</tr>
-<tr class="odd">
-<td>PM</td>
-<td>Group Activity II</td>
-<td>Johnathan Shih (Ragon Institute)</td>
-</tr>
-<tr class="even">
-<td>Evening</td>
-<td>Reception</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><strong>Friday, April 26<sup>th</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="even">
-<td>AM</td>
-<td>Keynote</td>
-<td>Jacques Ravel (UMD School of Medicine)</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Group Activity review</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>PM</td>
-<td>Group Presentations</td>
-<td>Participants</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Dataset Demo</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Workshop Outro</td>
-<td>Scott Handley (Wash U School of Medicine)</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-</tbody>
-</table>
+5. Select Export and Download
+
+
+| Date/Time  | Topic  | Instructor|
+|--------|--------|--------|
+| **Monday, April 22^nd^**  |-------------------------------------------------------------- |-------------------------------------------------------------- |
+| AM   | Workshop Introduction | Scott Handley (Wash U School of Medicine)|
+|    | Keynote | Sinaye Ngcapu (CAPRISA)|
+|  | Sequencing and Library Preperation  | Lindsay Droit (Wash U School of Medicine)|
+| PM   | R Refresher (<code>tidyverse</code>/summary tables/data visualization) | Scott Handley (Wash U School of Medicine)|
+| **Tuesday, April 23^th^**  |--------------------------------------------------------------|-------------------------------------------------------------- |
+| AM   | 16S Data Preprocessing| Asavela Kama (CAPRISA)|
+| PM | Exploring High Dimensional Data | Elizabeth Costello (Stanford University) |
+| **Wednesday, April 24^th^**  |-------------------------------------------------------------- | --------------------------------------------------------------|
+| AM   | Exploring High Dimensional Data | Elizabeth Costello (Stanford University)|
+|    | Correlations and Differential Abundance Testing | Joseph Elsherbini (Ragon Institute)|
+ PM | Group Activity I | Johnathan Shih (Ragon Institute)|
+| **Thursday, April 25^th^**  |-------------------------------------------------------------- | --------------------------------------------------------------|
+| AM   | VIRGO / Shotgun Metagenomics | Michael France (UMD School of Medicine)|
+| PM   | Group Activity II  | Johnathan Shih (Ragon Institute)|
+|Evening|Reception||
+| **Friday, April 26^th^**  |-------------------------------------------------------------- | --------------------------------------------------------------|
+| AM   | Keynote | Jacques Ravel (UMD School of Medicine)|  
+| | Group Activity review |  |  
+| PM | Group Presentations | Participants |
+|  | Dataset Demo |  |
+|  | Workshop Outro | Scott Handley (Wash U School of Medicine) |
+| |-------------------------------------------------------------- |-------------------------------------------------------------- |
+: <b>Schedule</b>
+ -->
 
 
 

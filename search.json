@@ -1,198 +1,302 @@
 [
   {
-    "objectID": "resources.html",
-    "href": "resources.html",
-    "title": "Resources",
+    "objectID": "slides.html#practicalities",
+    "href": "slides.html#practicalities",
+    "title": "Welcome to the workshop",
+    "section": "Practicalities",
+    "text": "Practicalities\n\nWorkshop materials are at: https://ecotopic.github.io/Rworkshop/\n\nWiFi:\nNetwork: KTB Free Wifi (no password needed)\nNetwork AHRI Password: @hR1W1F1!17\nNetwork CAPRISA-Corp Password: corp@caprisa17\n\n\n\n\nback to module"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html",
+    "title": "More data wrangling and data visualization with the tidyverse",
     "section": "",
-    "text": "Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.4.x and RStudio version 2024.x.0 Click here for instructions on installing R and RStudio"
+    "text": "malaria_district_month\n\n# A tibble: 14 × 3\n   District month sum_malaria\n   &lt;chr&gt;    &lt;ord&gt;       &lt;int&gt;\n 1 Dingo    May            73\n 2 Spring   May           397\n 3 Barnard  Jun           282\n 4 Bolo     Jun          4371\n 5 Dingo    Jun          2168\n 6 Spring   Jun          2236\n 7 Barnard  Jul          9870\n 8 Bolo     Jul         21286\n 9 Dingo    Jul         16934\n10 Spring   Jul         24974\n11 Barnard  Aug          3434\n12 Bolo     Aug          6538\n13 Dingo    Aug          5381\n14 Spring   Aug          6726\n\nmalaria_district_month &lt;- malaria_district_month %&gt;% \n  pivot_wider(names_from = month,\n              values_from = sum_malaria)\n\nmalaria_district_month\n\n# A tibble: 4 × 5\n  District   May   Jun   Jul   Aug\n  &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 Dingo       73  2168 16934  5381\n2 Spring     397  2236 24974  6726\n3 Barnard     NA   282  9870  3434\n4 Bolo        NA  4371 21286  6538\n\n\n\n\n\n\nmalaria_district_month\n\n# A tibble: 4 × 5\n  District   May   Jun   Jul   Aug\n  &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 Dingo       73  2168 16934  5381\n2 Spring     397  2236 24974  6726\n3 Barnard     NA   282  9870  3434\n4 Bolo        NA  4371 21286  6538\n\nmalaria_long &lt;- malaria_district_month %&gt;% \n  pivot_longer(\n    cols = May:Aug,\n    names_to = \"month\",\n    values_to = \"cases\"\n  )\n\nmalaria_long\n\n# A tibble: 16 × 3\n   District month cases\n   &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;\n 1 Dingo    May      73\n 2 Dingo    Jun    2168\n 3 Dingo    Jul   16934\n 4 Dingo    Aug    5381\n 5 Spring   May     397\n 6 Spring   Jun    2236\n 7 Spring   Jul   24974\n 8 Spring   Aug    6726\n 9 Barnard  May      NA\n10 Barnard  Jun     282\n11 Barnard  Jul    9870\n12 Barnard  Aug    3434\n13 Bolo     May      NA\n14 Bolo     Jun    4371\n15 Bolo     Jul   21286\n16 Bolo     Aug    6538",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
   },
   {
-    "objectID": "resources.html#before-the-workshop-installing-r-and-rstudio",
-    "href": "resources.html#before-the-workshop-installing-r-and-rstudio",
-    "title": "Resources",
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-data",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-data",
+    "title": "More data wrangling and data visualization with the tidyverse",
     "section": "",
-    "text": "Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.4.x and RStudio version 2024.x.0 Click here for instructions on installing R and RStudio"
+    "text": "malaria_district_month\n\n# A tibble: 14 × 3\n   District month sum_malaria\n   &lt;chr&gt;    &lt;ord&gt;       &lt;int&gt;\n 1 Dingo    May            73\n 2 Spring   May           397\n 3 Barnard  Jun           282\n 4 Bolo     Jun          4371\n 5 Dingo    Jun          2168\n 6 Spring   Jun          2236\n 7 Barnard  Jul          9870\n 8 Bolo     Jul         21286\n 9 Dingo    Jul         16934\n10 Spring   Jul         24974\n11 Barnard  Aug          3434\n12 Bolo     Aug          6538\n13 Dingo    Aug          5381\n14 Spring   Aug          6726\n\nmalaria_district_month &lt;- malaria_district_month %&gt;% \n  pivot_wider(names_from = month,\n              values_from = sum_malaria)\n\nmalaria_district_month\n\n# A tibble: 4 × 5\n  District   May   Jun   Jul   Aug\n  &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 Dingo       73  2168 16934  5381\n2 Spring     397  2236 24974  6726\n3 Barnard     NA   282  9870  3434\n4 Bolo        NA  4371 21286  6538\n\n\n\n\n\n\nmalaria_district_month\n\n# A tibble: 4 × 5\n  District   May   Jun   Jul   Aug\n  &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 Dingo       73  2168 16934  5381\n2 Spring     397  2236 24974  6726\n3 Barnard     NA   282  9870  3434\n4 Bolo        NA  4371 21286  6538\n\nmalaria_long &lt;- malaria_district_month %&gt;% \n  pivot_longer(\n    cols = May:Aug,\n    names_to = \"month\",\n    values_to = \"cases\"\n  )\n\nmalaria_long\n\n# A tibble: 16 × 3\n   District month cases\n   &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;\n 1 Dingo    May      73\n 2 Dingo    Jun    2168\n 3 Dingo    Jul   16934\n 4 Dingo    Aug    5381\n 5 Spring   May     397\n 6 Spring   Jun    2236\n 7 Spring   Jul   24974\n 8 Spring   Aug    6726\n 9 Barnard  May      NA\n10 Barnard  Jun     282\n11 Barnard  Jul    9870\n12 Barnard  Aug    3434\n13 Bolo     May      NA\n14 Bolo     Jun    4371\n15 Bolo     Jul   21286\n16 Bolo     Aug    6538",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
   },
   {
-    "objectID": "resources.html#textbooks",
-    "href": "resources.html#textbooks",
-    "title": "Resources",
-    "section": "Textbooks",
-    "text": "Textbooks\n\nR for Data Science: Import, Tidy, Transform, Visualize, and Model Data by Garrett Grolemund and Hadley Wickham\nLink\n\nThe Epidemiologist R Handbook Link"
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-longer",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-longer",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "pivot longer",
+    "text": "pivot longer\n\nmalaria_facility_count_data &lt;- readRDS(\"./../../../datasets/malaria_facility_count_data.rds\")\n\nmalaria_facility_count_data\n\n# A tibble: 3,038 × 10\n   location_name data_date  submitted_date Province District `malaria_rdt_0-4`\n   &lt;chr&gt;         &lt;date&gt;     &lt;date&gt;         &lt;chr&gt;    &lt;chr&gt;                &lt;int&gt;\n 1 Facility 1    2020-08-11 2020-08-12     North    Spring                  11\n 2 Facility 2    2020-08-11 2020-08-12     North    Bolo                    11\n 3 Facility 3    2020-08-11 2020-08-12     North    Dingo                    8\n 4 Facility 4    2020-08-11 2020-08-12     North    Bolo                    16\n 5 Facility 5    2020-08-11 2020-08-12     North    Bolo                     9\n 6 Facility 6    2020-08-11 2020-08-12     North    Dingo                    3\n 7 Facility 6    2020-08-10 2020-08-12     North    Dingo                    4\n 8 Facility 5    2020-08-10 2020-08-12     North    Bolo                    15\n 9 Facility 5    2020-08-09 2020-08-12     North    Bolo                    11\n10 Facility 5    2020-08-08 2020-08-12     North    Bolo                    19\n# ℹ 3,028 more rows\n# ℹ 4 more variables: `malaria_rdt_5-14` &lt;int&gt;, malaria_rdt_15 &lt;int&gt;,\n#   malaria_tot &lt;int&gt;, newid &lt;int&gt;\n\n# provide column with a tidyselect helper function\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    )\n\n# A tibble: 12,152 × 8\n   location_name data_date  submitted_date Province District newid name    value\n   &lt;chr&gt;         &lt;date&gt;     &lt;date&gt;         &lt;chr&gt;    &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;int&gt;\n 1 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    11\n 2 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    12\n 3 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    23\n 4 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    46\n 5 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…    11\n 6 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…    10\n 7 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…     5\n 8 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…    26\n 9 Facility 3    2020-08-11 2020-08-12     North    Dingo        3 malari…     8\n10 Facility 3    2020-08-11 2020-08-12     North    Dingo        3 malari…     5\n# ℹ 12,142 more rows",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
   },
   {
-    "objectID": "resources.html#definitions-from-glosario",
-    "href": "resources.html#definitions-from-glosario",
-    "title": "Resources",
-    "section": "Definitions from Glosario",
-    "text": "Definitions from Glosario\nFurther definitions at Glosario\nArgument: one of possibly several expressions that are passed to a function. Oftentimes parameter and arugument are used interchangably, even though techincally parameter refers to the variable and argument refers to the value.\nAssignment operator: Symbol that assigns values on the right to an object on the left. Looks like &lt;-. Keyboard shortcut is Alt + -\nComment: Text written in a script that is not treated as code to be run, but rather as text that describes what the code is doing. These are usually short notes, beginning with a #\nComprehensive R Archive Network (CRAN): A public repository of R packages.\nData frame: A two-dimensional data structure for storing tabular data in memory. Rows represent records and columns represent variables.\nFunction: A code block which gathers a sequence of operations into a whole, preserving it for ongoing use by defining a set of tasks that takes zero or more required and optional arguments as inputs and returns expected outputs (return values), if any. Functions enable repeating these defined tasks with one command, known as a function call.\nNA: A special value used to represent data that is not available.\nPipe operator: The %&gt;% used to make the output of one function the input of the next.\nPackage: A collection of code, data, and documentation that can be distributed and re-used. Also referred to in some languages as a library or module.\nParameter: A variable specified in a function definition whose value is passed to the function when the function is called. Parameters and arguments are distinct, but related concepts. Parameters are variables and arguments are the values assigned to those variables. In practice though these terms are often used interchangeably.\nPositional argument: An argument to a function that gets its value according to its place in the function’s definition, as opposed to a named argument that is explicitly matched by name.\nReproducible research: The practice of describing and documenting research results in such a way that another researcher or person can re-run the analysis code on the same data to obtain the same result.\nTibble: A modern replacement for R’s data frame, which stores tabular data in columns and rows, defined and used in the tidyverse. Almost always when you are working with a data frame, you are actually working with a tibble.\nTidy data: Tabular data that satisfies three conditions that facilitate initial cleaning, and later exploration and analysis—(1) each variable forms a column, (2) each observation forms a row, and (3) each type of observation unit forms a table.\nTidyverse: A collection of R packages for operating on tabular data in consistent ways.\nVariable: A name in a program that has some data associated with it. A variable’s value can be changed after definition.\nVector: A sequence of values that have all the same type. Vectors are the fundamental data structure in R; a scalar is just a vector with exactly one element."
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#plot",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#plot",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "plot",
+    "text": "plot\n\nmalaria_facility_count_data %&gt;% \n  ggplot(aes(x = data_date, y = malaria_tot)) + geom_col()\n\nWarning: Removed 686 rows containing missing values or values outside the scale range\n(`geom_col()`).",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
   },
   {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#other-plot-types",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#other-plot-types",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Other plot types",
+    "text": "Other plot types\nSee Cheat Sheets   - Help &gt; Cheat Sheets &gt; Data visualization with ggplot2",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#plot-order",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#plot-order",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "plot order",
+    "text": "plot order\nSay you want to plot the amount of cases per age group\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  #mutate(month = factor(month, levels = c(\"May\", \"Jun\", \"Jul\", \"Aug\"))) %&gt;% \n  ggplot(aes(x = name, y = value)) + geom_col()\n\nWarning: Removed 2744 rows containing missing values or values outside the scale range\n(`geom_col()`).\n\n\n\n\n\n\n\n\n\nThe order on the x-axis is not right\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  ggplot(aes(x = name, y = value)) + geom_col()\n\nWarning: Removed 2744 rows containing missing values or values outside the scale range\n(`geom_col()`).",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#add-labels",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#add-labels",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "add labels",
+    "text": "add labels\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  ggplot(aes(x = name, y = value)) + \n  geom_col() + \n  labs(x = \"age category\",\n       y = \"cases\")\n\nWarning: Removed 2744 rows containing missing values or values outside the scale range\n(`geom_col()`).",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#exclude-totals",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#exclude-totals",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Exclude Totals",
+    "text": "Exclude Totals\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  filter(name != \"malaria_tot\") %&gt;% \n  ggplot(aes(x = name, y = value)) + \n  geom_col() + \n  labs(x = \"age category\",\n       y = \"cases\")\n\nWarning: Removed 2058 rows containing missing values or values outside the scale range\n(`geom_col()`).",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#categorise-by-district",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#categorise-by-district",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "categorise by District",
+    "text": "categorise by District\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  filter(name != \"malaria_tot\") %&gt;% \n  ggplot(aes(x = name, y = value, fill = District)) + \n  geom_col() + \n  labs(x = \"age category\",\n       y = \"cases\")\n\nWarning: Removed 2058 rows containing missing values or values outside the scale range\n(`geom_col()`).",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#joining",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#joining",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Joining",
+    "text": "Joining\n\nlibrary(readxl)\nlinelist_cleaned &lt;- readRDS(\"./../../../datasets/linelist_cleaned.rds\")\nfacilities &lt;- read_excel(\"./../../../datasets/facilities.xlsx\")\n\nlinelist_cleaned\n\n# A tibble: 5,888 × 30\n   facility_id case_id generation date_infection date_onset date_hospitalisation\n         &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;         &lt;date&gt;     &lt;date&gt;              \n 1           4 5fe599           4 2014-05-08     2014-05-13 2014-05-15          \n 2           3 8689b7           4 NA             2014-05-13 2014-05-14          \n 3           6 11f8ea           2 NA             2014-05-16 2014-05-18          \n 4           5 b8812a           3 2014-05-04     2014-05-18 2014-05-20          \n 5           2 893f25           3 2014-05-18     2014-05-21 2014-05-22          \n 6           5 be99c8           3 2014-05-03     2014-05-22 2014-05-23          \n 7           3 07e3e8           4 2014-05-22     2014-05-27 2014-05-29          \n 8           3 369449           4 2014-05-28     2014-06-02 2014-06-03          \n 9           3 f393b4           4 NA             2014-06-05 2014-06-06          \n10           3 1389ca           4 NA             2014-06-05 2014-06-07          \n# ℹ 5,878 more rows\n# ℹ 24 more variables: date_outcome &lt;date&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,\n#   age &lt;dbl&gt;, age_unit &lt;chr&gt;, age_years &lt;dbl&gt;, age_cat &lt;fct&gt;, age_cat5 &lt;fct&gt;,\n#   lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;, wt_kg &lt;dbl&gt;,\n#   ht_cm &lt;dbl&gt;, ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;,\n#   aches &lt;chr&gt;, vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, bmi &lt;dbl&gt;,\n#   days_onset_hosp &lt;dbl&gt;\n\nfacilities\n\n# A tibble: 6 × 2\n  facility_id facility                            \n        &lt;dbl&gt; &lt;chr&gt;                               \n1           1 Central Hospital                    \n2           2 Military Hospital                   \n3           3 Missing                             \n4           4 Other                               \n5           5 Port Hospital                       \n6           6 St. Mark's Maternity Hospital (SMMH)\n\nlinelist_cleaned &lt;- linelist_cleaned %&gt;% \n  left_join(facilities, by = \"facility_id\") %&gt;% \n  relocate(facility) %&gt;% \n  rename(hospital = facility)",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#table-1",
+    "href": "materials/1-workshop1/4-tidyverse-201/index.html#table-1",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Table 1",
+    "text": "Table 1\ntbl_summary\n\nlibrary(gtsummary)\n\n#Uighur\n\nlinelist_cleaned %&gt;% \n  select(gender, age_cat, hospital, bmi) %&gt;% \n  tbl_summary(by = gender) %&gt;% \n  add_p() %&gt;% \n  bold_labels()\n\n278 observations missing `gender` have been removed. To include these observations, use `forcats::fct_na_value_to_level()` on `gender` column before passing to `tbl_summary()`.\n\n\nThere was an error in 'add_p()/add_difference()' for variable 'age_cat', p-value omitted:\nError in stats::fisher.test(structure(c(1L, 1L, 7L, 4L, 1L, 4L, 4L, 1L, : FEXACT error 7(location). LDSTP=17610 is too small for this problem,\n  (pastp=410.112, ipn_0:=ipoin[itp=246]=5459, stp[ipn_0]=419.544).\nIncrease workspace or consider using 'simulate.p.value=TRUE'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nf, N = 2,8071\nm, N = 2,8031\np-value2\n\n\n\n\nage_cat\n\n\n\n\n\n\n\n\n    0-4\n640 (23%)\n416 (15%)\n\n\n\n\n    5-9\n641 (23%)\n412 (15%)\n\n\n\n\n    10-14\n518 (18%)\n383 (14%)\n\n\n\n\n    15-19\n359 (13%)\n364 (13%)\n\n\n\n\n    20-29\n468 (17%)\n575 (21%)\n\n\n\n\n    30-49\n179 (6.4%)\n557 (20%)\n\n\n\n\n    50-69\n2 (&lt;0.1%)\n91 (3.2%)\n\n\n\n\n    70+\n0 (0%)\n5 (0.2%)\n\n\n\n\nhospital\n\n\n\n\n0.7\n\n\n    Central Hospital\n202 (7.2%)\n230 (8.2%)\n\n\n\n\n    Military Hospital\n421 (15%)\n435 (16%)\n\n\n\n\n    Missing\n700 (25%)\n696 (25%)\n\n\n\n\n    Other\n418 (15%)\n423 (15%)\n\n\n\n\n    Port Hospital\n857 (31%)\n823 (29%)\n\n\n\n\n    St. Mark's Maternity Hospital (SMMH)\n209 (7.4%)\n196 (7.0%)\n\n\n\n\nbmi\n37 (27, 63)\n29 (23, 40)\n&lt;0.001\n\n\n\n1 n (%); Median (IQR)\n\n\n2 Pearson’s Chi-squared test; Wilcoxon rank sum test",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 4</b>: More data wrangling and data visualization"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/index.html#creating-objects-in-r",
+    "href": "materials/1-workshop1/2-intro-to-r/index.html#creating-objects-in-r",
+    "title": "Introduction to R",
+    "section": "Creating objects in R",
+    "text": "Creating objects in R\nYou can get output from R simply by typing math in the console:\n\n3 + 5\n\n[1] 8\n\n12 / 7\n\n[1] 1.714286\n\n\nHowever, to do useful and interesting things, we need to assign values to objects. To create an object, we need to give it a name followed by the assignment operator &lt;-, and the value we want to give it:\n\nweight_kg &lt;- 55\n\n&lt;- is the assignment operator we will use in this course. It assigns values on the right to objects on the left. So, after executing x &lt;- 3, the value of x is 3. For historical reasons, you can also use = for assignments, but not in every context. Because of the slight differences in syntax, it is good practice to always use &lt;- for assignments.\nIn RStudio, typing Alt + - (push Alt at the same time as the - key) will write &lt;- in a single keystroke in a PC, while typing Option + - (push Option at the same time as the - key) does the same in a Mac.\nObjects can be given almost any name such as x, current_temperature, or subject_id. Here are some further guidelines on naming objects:\n\nYou want your object names to be explicit and not too long.\nThey cannot start with a number (2x is not valid, but x2 is).\nR is case sensitive, so for example, weight_kg is different from Weight_kg.\nThere are some names that cannot be used because they are the names of fundamental functions in R (e.g., if, else, for, see here for a complete list). In general, even if it’s allowed, it’s best to not use other function names (e.g., c, T, mean, data, df, weights). If in doubt, check the help to see if the name is already in use.\nIt’s best to avoid dots (.) within names. Many function names in R itself have them and dots also have a special meaning (methods) in R and other programming languages. To avoid confusion, don’t include dots in names.\nIt is recommended to use nouns for object names and verbs for function names.\nBe consistent in the styling of your code, such as where you put spaces, how you name objects, etc. Styles can include “lower_snake”, “UPPER_SNAKE”, “lowerCamelCase”, “UpperCamelCase”, etc. Using a consistent coding style makes your code clearer to read for your future self and your collaborators. In R, three popular style guides come from Google, Jean Fan and the tidyverse. The tidyverse style is very comprehensive and may seem overwhelming at first. You can install the lintr package to automatically check for issues in the styling of your code.\n\n\n\n\n\n\n\nObjects vs. variables\n\n\n\nWhat are known as objects in R are known as variables in many other programming languages. Depending on the context, object and variable can have drastically different meanings. However, in this lesson, the two words are used synonymously. For more information see: https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects\n\n\nWhen assigning a value to an object, R does not print anything. You can force R to print the value by using parentheses or by typing the object name:\n\nweight_kg &lt;- 55    # doesn't print anything\n(weight_kg &lt;- 55)  # but putting parenthesis around the call prints the value of `weight_kg`\n\n[1] 55\n\nweight_kg          # and so does typing the name of the object\n\n[1] 55\n\n\nNow that R has weight_kg in memory, we can do arithmetic with it. For instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):\n\n2.2 * weight_kg\n\n[1] 121\n\n\nWe can also change an object’s value by assigning it a new one:\n\nweight_kg &lt;- 57.5\n2.2 * weight_kg\n\n[1] 126.5\n\n\nThis means that assigning a value to one object does not change the values of other objects. For example, let’s store the animal’s weight in pounds in a new object, weight_lb:\n\nweight_lb &lt;- 2.2 * weight_kg\n\nand then change weight_kg to 100.\n\nweight_kg &lt;- 100\n\nWhat do you think is the current content of the object weight_lb? 126.5 or 220?\n\nSaving your code\nUp to now, your code has been in the console. This is useful for quick queries but not so helpful if you want to revisit your work for any reason. A script can be opened by pressing Ctrl + Shift + N. It is wise to save your script file immediately. To do this press Ctrl + S. This will open a dialogue box where you can decide where to save your script file, and what to name it. The .R file extension is added automatically and ensures your file will open with RStudio.\nDon’t forget to save your work periodically by pressing Ctrl + S.\n\n\nComments\nThe comment character in R is #. Anything to the right of a # in a script will be ignored by R. It is useful to leave notes and explanations in your scripts. For convenience, RStudio provides a keyboard shortcut to comment or uncomment a paragraph: after selecting the lines you want to comment, press at the same time on your keyboard Ctrl + Shift + C. If you only want to comment out one line, you can put the cursor at any location of that line (i.e. no need to select the whole line), then press Ctrl + Shift + C.\n\n\nChallenge\nWhat are the values after each statement in the following?\n\nmass &lt;- 47.5            # mass?\nage  &lt;- 122             # age?\nmass &lt;- mass * 2.0      # mass?\nage  &lt;- age - 20        # age?\nmass_index &lt;- mass/age  # mass_index?\n\n\n\nFunctions and their arguments\nFunctions are “canned scripts” that automate more complicated sets of commands including operations assignments, etc. Many functions are predefined, or can be made available by importing R packages (more on that later). A function usually takes one or more inputs called arguments. Functions often (but not always) return a value. A typical example would be the function sqrt(). The input (the argument) must be a number, and the return value (in fact, the output) is the square root of that number. Executing a function (‘running it’) is called calling the function. An example of a function call is:\n\nweight_kg &lt;- sqrt(10)\n\nHere, the value of 10 is given to the sqrt() function, the sqrt() function calculates the square root, and returns the value which is then assigned to the object weight_kg. This function takes one argument, other functions might take several.\nThe return ‘value’ of a function need not be numerical (like that of sqrt()), and it also does not need to be a single item: it can be a set of things, or even a dataset. We’ll see that when we read data files into R.\nArguments can be anything, not only numbers or filenames, but also other objects. Exactly what each argument means differs per function, and must be looked up in the documentation (see below). Some functions take arguments which may either be specified by the user, or, if left out, take on a default value: these are called options. Options are typically used to alter the way the function operates, such as whether it ignores ‘bad values’, or what symbol to use in a plot. However, if you want something specific, you can specify a value of your choice which will be used instead of the default.\nLet’s try a function that can take multiple arguments: round().\n\nround(3.14159)\n\n[1] 3\n\n\nHere, we’ve called round() with just one argument, 3.14159, and it has returned the value 3. That’s because the default is to round to the nearest whole number. If we want more digits we can see how to do that by getting information about the round function. We can use args(round) to find what arguments it takes, or look at the help for this function using ?round.\n\nargs(round)\n\nfunction (x, digits = 0) \nNULL\n\n\n\n?round\n\nWe see that if we want a different number of digits, we can type digits = 2 or however many we want.\n\nround(3.14159, digits = 2)\n\n[1] 3.14\n\n\nIf you provide the arguments in the exact same order as they are defined you don’t have to name them:\n\nround(3.14159, 2)\n\n[1] 3.14\n\n\nAnd if you do name the arguments, you can switch their order:\n\nround(digits = 2, x = 3.14159)\n\n[1] 3.14\n\n\nIt’s good practice to put the non-optional arguments (like the number you’re rounding) first in your function call, and to then specify the names of all optional arguments. If you don’t, someone reading your code might have to look up the definition of a function with unfamiliar arguments to understand what you’re doing.",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 2</b>: Intro to R and Rstudio"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/index.html#vectors-and-data-types",
+    "href": "materials/1-workshop1/2-intro-to-r/index.html#vectors-and-data-types",
+    "title": "Introduction to R",
+    "section": "Vectors and data types",
+    "text": "Vectors and data types\nA vector is the most common and basic data type in R, and is pretty much the workhorse of R. A vector is composed by a series of values, which can be either numbers or characters. We can assign a series of values to a vector using the c() function. For example we can create a vector of animal weights and assign it to a new object weight_g:\n\nweight_g &lt;- c(50, 60, 65, 82)\nweight_g\n\n[1] 50 60 65 82\n\n\nA vector can also contain characters:\n\nanimals &lt;- c(\"mouse\", \"rat\", \"dog\")\nanimals\n\n[1] \"mouse\" \"rat\"   \"dog\"  \n\n\nThe quotes around “mouse”, “rat”, etc. are essential here. Without the quotes R will assume objects have been created called mouse, rat and dog. As these objects don’t exist in R’s memory, there will be an error message.\nThere are many functions that allow you to inspect the content of a vector. length() tells you how many elements are in a particular vector:\n\nlength(weight_g)\n\n[1] 4\n\nlength(animals)\n\n[1] 3\n\n\nAn important feature of a vector, is that all of the elements are the same type of data. The function class() indicates what kind of object you are working with:\n\nclass(weight_g)\n\n[1] \"numeric\"\n\nclass(animals)\n\n[1] \"character\"\n\n\nThe function str() provides an overview of the structure of an object and its elements. It is a useful function when working with large and complex objects:\n\nstr(weight_g)\n\n num [1:4] 50 60 65 82\n\nstr(animals)\n\n chr [1:3] \"mouse\" \"rat\" \"dog\"\n\n\nYou can use the c() function to add other elements to your vector:\n\nweight_g &lt;- c(weight_g, 90) # add to the end of the vector\nweight_g &lt;- c(30, weight_g) # add to the beginning of the vector\nweight_g\n\n[1] 30 50 60 65 82 90\n\n\nIn the first line, we take the original vector weight_g, add the value 90 to the end of it, and save the result back into weight_g. Then we add the value 30 to the beginning, again saving the result back into weight_g.\nWe can do this over and over again to grow a vector, or assemble a dataset. As we program, this may be useful to add results that we are collecting or calculating.\nAn atomic vector is the simplest R data type and is a linear vector of a single type. Above, we saw 2 of the 6 main atomic vector types that R uses: \"character\" and \"numeric\" (or \"double\"). These are the basic building blocks that all R objects are built from. The other 4 atomic vector types are:\n\n\"logical\" for TRUE and FALSE (the boolean data type)\n\"integer\" for integer numbers (e.g., 2L, the L indicates to R that it’s an integer)\n\"complex\" to represent complex numbers with real and imaginary parts (e.g., 1 + 4i) and that’s all we’re going to say about them\n\"raw\" for bitstreams that we won’t discuss further\n\nYou can check the type of your vector using the typeof() function and inputting your vector as the argument.\nVectors are one of the many data structures that R uses. Other important ones are lists (list), matrices (matrix), data frames (data.frame), factors (factor) and arrays (array).\n\nChallenge\n\nWe’ve seen that atomic vectors can be of type character, numeric (or double), integer, and logical. But what happens if we try to mix these types in a single vector?\n\n\nSolution. R implicitly converts them to all be the same type\n\n\nWhat will happen in each of these examples? (hint: use class() to check the data type of your objects):\nnum_char &lt;- c(1, 2, 3, \"a\")\nnum_logical &lt;- c(1, 2, 3, TRUE)\nchar_logical &lt;- c(\"a\", \"b\", \"c\", TRUE)\ntricky &lt;- c(1, 2, 3, \"4\")\nWhy do you think it happens?\n\n\nSolution. Vectors can be of only one data type. R tries to convert (coerce) the content of this vector to find a “common denominator” that doesn’t lose any information.\n\n\nHow many values in combined_logical are \"TRUE\" (as a character) in the following example (reusing the 2 ..._logicals from above):\ncombined_logical &lt;- c(num_logical, char_logical)\n\n\nSolution. Only one. There is no memory of past data types, and the coercion happens the first time the vector is evaluated. Therefore, the TRUE in num_logical gets converted into a 1 before it gets converted into \"1\" in combined_logical.\n\n\nYou’ve probably noticed that objects of different types get converted into a single, shared type within a vector. In R, we call converting objects from one class into another class coercion. These conversions happen according to a hierarchy, whereby some types get preferentially coerced into other types. Can you draw a diagram that represents the hierarchy of how these data types are coerced?\n\n\nSolution. logical → numeric → character ← logical",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 2</b>: Intro to R and Rstudio"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/index.html#subsetting-vectors",
+    "href": "materials/1-workshop1/2-intro-to-r/index.html#subsetting-vectors",
+    "title": "Introduction to R",
+    "section": "Subsetting vectors",
+    "text": "Subsetting vectors\nIf we want to extract one or several values from a vector, we must provide one or several indices in square brackets. For instance:\n\nanimals &lt;- c(\"mouse\", \"rat\", \"dog\", \"cat\")\nanimals[2]\n\n[1] \"rat\"\n\nanimals[c(3, 2)]\n\n[1] \"dog\" \"rat\"\n\n\nWe can also repeat the indices to create an object with more elements than the original one:\n\nmore_animals &lt;- animals[c(1, 2, 3, 2, 1, 4)]\nmore_animals\n\n[1] \"mouse\" \"rat\"   \"dog\"   \"rat\"   \"mouse\" \"cat\"  \n\n\nR indices start at 1. Programming languages like Fortran, MATLAB, Julia, and R start counting at 1, because that’s what human beings typically do. Languages in the C family (including C++, Java, Perl, and Python) count from 0 because that’s simpler for computers to do.",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 2</b>: Intro to R and Rstudio"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/index.html#missing-data",
+    "href": "materials/1-workshop1/2-intro-to-r/index.html#missing-data",
+    "title": "Introduction to R",
+    "section": "Missing data",
+    "text": "Missing data\nAs R was designed to analyze datasets, it includes the concept of missing data (which is uncommon in other programming languages). Missing data are represented in vectors as NA.\nWhen doing operations on numbers, most functions will return NA if the data you are working with include missing values. This feature makes it harder to overlook the cases where you are dealing with missing data. You can add the argument na.rm = TRUE to calculate the result as if the missing values were removed (rm stands for ReMoved) first.\n\nheights &lt;- c(2, 4, 4, NA, 6)\nmean(heights)\n\n[1] NA\n\nmax(heights)\n\n[1] NA\n\nmean(heights, na.rm = TRUE)\n\n[1] 4\n\nmax(heights, na.rm = TRUE)\n\n[1] 6\n\n\nIf your data include missing values, you may want to become familiar with the functions is.na(), na.omit(), and complete.cases(). See below for examples.\n\n## Extract those elements which are not missing values.\nheights[!is.na(heights)]\n\n[1] 2 4 4 6\n\n## Returns the object with incomplete cases removed.\n#The returned object is an atomic vector of type `\"numeric\"` (or #`\"double\"`).\nna.omit(heights)\n\n[1] 2 4 4 6\nattr(,\"na.action\")\n[1] 4\nattr(,\"class\")\n[1] \"omit\"\n\n## Extract those elements which are complete cases.\n#The returned object is an atomic vector of type `\"numeric\"` (or #`\"double\"`).\nheights[complete.cases(heights)]\n\n[1] 2 4 4 6\n\n\nRecall that you can use the typeof() function to find the type of your atomic vector.\n\nChallenge\n\nUsing this vector of heights in inches, create a new vector, heights_no_na, with the NAs removed.\n\nheights &lt;- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)\n\nUse the function median() to calculate the median of the heights vector.\nUse R to figure out how many people in the set are taller than 67 inches.\n\n\nSolution. \n\nheights &lt;- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)\n\n# 1.\nheights_no_na &lt;- heights[!is.na(heights)]\n# or\nheights_no_na &lt;- na.omit(heights)\n# or\nheights_no_na &lt;- heights[complete.cases(heights)]\n\n# 2.\nmedian(heights, na.rm = TRUE)\n\n[1] 64\n\n# 3.\nheights_above_67 &lt;- heights_no_na[heights_no_na &gt; 67]\nlength(heights_above_67)\n\n[1] 6\n\n\n\n\nNow that we have learned how to write scripts, and the basics of R’s data structures, we are ready to start working with the Portal dataset we have been using in the other lessons, and learn about data frames.\n\n\n&lt;- is used to assign values on the right to objects on the left\nCode should be saved within the Source pane in RStudio to help you return to your code later.\n\n‘#’ can be used to add comments to your code.\nFunctions can automate more complicated sets of commands, and require arguments as inputs.\nVectors are composed by a series of values and can take many forms.\nData structures in R include ‘vector’, ‘list’, ‘matrix’, ‘data.frame’, ‘factor’, and ‘array’.\nVectors can be subset by indexing or through logical vectors.\nMany functions exist to remove missing data from data structures.",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 2</b>: Intro to R and Rstudio"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/slides.html#section",
+    "href": "materials/1-workshop1/0-welcome/slides.html#section",
+    "title": "Welcome to the workshop",
     "section": "",
-    "text": "Learn about importing messy data, making it tidy and making plots",
+    "text": "Goals for this session\n\n\nGet familiar with R-Studio\nSet expectations for today\nGet excited!"
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/slides.html#section-1",
+    "href": "materials/1-workshop1/0-welcome/slides.html#section-1",
+    "title": "Welcome to the workshop",
+    "section": "",
+    "text": "Workshop materials are at:\nhttps://ecotopic.github.io/Rworkshop/"
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/slides.html#practicalities",
+    "href": "materials/1-workshop1/0-welcome/slides.html#practicalities",
+    "title": "Welcome to the workshop",
+    "section": "Practicalities",
+    "text": "Practicalities\n\nWiFi:\nNetwork: KTB Free Wifi (no password needed)\nNetwork AHRI Password: @hR1W1F1!17\nNetwork CAPRISA-Corp Password: corp@caprisa17\nBathrooms are out the lobby, opposite this venue."
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/slides.html#your-instructors",
+    "href": "materials/1-workshop1/0-welcome/slides.html#your-instructors",
+    "title": "Welcome to the workshop",
+    "section": "Your Instructors",
+    "text": "Your Instructors\nWho are we?\n\nJohan van der Molen (CAPRISA)\nAaron Abai (Ragon Institute of MGH, MIT and Harvard)\nDr. Afrah Khairallah (AHRI)\nBertha Baye (AHRI)\nAsavela Kama (CAPRISA)"
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/slides.html#lets-make-this-workshop-work-for-all",
+    "href": "materials/1-workshop1/0-welcome/slides.html#lets-make-this-workshop-work-for-all",
+    "title": "Welcome to the workshop",
+    "section": "Let’s make this workshop work for all",
+    "text": "Let’s make this workshop work for all\n\n\nYou belong here. This workshop is intended for a wide-audience with a focus on beginners. If you feel out of place - it’s our problem, not yours!\nStay committed. This workshop is intended to show you some data-analysis tools and leave you with skills you can really use. With practice you will hone these skills. Commit to stay engaged for best results, for you and those around you!"
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/slides.html#the-premise-of-the-workshop",
+    "href": "materials/1-workshop1/0-welcome/slides.html#the-premise-of-the-workshop",
+    "title": "Welcome to the workshop",
+    "section": "The premise of the workshop",
+    "text": "The premise of the workshop\nWe will be using a fictional but true-to-life “medium dimensional” dataset that we’ll use for all instruction\n\nThis is a fictional Ebola outbreak, expanded by the handbook team from the ebola_sim practice dataset in the outbreaks package.\nFrom this website: The Epidemiologist R Handbook\n\nWhy this format\n\nHands on.\nThis is the first time running this new workshop - please give lots of feedback on how to improve it for next time.\nHowever, many of you in the room know a lot more immunology/epidemiology - and even if you know none you can learn R and generalize it to your research."
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/slides.html#the-content-of-this-workshop",
+    "href": "materials/1-workshop1/0-welcome/slides.html#the-content-of-this-workshop",
+    "title": "Welcome to the workshop",
+    "section": "The content of this workshop",
+    "text": "The content of this workshop\n\nThis is probably too much material to get through today!\n\nAs instructors we’re going to be trying to teach at the right pace to keep everyone learning.\n\nThe materials will stay on the website forever for you to work through at your own pace.\n\n\n\n\nback to module"
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/exercise_1.html#activity",
+    "href": "materials/1-workshop1/0-welcome/exercise_1.html#activity",
+    "title": "Exploring Data for Patterns",
+    "section": "Activity",
+    "text": "Activity\n\nPatterns are the essence of data exploration and our eyes’ ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.\n\n\nGenetic profiles of cancer\nThese datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).\n\n\n\nTable 1: Mutational status for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\nGene B\n0\n0\n0\n0\n1\n1\n1\n0\n1\n1\n\n\nGene C\n0\n0\n1\n0\n0\n0\n1\n1\n1\n1\n\n\nGene D\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n\n\nGene E\n0\n1\n1\n0\n1\n0\n0\n0\n1\n0\n\n\n\n\n\n\n\n\n\nTable 2: Expression levels for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n2\n1\n1\n2\n2\n0\n2\n1\n1\n2\n\n\nGene B\n1\n1\n2\n1\n0\n0\n0\n2\n0\n0\n\n\nGene C\n1\n1\n3\n1\n2\n2\n3\n0\n3\n0\n\n\nGene D\n0\n0\n2\n1\n3\n3\n2\n1\n1\n1\n\n\nGene E\n1\n3\n3\n1\n3\n1\n2\n1\n3\n2\n\n\n\n\n\n\n\n\n          1. Think about the problem on your own for 5 minutes.\n          2. In your groups, discuss and create different visualizations to highlight underlying patterns\n          3. Summarize the group’s approach\n          4. Elect/volunteer a spokesperson to present the solution\n\n\nConsider the following concepts when creating your visualizations\n\n\n\n\nPatterns\nPatterns are the essence of data exploration. What kinds of representation will produce the most meaningful insights?\n   \n\n\nEncodings\nSome visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends?\n  \n\n\n\n\nColor\nColor is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?\n   \n\n\nSalience and Relevance\nPop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant?"
+  },
+  {
+    "objectID": "datasets.html",
+    "href": "datasets.html",
+    "title": "Datasets",
+    "section": "",
+    "text": "The main data set for use in lectures is split into 2 tables. This is a data on a fictional Ebola outbreak, expanded by the handbook team from the ebola_sim practice dataset in the outbreaks package.\n\nlinelist_raw.xlsx\nfacilities.xlsx\nlinelist_cleaned.rds\nmalaria_facility_count_data.rds\n\n\nlibrary(tidyverse)\nlibrary(openxlsx)\nlibrary(skimr)\n\nopenxlsx::read.xlsx(\"./datasets/linelist_raw.xlsx\") %&gt;% \n  skim()\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n6611\n\n\nNumber of columns\n28\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n16\n\n\nnumeric\n12\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\ncase_id\n137\n0.98\n6\n6\n0\n5888\n0\n\n\ndate.onset\n293\n0.96\n10\n10\n0\n580\n0\n\n\noutcome\n1500\n0.77\n5\n7\n0\n2\n0\n\n\ngender\n324\n0.95\n1\n1\n0\n2\n0\n\n\ninfector\n2323\n0.65\n6\n6\n0\n2697\n0\n\n\nsource\n2323\n0.65\n5\n7\n0\n2\n0\n\n\nage\n107\n0.98\n1\n2\n0\n75\n0\n\n\nage_unit\n7\n1.00\n5\n6\n0\n2\n0\n\n\nfever\n258\n0.96\n2\n3\n0\n2\n0\n\n\nchills\n258\n0.96\n2\n3\n0\n2\n0\n\n\ncough\n258\n0.96\n2\n3\n0\n2\n0\n\n\naches\n258\n0.96\n2\n3\n0\n2\n0\n\n\nvomit\n258\n0.96\n2\n3\n0\n2\n0\n\n\ntime_admission\n844\n0.87\n5\n5\n0\n1091\n0\n\n\nmerged_header\n0\n1.00\n1\n1\n0\n1\n0\n\n\n…28\n0\n1.00\n1\n1\n0\n1\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\ngeneration\n7\n1.00\n16.60\n5.71\n0.00\n13.00\n16.00\n20.00\n37.00\n▁▆▇▂▁\n\n\ninfection.date\n2322\n0.65\n41868.65\n221.02\n41008.00\n41876.00\n41916.00\n41969.00\n42121.00\n▁▁▁▃▇\n\n\nhosp.date\n7\n1.00\n41882.22\n218.91\n41019.00\n41889.00\n41927.00\n41983.00\n42124.00\n▁▁▁▃▇\n\n\ndate_of_outcome\n1068\n0.84\n41893.00\n217.58\n41043.00\n41896.00\n41938.00\n41994.00\n42159.00\n▁▁▁▆▇\n\n\nfacility_id\n1512\n0.77\n4.69\n1.73\n1.00\n4.00\n5.00\n6.00\n7.00\n▃▁▃▃▇\n\n\nlon\n7\n1.00\n-13.23\n0.02\n-13.27\n-13.25\n-13.23\n-13.22\n-13.21\n▅▃▃▅▇\n\n\nlat\n7\n1.00\n8.47\n0.01\n8.45\n8.46\n8.47\n8.48\n8.49\n▅▇▇▇▆\n\n\nrow_num\n0\n1.00\n3240.91\n1857.83\n1.00\n1647.50\n3241.00\n4836.50\n6481.00\n▇▇▇▇▇\n\n\nwt_kg\n7\n1.00\n52.69\n18.59\n-11.00\n41.00\n54.00\n66.00\n111.00\n▁▃▇▅▁\n\n\nht_cm\n7\n1.00\n125.25\n49.57\n4.00\n91.00\n130.00\n159.00\n295.00\n▂▅▇▂▁\n\n\nct_blood\n7\n1.00\n21.26\n1.67\n16.00\n20.00\n22.00\n22.00\n26.00\n▁▃▇▃▁\n\n\ntemp\n158\n0.98\n38.60\n0.95\n35.20\n38.30\n38.80\n39.20\n40.80\n▁▂▂▇▁\n\n\n\n\n\n\nopenxlsx::read.xlsx(\"./datasets/facilities.xlsx\") %&gt;% \n  skim()\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n6\n\n\nNumber of columns\n2\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n1\n\n\nnumeric\n1\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nfacility\n0\n1\n5\n36\n0\n6\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nfacility_id\n0\n1\n3.5\n1.87\n1\n2.25\n3.5\n4.75\n6\n▇▃▃▃▃"
+  },
+  {
+    "objectID": "datasets.html#download-the-instructional-datasets",
+    "href": "datasets.html#download-the-instructional-datasets",
+    "title": "Datasets",
+    "section": "",
+    "text": "The main data set for use in lectures is split into 2 tables. This is a data on a fictional Ebola outbreak, expanded by the handbook team from the ebola_sim practice dataset in the outbreaks package.\n\nlinelist_raw.xlsx\nfacilities.xlsx\nlinelist_cleaned.rds\nmalaria_facility_count_data.rds\n\n\nlibrary(tidyverse)\nlibrary(openxlsx)\nlibrary(skimr)\n\nopenxlsx::read.xlsx(\"./datasets/linelist_raw.xlsx\") %&gt;% \n  skim()\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n6611\n\n\nNumber of columns\n28\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n16\n\n\nnumeric\n12\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\ncase_id\n137\n0.98\n6\n6\n0\n5888\n0\n\n\ndate.onset\n293\n0.96\n10\n10\n0\n580\n0\n\n\noutcome\n1500\n0.77\n5\n7\n0\n2\n0\n\n\ngender\n324\n0.95\n1\n1\n0\n2\n0\n\n\ninfector\n2323\n0.65\n6\n6\n0\n2697\n0\n\n\nsource\n2323\n0.65\n5\n7\n0\n2\n0\n\n\nage\n107\n0.98\n1\n2\n0\n75\n0\n\n\nage_unit\n7\n1.00\n5\n6\n0\n2\n0\n\n\nfever\n258\n0.96\n2\n3\n0\n2\n0\n\n\nchills\n258\n0.96\n2\n3\n0\n2\n0\n\n\ncough\n258\n0.96\n2\n3\n0\n2\n0\n\n\naches\n258\n0.96\n2\n3\n0\n2\n0\n\n\nvomit\n258\n0.96\n2\n3\n0\n2\n0\n\n\ntime_admission\n844\n0.87\n5\n5\n0\n1091\n0\n\n\nmerged_header\n0\n1.00\n1\n1\n0\n1\n0\n\n\n…28\n0\n1.00\n1\n1\n0\n1\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\ngeneration\n7\n1.00\n16.60\n5.71\n0.00\n13.00\n16.00\n20.00\n37.00\n▁▆▇▂▁\n\n\ninfection.date\n2322\n0.65\n41868.65\n221.02\n41008.00\n41876.00\n41916.00\n41969.00\n42121.00\n▁▁▁▃▇\n\n\nhosp.date\n7\n1.00\n41882.22\n218.91\n41019.00\n41889.00\n41927.00\n41983.00\n42124.00\n▁▁▁▃▇\n\n\ndate_of_outcome\n1068\n0.84\n41893.00\n217.58\n41043.00\n41896.00\n41938.00\n41994.00\n42159.00\n▁▁▁▆▇\n\n\nfacility_id\n1512\n0.77\n4.69\n1.73\n1.00\n4.00\n5.00\n6.00\n7.00\n▃▁▃▃▇\n\n\nlon\n7\n1.00\n-13.23\n0.02\n-13.27\n-13.25\n-13.23\n-13.22\n-13.21\n▅▃▃▅▇\n\n\nlat\n7\n1.00\n8.47\n0.01\n8.45\n8.46\n8.47\n8.48\n8.49\n▅▇▇▇▆\n\n\nrow_num\n0\n1.00\n3240.91\n1857.83\n1.00\n1647.50\n3241.00\n4836.50\n6481.00\n▇▇▇▇▇\n\n\nwt_kg\n7\n1.00\n52.69\n18.59\n-11.00\n41.00\n54.00\n66.00\n111.00\n▁▃▇▅▁\n\n\nht_cm\n7\n1.00\n125.25\n49.57\n4.00\n91.00\n130.00\n159.00\n295.00\n▂▅▇▂▁\n\n\nct_blood\n7\n1.00\n21.26\n1.67\n16.00\n20.00\n22.00\n22.00\n26.00\n▁▃▇▃▁\n\n\ntemp\n158\n0.98\n38.60\n0.95\n35.20\n38.30\n38.80\n39.20\n40.80\n▁▂▂▇▁\n\n\n\n\n\n\nopenxlsx::read.xlsx(\"./datasets/facilities.xlsx\") %&gt;% \n  skim()\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n6\n\n\nNumber of columns\n2\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n1\n\n\nnumeric\n1\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nfacility\n0\n1\n5\n36\n0\n6\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nfacility_id\n0\n1\n3.5\n1.87\n1\n2.25\n3.5\n4.75\n6\n▇▃▃▃▃"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Workshop: Introduction to Data Analysis in R",
+    "section": "",
+    "text": "Workshop: Introduction to Data Analysis in R\n\n\n\n\n\n\n\n\n\nRetrieving and running your workshop files\n\n\n\nFollow the detailed instructions here to install R and RStudio on your computer. Ensure you are on R version 4.2 or higher. \n\nSlides\nMake slides full screen"
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/index.html",
+    "href": "materials/1-workshop1/0-welcome/index.html",
+    "title": "Welcome to the workshop",
+    "section": "",
+    "text": "Make slides full screen",
     "crumbs": [
       "Installation",
       "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+      "<b>Module 0:</b> Welcome to the workshop"
     ]
   },
   {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#transition-to-r",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#transition-to-r",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "Transition to R",
-    "text": "Transition to R",
+    "objectID": "materials/1-workshop1/0-welcome/index.html#slides",
+    "href": "materials/1-workshop1/0-welcome/index.html#slides",
+    "title": "Welcome to the workshop",
+    "section": "",
+    "text": "Make slides full screen",
     "crumbs": [
       "Installation",
       "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+      "<b>Module 0:</b> Welcome to the workshop"
     ]
   },
   {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#tidyverse",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#tidyverse",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "Tidyverse",
-    "text": "Tidyverse\n\nlibrary(tidyverse)\n\n\nImport raw data\n\nlibrary(readxl)\nlinelist_raw &lt;- read_excel(\"./../../../datasets/linelist_raw.xlsx\")\nfacilities &lt;- read_excel(\"./../../../datasets/facilities.xlsx\")",
+    "objectID": "materials/1-workshop1/0-welcome/index.html#before-the-workshop-installing-r-and-rstudio",
+    "href": "materials/1-workshop1/0-welcome/index.html#before-the-workshop-installing-r-and-rstudio",
+    "title": "Welcome to the workshop",
+    "section": "Before the workshop: Installing R and RStudio",
+    "text": "Before the workshop: Installing R and RStudio\nPlease install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.4.x and RStudio version 2024.x.0 Click here for instructions on installing R and RStudio",
     "crumbs": [
       "Installation",
       "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#view-the-data",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#view-the-data",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "View the data",
-    "text": "View the data\n\nlinelist_raw\n\n# A tibble: 6,611 × 28\n   case_id generation `infection date`    `date onset` `hosp date`        \n   &lt;chr&gt;        &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;        &lt;dttm&gt;             \n 1 5fe599           4 2014-05-08 00:00:00 2014-05-13   2014-05-15 00:00:00\n 2 8689b7           4 NA                  2014-05-13   2014-05-14 00:00:00\n 3 11f8ea           2 NA                  2014-05-16   2014-05-18 00:00:00\n 4 b8812a           3 2014-05-04 00:00:00 2014-05-18   2014-05-20 00:00:00\n 5 893f25           3 2014-05-18 00:00:00 2014-05-21   2014-05-22 00:00:00\n 6 be99c8           3 2014-05-03 00:00:00 2014-05-22   2014-05-23 00:00:00\n 7 07e3e8           4 2014-05-22 00:00:00 2014-05-27   2014-05-29 00:00:00\n 8 369449           4 2014-05-28 00:00:00 2014-06-02   2014-06-03 00:00:00\n 9 f393b4           4 NA                  2014-06-05   2014-06-06 00:00:00\n10 1389ca           4 NA                  2014-06-05   2014-06-07 00:00:00\n# ℹ 6,601 more rows\n# ℹ 23 more variables: date_of_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,\n#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,\n#   age &lt;chr&gt;, age_unit &lt;chr&gt;, row_num &lt;dbl&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;,\n#   ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;,\n#   vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, merged_header &lt;chr&gt;,\n#   ...28 &lt;chr&gt;\n\n\n\nfacilities\n\n# A tibble: 7 × 2\n  facility_id facility_name                      \n        &lt;dbl&gt; &lt;chr&gt;                              \n1           1 central hospital                   \n2           2 hospital a                         \n3           3 hospital b                         \n4           4 military hospital                  \n5           5 other                              \n6           6 port hospital                      \n7           7 st. marks maternity hospital (smmh)",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#inspecting-the-data",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#inspecting-the-data",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "Inspecting the data",
-    "text": "Inspecting the data\n\nstr(linelist_raw)\n\ntibble [6,611 × 28] (S3: tbl_df/tbl/data.frame)\n $ case_id        : chr [1:6611] \"5fe599\" \"8689b7\" \"11f8ea\" \"b8812a\" ...\n $ generation     : num [1:6611] 4 4 2 3 3 3 4 4 4 4 ...\n $ infection date : POSIXct[1:6611], format: \"2014-05-08\" NA ...\n $ date onset     : chr [1:6611] \"2014-05-13\" \"2014-05-13\" \"2014-05-16\" \"2014-05-18\" ...\n $ hosp date      : POSIXct[1:6611], format: \"2014-05-15\" \"2014-05-14\" ...\n $ date_of_outcome: POSIXct[1:6611], format: NA \"2014-05-18\" ...\n $ outcome        : chr [1:6611] NA \"Recover\" \"Recover\" NA ...\n $ gender         : chr [1:6611] \"m\" \"f\" \"m\" \"f\" ...\n $ facility_id    : num [1:6611] 5 NA 7 6 4 6 NA NA NA NA ...\n $ lon            : num [1:6611] -13.2 -13.2 -13.2 -13.2 -13.2 ...\n $ lat            : num [1:6611] 8.47 8.45 8.46 8.48 8.46 ...\n $ infector       : chr [1:6611] \"f547d6\" NA NA \"f90f5f\" ...\n $ source         : chr [1:6611] \"other\" NA NA \"other\" ...\n $ age            : chr [1:6611] \"2\" \"3\" \"56\" \"18\" ...\n $ age_unit       : chr [1:6611] \"years\" \"years\" \"years\" \"years\" ...\n $ row_num        : num [1:6611] 1 2 3 4 5 6 7 8 9 10 ...\n $ wt_kg          : num [1:6611] 27 25 91 41 36 56 47 0 86 69 ...\n $ ht_cm          : num [1:6611] 48 59 238 135 71 116 87 11 226 174 ...\n $ ct_blood       : num [1:6611] 22 22 21 23 23 21 21 22 22 22 ...\n $ fever          : chr [1:6611] \"no\" NA NA \"no\" ...\n $ chills         : chr [1:6611] \"no\" NA NA \"no\" ...\n $ cough          : chr [1:6611] \"yes\" NA NA \"no\" ...\n $ aches          : chr [1:6611] \"no\" NA NA \"no\" ...\n $ vomit          : chr [1:6611] \"yes\" NA NA \"no\" ...\n $ temp           : num [1:6611] 36.8 36.9 36.9 36.8 36.9 37.6 37.3 37 36.4 35.9 ...\n $ time_admission : chr [1:6611] NA \"09:36\" \"16:48\" \"11:22\" ...\n $ merged_header  : chr [1:6611] \"a\" \"a\" \"a\" \"a\" ...\n $ ...28          : chr [1:6611] \"b\" \"b\" \"b\" \"b\" ...",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#automatic-cleaning",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#automatic-cleaning",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "Automatic cleaning",
-    "text": "Automatic cleaning\nThe function clean_names() from the package janitor standardizes column names and makes them unique by doing the following:\n\nConverts all names to consist of only underscores, numbers, and letters\nAccented characters are transliterated to ASCII (e.g. german o with umlaut becomes “o”, spanish “enye” becomes “n”)\nCapitalization preference for the new column names can be specified using the case = argument (“snake” is default, alternatives include “sentence”, “title”, “small_camel”…)\n\nHere is an online vignette\n\n# pipe the raw dataset through the function clean_names(), assign result as \"linelist\"  \nlinelist &lt;- linelist_raw %&gt;% \n  janitor::clean_names()\n\n# see the new column names\nnames(linelist)\n\n [1] \"case_id\"         \"generation\"      \"infection_date\"  \"date_onset\"     \n [5] \"hosp_date\"       \"date_of_outcome\" \"outcome\"         \"gender\"         \n [9] \"facility_id\"     \"lon\"             \"lat\"             \"infector\"       \n[13] \"source\"          \"age\"             \"age_unit\"        \"row_num\"        \n[17] \"wt_kg\"           \"ht_cm\"           \"ct_blood\"        \"fever\"          \n[21] \"chills\"          \"cough\"           \"aches\"           \"vomit\"          \n[25] \"temp\"            \"time_admission\"  \"merged_header\"   \"x28\"            \n\n\n\nManual name cleaning\n\n# CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)\n##################################################################################\nlinelist &lt;- linelist_raw %&gt;%\n    \n    # standardize column name syntax\n    janitor::clean_names() %&gt;% \n    \n    # manually re-name columns\n           # NEW name             # OLD name\n    rename(date_infection       = infection_date,\n           date_hospitalisation = hosp_date,\n           date_outcome         = date_of_outcome)\n\n\n\nSelecting some columns\n\nlinelist %&gt;% \n  select(date_infection, date_hospitalisation, date_outcome)\n\n# A tibble: 6,611 × 3\n   date_infection      date_hospitalisation date_outcome       \n   &lt;dttm&gt;              &lt;dttm&gt;               &lt;dttm&gt;             \n 1 2014-05-08 00:00:00 2014-05-15 00:00:00  NA                 \n 2 NA                  2014-05-14 00:00:00  2014-05-18 00:00:00\n 3 NA                  2014-05-18 00:00:00  2014-05-30 00:00:00\n 4 2014-05-04 00:00:00 2014-05-20 00:00:00  NA                 \n 5 2014-05-18 00:00:00 2014-05-22 00:00:00  2014-05-29 00:00:00\n 6 2014-05-03 00:00:00 2014-05-23 00:00:00  2014-05-24 00:00:00\n 7 2014-05-22 00:00:00 2014-05-29 00:00:00  2014-06-01 00:00:00\n 8 2014-05-28 00:00:00 2014-06-03 00:00:00  2014-06-07 00:00:00\n 9 NA                  2014-06-06 00:00:00  2014-06-18 00:00:00\n10 NA                  2014-06-07 00:00:00  2014-06-09 00:00:00\n# ℹ 6,601 more rows",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#keep-columns",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#keep-columns",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "Keep columns",
-    "text": "Keep columns\nSelect only the columns you want to remain\nPut their names in the select() command, with no quotation marks. They will appear in the data frame in the order you provide. Note that if you include a column that does not exist, R will return an error (see use of any_of() below if you want no error in this situation).\n\n# linelist dataset is piped through select() command, and names() prints just the column names\nlinelist %&gt;% \n  select(case_id, date_onset, date_hospitalisation, fever) %&gt;% \n  names()  # display the column names\n\n[1] \"case_id\"              \"date_onset\"           \"date_hospitalisation\"\n[4] \"fever\"               \n\n# Also, by using the 'minus' sign (-) you can deselect columns\nlinelist %&gt;% \n  select(-x28)\n\n# A tibble: 6,611 × 27\n   case_id generation date_infection      date_onset date_hospitalisation\n   &lt;chr&gt;        &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;      &lt;dttm&gt;              \n 1 5fe599           4 2014-05-08 00:00:00 2014-05-13 2014-05-15 00:00:00 \n 2 8689b7           4 NA                  2014-05-13 2014-05-14 00:00:00 \n 3 11f8ea           2 NA                  2014-05-16 2014-05-18 00:00:00 \n 4 b8812a           3 2014-05-04 00:00:00 2014-05-18 2014-05-20 00:00:00 \n 5 893f25           3 2014-05-18 00:00:00 2014-05-21 2014-05-22 00:00:00 \n 6 be99c8           3 2014-05-03 00:00:00 2014-05-22 2014-05-23 00:00:00 \n 7 07e3e8           4 2014-05-22 00:00:00 2014-05-27 2014-05-29 00:00:00 \n 8 369449           4 2014-05-28 00:00:00 2014-06-02 2014-06-03 00:00:00 \n 9 f393b4           4 NA                  2014-06-05 2014-06-06 00:00:00 \n10 1389ca           4 NA                  2014-06-05 2014-06-07 00:00:00 \n# ℹ 6,601 more rows\n# ℹ 22 more variables: date_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,\n#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,\n#   age &lt;chr&gt;, age_unit &lt;chr&gt;, row_num &lt;dbl&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;,\n#   ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;,\n#   vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, merged_header &lt;chr&gt;",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#deduplication",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#deduplication",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "Deduplication",
-    "text": "Deduplication\nThe package dplyr offers the distinct() function. This function examines every row and reduce the data frame to only the unique rows. That is, it removes rows that are 100% duplicates.\n\n# CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)\n##################################################################################\n\n# begin cleaning pipe chain\n###########################\nlinelist &lt;- linelist_raw %&gt;%\n    \n    # standardize column name syntax\n    janitor::clean_names() %&gt;% \n    \n    # manually re-name columns\n           # NEW name             # OLD name\n    rename(date_infection       = infection_date,\n           date_hospitalisation = hosp_date,\n           date_outcome         = date_of_outcome) %&gt;% \n    \n    # remove column\n    select(-c(row_num, merged_header, x28)) %&gt;% \n    # de-duplicate\n    distinct()",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#column-creation-and-transformation",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#column-creation-and-transformation",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "Column creation and transformation",
-    "text": "Column creation and transformation\nWe recommend using the dplyr function mutate() to add a new column, or to modify an existing one.\n\nlinelist &lt;- linelist %&gt;% \n  mutate(bmi = wt_kg / (ht_cm/100)^2)",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#transform-data-type",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#transform-data-type",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "Transform data type",
-    "text": "Transform data type\n\n# age is stored as character\nlinelist %&gt;% \n  select(age)\n\n# A tibble: 6,608 × 1\n   age  \n   &lt;chr&gt;\n 1 2    \n 2 3    \n 3 56   \n 4 18   \n 5 3    \n 6 16   \n 7 16   \n 8 0    \n 9 61   \n10 27   \n# ℹ 6,598 more rows\n\n# use mutate to change\nlinelist &lt;- linelist %&gt;% \n  mutate(age = as.numeric(age),\n         date_infection = ymd(date_infection))",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#filter-rows",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#filter-rows",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "Filter rows",
-    "text": "Filter rows\n\nlinelist_female &lt;- linelist %&gt;% \n  filter(gender == \"f\")   # keep only rows where gender is equal to \"f\"\n\nlinelist_female\n\n# A tibble: 3,139 × 26\n   case_id generation date_infection date_onset date_hospitalisation\n   &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;         &lt;chr&gt;      &lt;dttm&gt;              \n 1 8689b7           4 NA             2014-05-13 2014-05-14 00:00:00 \n 2 b8812a           3 2014-05-04     2014-05-18 2014-05-20 00:00:00 \n 3 be99c8           3 2014-05-03     2014-05-22 2014-05-23 00:00:00 \n 4 07e3e8           4 2014-05-22     2014-05-27 2014-05-29 00:00:00 \n 5 369449           4 2014-05-28     2014-06-02 2014-06-03 00:00:00 \n 6 1389ca           4 NA             2014-06-05 2014-06-07 00:00:00 \n 7 2eaa9a           5 2014-06-07     2014-06-17 2014-06-17 00:00:00 \n 8 bbfa93           6 2014-06-09     2014-06-18 2014-06-20 00:00:00 \n 9 f50e8a          10 NA             2014-06-22 2014-06-23 00:00:00 \n10 3a7673           8 NA             2014-06-23 2014-06-24 00:00:00 \n# ℹ 3,129 more rows\n# ℹ 21 more variables: date_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,\n#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,\n#   age &lt;dbl&gt;, age_unit &lt;chr&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;, ct_blood &lt;dbl&gt;,\n#   fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;, vomit &lt;chr&gt;,\n#   temp &lt;dbl&gt;, time_admission &lt;chr&gt;, bmi &lt;dbl&gt;",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#count",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#count",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "count",
-    "text": "count\n\nlinelist %&gt;% \n  count(gender)\n\n# A tibble: 3 × 2\n  gender     n\n  &lt;chr&gt;  &lt;int&gt;\n1 f       3139\n2 m       3146\n3 &lt;NA&gt;     323",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#summarise",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#summarise",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "summarise",
-    "text": "summarise\n\nlinelist %&gt;% \n  summarise(min_infection_date = min(date_infection, na.rm = T),\n            max_infection_date = max(date_infection, na.rm = T),\n            mean_age = mean(age, na.rm =T))\n\n# A tibble: 1 × 3\n  min_infection_date max_infection_date mean_age\n  &lt;date&gt;             &lt;date&gt;                &lt;dbl&gt;\n1 2012-04-09         2015-04-27             16.1\n\n\n\nsummarise grouped\n\nlinelist %&gt;% \n  group_by(gender) %&gt;% \n  summarise(min_infection_date = min(date_infection, na.rm = T),\n            max_infection_date = max(date_infection, na.rm = T),\n            mean_age = mean(age, na.rm =T))\n\n# A tibble: 3 × 4\n  gender min_infection_date max_infection_date mean_age\n  &lt;chr&gt;  &lt;date&gt;             &lt;date&gt;                &lt;dbl&gt;\n1 f      2012-05-16         2015-04-27             12.7\n2 m      2012-04-09         2015-04-24             19.5\n3 &lt;NA&gt;   2012-09-13         2015-04-17             15.4",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#save-you-data-for-later",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#save-you-data-for-later",
-    "title": "Intro to data wrangling and visualization with the\ntidyverse",
-    "section": "Save you data for later",
-    "text": "Save you data for later\n\nsaveRDS(linelist, \"./data/clean_linelist.rds\")",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+      "<b>Module 0:</b> Welcome to the workshop"
     ]
   },
   {
@@ -200,7 +304,7 @@
     "href": "materials/1-workshop1/1-before-we-start/index.html#what-is-r-and-rstudio",
     "title": "Before we start",
     "section": "What is R and RStudio?",
-    "text": "What is R and RStudio?\n\nquestions\n\nWhat is a working directory?\nHow should files be set up to import into R?\nHow can I look for help with R functions? :::\n\n\n\nobjectives\n\nExplain what R and RStudio are, what they are used for, and how they relate to each other.\nDescribe the purpose of the RStudio Script, Console, Environment, and Plots panes.\nOrganize files and directories for a set of analyses as an R Project, and understand the purpose of the working directory.\nUse the built-in RStudio help interface to search for more information on R functions.\nDemonstrate how to provide sufficient information for troubleshooting with the R user community.",
+    "text": "What is R and RStudio?\n\nquestions\n\nWhat is a working directory?\nHow should files be set up to import into R?\nHow can I look for help with R functions?\n\n\n\nobjectives\n\nExplain what R and RStudio are, what they are used for, and how they relate to each other.\nDescribe the purpose of the RStudio Script, Console, Environment, and Plots panes.\nOrganize files and directories for a set of analyses as an R Project, and understand the purpose of the working directory.\nUse the built-in RStudio help interface to search for more information on R functions.\nDemonstrate how to provide sufficient information for troubleshooting with the R user community.",
     "crumbs": [
       "Installation",
       "<em>1. Reproducible Data Analysis with R</em>",
@@ -304,284 +408,199 @@
     ]
   },
   {
-    "objectID": "materials/1-workshop1/0-welcome/index.html",
-    "href": "materials/1-workshop1/0-welcome/index.html",
-    "title": "Welcome to the workshop",
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
     "section": "",
-    "text": "Make slides full screen",
+    "text": "Learn about importing messy data, making it tidy and making plots",
     "crumbs": [
       "Installation",
       "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 0:</b> Welcome to the workshop"
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
     ]
   },
   {
-    "objectID": "materials/1-workshop1/0-welcome/index.html#slides",
-    "href": "materials/1-workshop1/0-welcome/index.html#slides",
-    "title": "Welcome to the workshop",
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#transition-to-r",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#transition-to-r",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Transition to R",
+    "text": "Transition to R",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#tidyverse",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#tidyverse",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Tidyverse",
+    "text": "Tidyverse\n\nlibrary(tidyverse)\n\n\nImport raw data\n\nlibrary(readxl)\nlinelist_raw &lt;- read_excel(\"./../../../datasets/linelist_raw.xlsx\")\nfacilities &lt;- read_excel(\"./../../../datasets/facilities.xlsx\")",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#view-the-data",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#view-the-data",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "View the data",
+    "text": "View the data\n\nlinelist_raw\n\n# A tibble: 6,611 × 28\n   case_id generation `infection date`    `date onset` `hosp date`        \n   &lt;chr&gt;        &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;        &lt;dttm&gt;             \n 1 5fe599           4 2014-05-08 00:00:00 2014-05-13   2014-05-15 00:00:00\n 2 8689b7           4 NA                  2014-05-13   2014-05-14 00:00:00\n 3 11f8ea           2 NA                  2014-05-16   2014-05-18 00:00:00\n 4 b8812a           3 2014-05-04 00:00:00 2014-05-18   2014-05-20 00:00:00\n 5 893f25           3 2014-05-18 00:00:00 2014-05-21   2014-05-22 00:00:00\n 6 be99c8           3 2014-05-03 00:00:00 2014-05-22   2014-05-23 00:00:00\n 7 07e3e8           4 2014-05-22 00:00:00 2014-05-27   2014-05-29 00:00:00\n 8 369449           4 2014-05-28 00:00:00 2014-06-02   2014-06-03 00:00:00\n 9 f393b4           4 NA                  2014-06-05   2014-06-06 00:00:00\n10 1389ca           4 NA                  2014-06-05   2014-06-07 00:00:00\n# ℹ 6,601 more rows\n# ℹ 23 more variables: date_of_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,\n#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,\n#   age &lt;chr&gt;, age_unit &lt;chr&gt;, row_num &lt;dbl&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;,\n#   ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;,\n#   vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, merged_header &lt;chr&gt;,\n#   ...28 &lt;chr&gt;\n\n\n\nfacilities\n\n# A tibble: 6 × 2\n  facility_id facility                            \n        &lt;dbl&gt; &lt;chr&gt;                               \n1           1 Central Hospital                    \n2           2 Military Hospital                   \n3           3 Missing                             \n4           4 Other                               \n5           5 Port Hospital                       \n6           6 St. Mark's Maternity Hospital (SMMH)",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#inspecting-the-data",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#inspecting-the-data",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Inspecting the data",
+    "text": "Inspecting the data\n\nstr(linelist_raw)\n\ntibble [6,611 × 28] (S3: tbl_df/tbl/data.frame)\n $ case_id        : chr [1:6611] \"5fe599\" \"8689b7\" \"11f8ea\" \"b8812a\" ...\n $ generation     : num [1:6611] 4 4 2 3 3 3 4 4 4 4 ...\n $ infection date : POSIXct[1:6611], format: \"2014-05-08\" NA ...\n $ date onset     : chr [1:6611] \"2014-05-13\" \"2014-05-13\" \"2014-05-16\" \"2014-05-18\" ...\n $ hosp date      : POSIXct[1:6611], format: \"2014-05-15\" \"2014-05-14\" ...\n $ date_of_outcome: POSIXct[1:6611], format: NA \"2014-05-18\" ...\n $ outcome        : chr [1:6611] NA \"Recover\" \"Recover\" NA ...\n $ gender         : chr [1:6611] \"m\" \"f\" \"m\" \"f\" ...\n $ facility_id    : num [1:6611] 5 NA 7 6 4 6 NA NA NA NA ...\n $ lon            : num [1:6611] -13.2 -13.2 -13.2 -13.2 -13.2 ...\n $ lat            : num [1:6611] 8.47 8.45 8.46 8.48 8.46 ...\n $ infector       : chr [1:6611] \"f547d6\" NA NA \"f90f5f\" ...\n $ source         : chr [1:6611] \"other\" NA NA \"other\" ...\n $ age            : chr [1:6611] \"2\" \"3\" \"56\" \"18\" ...\n $ age_unit       : chr [1:6611] \"years\" \"years\" \"years\" \"years\" ...\n $ row_num        : num [1:6611] 1 2 3 4 5 6 7 8 9 10 ...\n $ wt_kg          : num [1:6611] 27 25 91 41 36 56 47 0 86 69 ...\n $ ht_cm          : num [1:6611] 48 59 238 135 71 116 87 11 226 174 ...\n $ ct_blood       : num [1:6611] 22 22 21 23 23 21 21 22 22 22 ...\n $ fever          : chr [1:6611] \"no\" NA NA \"no\" ...\n $ chills         : chr [1:6611] \"no\" NA NA \"no\" ...\n $ cough          : chr [1:6611] \"yes\" NA NA \"no\" ...\n $ aches          : chr [1:6611] \"no\" NA NA \"no\" ...\n $ vomit          : chr [1:6611] \"yes\" NA NA \"no\" ...\n $ temp           : num [1:6611] 36.8 36.9 36.9 36.8 36.9 37.6 37.3 37 36.4 35.9 ...\n $ time_admission : chr [1:6611] NA \"09:36\" \"16:48\" \"11:22\" ...\n $ merged_header  : chr [1:6611] \"a\" \"a\" \"a\" \"a\" ...\n $ ...28          : chr [1:6611] \"b\" \"b\" \"b\" \"b\" ...",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#automatic-cleaning",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#automatic-cleaning",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Automatic cleaning",
+    "text": "Automatic cleaning\nThe function clean_names() from the package janitor standardizes column names and makes them unique by doing the following:\n\nConverts all names to consist of only underscores, numbers, and letters\nAccented characters are transliterated to ASCII (e.g. german o with umlaut becomes “o”, spanish “enye” becomes “n”)\nCapitalization preference for the new column names can be specified using the case = argument (“snake” is default, alternatives include “sentence”, “title”, “small_camel”…)\n\nHere is an online vignette\n\n# pipe the raw dataset through the function clean_names(), assign result as \"linelist\"  \nlinelist &lt;- linelist_raw %&gt;% \n  janitor::clean_names()\n\n# see the new column names\nnames(linelist)\n\n [1] \"case_id\"         \"generation\"      \"infection_date\"  \"date_onset\"     \n [5] \"hosp_date\"       \"date_of_outcome\" \"outcome\"         \"gender\"         \n [9] \"facility_id\"     \"lon\"             \"lat\"             \"infector\"       \n[13] \"source\"          \"age\"             \"age_unit\"        \"row_num\"        \n[17] \"wt_kg\"           \"ht_cm\"           \"ct_blood\"        \"fever\"          \n[21] \"chills\"          \"cough\"           \"aches\"           \"vomit\"          \n[25] \"temp\"            \"time_admission\"  \"merged_header\"   \"x28\"            \n\n\n\nManual name cleaning\n\n# CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)\n##################################################################################\nlinelist &lt;- linelist_raw %&gt;%\n    \n    # standardize column name syntax\n    janitor::clean_names() %&gt;% \n    \n    # manually re-name columns\n           # NEW name             # OLD name\n    rename(date_infection       = infection_date,\n           date_hospitalisation = hosp_date,\n           date_outcome         = date_of_outcome)\n\n\n\nSelecting some columns\n\nlinelist %&gt;% \n  select(date_infection, date_hospitalisation, date_outcome)\n\n# A tibble: 6,611 × 3\n   date_infection      date_hospitalisation date_outcome       \n   &lt;dttm&gt;              &lt;dttm&gt;               &lt;dttm&gt;             \n 1 2014-05-08 00:00:00 2014-05-15 00:00:00  NA                 \n 2 NA                  2014-05-14 00:00:00  2014-05-18 00:00:00\n 3 NA                  2014-05-18 00:00:00  2014-05-30 00:00:00\n 4 2014-05-04 00:00:00 2014-05-20 00:00:00  NA                 \n 5 2014-05-18 00:00:00 2014-05-22 00:00:00  2014-05-29 00:00:00\n 6 2014-05-03 00:00:00 2014-05-23 00:00:00  2014-05-24 00:00:00\n 7 2014-05-22 00:00:00 2014-05-29 00:00:00  2014-06-01 00:00:00\n 8 2014-05-28 00:00:00 2014-06-03 00:00:00  2014-06-07 00:00:00\n 9 NA                  2014-06-06 00:00:00  2014-06-18 00:00:00\n10 NA                  2014-06-07 00:00:00  2014-06-09 00:00:00\n# ℹ 6,601 more rows",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#keep-columns",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#keep-columns",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Keep columns",
+    "text": "Keep columns\nSelect only the columns you want to remain\nPut their names in the select() command, with no quotation marks. They will appear in the data frame in the order you provide. Note that if you include a column that does not exist, R will return an error (see use of any_of() below if you want no error in this situation).\n\n# linelist dataset is piped through select() command, and names() prints just the column names\nlinelist %&gt;% \n  select(case_id, date_onset, date_hospitalisation, fever) %&gt;% \n  names()  # display the column names\n\n[1] \"case_id\"              \"date_onset\"           \"date_hospitalisation\"\n[4] \"fever\"               \n\n# Also, by using the 'minus' sign (-) you can deselect columns\nlinelist %&gt;% \n  select(-x28)\n\n# A tibble: 6,611 × 27\n   case_id generation date_infection      date_onset date_hospitalisation\n   &lt;chr&gt;        &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;      &lt;dttm&gt;              \n 1 5fe599           4 2014-05-08 00:00:00 2014-05-13 2014-05-15 00:00:00 \n 2 8689b7           4 NA                  2014-05-13 2014-05-14 00:00:00 \n 3 11f8ea           2 NA                  2014-05-16 2014-05-18 00:00:00 \n 4 b8812a           3 2014-05-04 00:00:00 2014-05-18 2014-05-20 00:00:00 \n 5 893f25           3 2014-05-18 00:00:00 2014-05-21 2014-05-22 00:00:00 \n 6 be99c8           3 2014-05-03 00:00:00 2014-05-22 2014-05-23 00:00:00 \n 7 07e3e8           4 2014-05-22 00:00:00 2014-05-27 2014-05-29 00:00:00 \n 8 369449           4 2014-05-28 00:00:00 2014-06-02 2014-06-03 00:00:00 \n 9 f393b4           4 NA                  2014-06-05 2014-06-06 00:00:00 \n10 1389ca           4 NA                  2014-06-05 2014-06-07 00:00:00 \n# ℹ 6,601 more rows\n# ℹ 22 more variables: date_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,\n#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,\n#   age &lt;chr&gt;, age_unit &lt;chr&gt;, row_num &lt;dbl&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;,\n#   ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;,\n#   vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, merged_header &lt;chr&gt;\n\n# use any_of() to ignore none existent column names\nlinelist %&gt;% \n  select(any_of(c(\"case_id\", \"peanut_butter\", \"date_onset\", \"date_hospitalisation\", \"fever\"))) %&gt;% \n  names()  \n\n[1] \"case_id\"              \"date_onset\"           \"date_hospitalisation\"\n[4] \"fever\"",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#deduplication",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#deduplication",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Deduplication",
+    "text": "Deduplication\nThe package dplyr offers the distinct() function. This function examines every row and reduce the data frame to only the unique rows. That is, it removes rows that are 100% duplicates.\n\n# CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)\n##################################################################################\n\n# begin cleaning pipe chain\n###########################\nlinelist &lt;- linelist_raw %&gt;%\n    \n    # standardize column name syntax\n    janitor::clean_names() %&gt;% \n    \n    # manually re-name columns\n           # NEW name             # OLD name\n    rename(date_infection       = infection_date,\n           date_hospitalisation = hosp_date,\n           date_outcome         = date_of_outcome) %&gt;% \n    \n    # remove column\n    select(-c(row_num, merged_header, x28)) %&gt;% \n    # de-duplicate\n    distinct()",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#column-creation-and-transformation",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#column-creation-and-transformation",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Column creation and transformation",
+    "text": "Column creation and transformation\nWe recommend using the dplyr function mutate() to add a new column, or to modify an existing one.\n\nlinelist &lt;- linelist %&gt;% \n  mutate(bmi = wt_kg / (ht_cm/100)^2)",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#transform-data-type",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#transform-data-type",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Transform data type",
+    "text": "Transform data type\n\n# age is stored as character\nlinelist %&gt;% \n  select(age)\n\n# A tibble: 6,608 × 1\n   age  \n   &lt;chr&gt;\n 1 2    \n 2 3    \n 3 56   \n 4 18   \n 5 3    \n 6 16   \n 7 16   \n 8 0    \n 9 61   \n10 27   \n# ℹ 6,598 more rows\n\n# use mutate to change\nlinelist &lt;- linelist %&gt;% \n  mutate(age = as.numeric(age),\n         date_infection = ymd(date_infection))",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#filter-rows",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#filter-rows",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Filter rows",
+    "text": "Filter rows\n\nlinelist_female &lt;- linelist %&gt;% \n  filter(gender == \"f\")   # keep only rows where gender is equal to \"f\"\n\nlinelist_female\n\n# A tibble: 3,139 × 26\n   case_id generation date_infection date_onset date_hospitalisation\n   &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;         &lt;chr&gt;      &lt;dttm&gt;              \n 1 8689b7           4 NA             2014-05-13 2014-05-14 00:00:00 \n 2 b8812a           3 2014-05-04     2014-05-18 2014-05-20 00:00:00 \n 3 be99c8           3 2014-05-03     2014-05-22 2014-05-23 00:00:00 \n 4 07e3e8           4 2014-05-22     2014-05-27 2014-05-29 00:00:00 \n 5 369449           4 2014-05-28     2014-06-02 2014-06-03 00:00:00 \n 6 1389ca           4 NA             2014-06-05 2014-06-07 00:00:00 \n 7 2eaa9a           5 2014-06-07     2014-06-17 2014-06-17 00:00:00 \n 8 bbfa93           6 2014-06-09     2014-06-18 2014-06-20 00:00:00 \n 9 f50e8a          10 NA             2014-06-22 2014-06-23 00:00:00 \n10 3a7673           8 NA             2014-06-23 2014-06-24 00:00:00 \n# ℹ 3,129 more rows\n# ℹ 21 more variables: date_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,\n#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,\n#   age &lt;dbl&gt;, age_unit &lt;chr&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;, ct_blood &lt;dbl&gt;,\n#   fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;, vomit &lt;chr&gt;,\n#   temp &lt;dbl&gt;, time_admission &lt;chr&gt;, bmi &lt;dbl&gt;",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#count",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#count",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "count",
+    "text": "count\n\nlinelist %&gt;% \n  count(gender)\n\n# A tibble: 3 × 2\n  gender     n\n  &lt;chr&gt;  &lt;int&gt;\n1 f       3139\n2 m       3146\n3 &lt;NA&gt;     323",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#summarise",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#summarise",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "summarise",
+    "text": "summarise\n\nlinelist %&gt;% \n  summarise(min_infection_date = min(date_infection, na.rm = T),\n            max_infection_date = max(date_infection, na.rm = T),\n            mean_age = mean(age, na.rm =T))\n\n# A tibble: 1 × 3\n  min_infection_date max_infection_date mean_age\n  &lt;date&gt;             &lt;date&gt;                &lt;dbl&gt;\n1 2012-04-09         2015-04-27             16.1\n\n\n\nsummarise grouped\n\nlinelist %&gt;% \n  group_by(gender) %&gt;% \n  summarise(min_infection_date = min(date_infection, na.rm = T),\n            max_infection_date = max(date_infection, na.rm = T),\n            mean_age = mean(age, na.rm =T))\n\n# A tibble: 3 × 4\n  gender min_infection_date max_infection_date mean_age\n  &lt;chr&gt;  &lt;date&gt;             &lt;date&gt;                &lt;dbl&gt;\n1 f      2012-05-16         2015-04-27             12.7\n2 m      2012-04-09         2015-04-24             19.5\n3 &lt;NA&gt;   2012-09-13         2015-04-17             15.4",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#save-you-data-for-later",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#save-you-data-for-later",
+    "title": "Intro to data wrangling and visualization with the\ntidyverse",
+    "section": "Save you data for later",
+    "text": "Save you data for later\n\nsaveRDS(linelist, \"./data/clean_linelist.rds\")",
+    "crumbs": [
+      "Installation",
+      "<em>1. Reproducible Data Analysis with R</em>",
+      "<b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code>"
+    ]
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
     "section": "",
-    "text": "Make slides full screen",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 0:</b> Welcome to the workshop"
-    ]
+    "text": "Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.4.x and RStudio version 2024.x.0 Click here for instructions on installing R and RStudio"
   },
   {
-    "objectID": "materials/1-workshop1/0-welcome/index.html#before-the-workshop-installing-r-and-rstudio",
-    "href": "materials/1-workshop1/0-welcome/index.html#before-the-workshop-installing-r-and-rstudio",
-    "title": "Welcome to the workshop",
-    "section": "Before the workshop: Installing R and RStudio",
-    "text": "Before the workshop: Installing R and RStudio\nPlease install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.4.x and RStudio version 2024.x.0 Click here for instructions on installing R and RStudio",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 0:</b> Welcome to the workshop"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Workshop: Introduction to Data Analysis in R",
+    "objectID": "resources.html#before-the-workshop-installing-r-and-rstudio",
+    "href": "resources.html#before-the-workshop-installing-r-and-rstudio",
+    "title": "Resources",
     "section": "",
-    "text": "Workshop: Introduction to Data Analysis in R\n\n\n\n\n\n\n\n\n\nRetrieving and running your workshop files\n\n\n\nFollow the detailed instructions here to install R and RStudio on your computer. Ensure you are on R version 4.2 or higher.\nRun the following command to install the necessary packages in the R terminal\n\n\ninstall.packages(c(\"tidyverse\", \"skimr\", \"janitor\"))\n\n\n\n\nSchedule\n\n\n\n\n\n\n\nDate/Time\nTopic\nInstructor\n\n\n\n\nMonday, April 22nd\n————————————————————–\n————————————————————–\n\n\nAM\nWorkshop Introduction\nScott Handley (Wash U School of Medicine)\n\n\n\nKeynote\nSinaye Ngcapu (CAPRISA)\n\n\n\nSequencing and Library Preperation\nLindsay Droit (Wash U School of Medicine)\n\n\nPM\nR Refresher (tidyverse/summary tables/data visualization)\nScott Handley (Wash U School of Medicine)\n\n\nTuesday, April 23th\n————————————————————–\n————————————————————–\n\n\nAM\n16S Data Preprocessing\nAsavela Kama (CAPRISA)\n\n\nPM\nExploring High Dimensional Data\nElizabeth Costello (Stanford University)\n\n\nWednesday, April 24th\n————————————————————–\n————————————————————–\n\n\nAM\nExploring High Dimensional Data\nElizabeth Costello (Stanford University)\n\n\n\nCorrelations and Differential Abundance Testing\nJoseph Elsherbini (Ragon Institute)\n\n\nPM\nGroup Activity I\nJohnathan Shih (Ragon Institute)\n\n\nThursday, April 25th\n————————————————————–\n————————————————————–\n\n\nAM\nVIRGO / Shotgun Metagenomics\nMichael France (UMD School of Medicine)\n\n\nPM\nGroup Activity II\nJohnathan Shih (Ragon Institute)\n\n\nEvening\nReception\n\n\n\nFriday, April 26th\n————————————————————–\n————————————————————–\n\n\nAM\nKeynote\nJacques Ravel (UMD School of Medicine)\n\n\n\nGroup Activity review\n\n\n\nPM\nGroup Presentations\nParticipants\n\n\n\nDataset Demo\n\n\n\n\nWorkshop Outro\nScott Handley (Wash U School of Medicine)\n\n\n\n————————————————————–\n————————————————————–"
+    "text": "Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.4.x and RStudio version 2024.x.0 Click here for instructions on installing R and RStudio"
   },
   {
-    "objectID": "datasets.html",
-    "href": "datasets.html",
-    "title": "Datasets",
-    "section": "",
-    "text": "The main data set for use in lectures is split into 2 tables. This is a data on a fictional Ebola outbreak, expanded by the handbook team from the ebola_sim practice dataset in the outbreaks package.\n\nlinelist_raw.xlsx\n\n\nlibrary(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.3.2\n\n\nWarning: package 'tidyr' was built under R version 4.3.3\n\n\nWarning: package 'readr' was built under R version 4.3.3\n\n\nWarning: package 'dplyr' was built under R version 4.3.3\n\n\nWarning: package 'stringr' was built under R version 4.3.3\n\n\nWarning: package 'lubridate' was built under R version 4.3.3\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(openxlsx)\n\nWarning: package 'openxlsx' was built under R version 4.3.2\n\nlibrary(skimr)\n\nWarning: package 'skimr' was built under R version 4.3.3\n\nopenxlsx::read.xlsx(\"./datasets/linelist_raw.xlsx\") %&gt;% \n  skim()\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n6611\n\n\nNumber of columns\n28\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n16\n\n\nnumeric\n12\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\ncase_id\n137\n0.98\n6\n6\n0\n5888\n0\n\n\ndate.onset\n293\n0.96\n10\n10\n0\n580\n0\n\n\noutcome\n1500\n0.77\n5\n7\n0\n2\n0\n\n\ngender\n324\n0.95\n1\n1\n0\n2\n0\n\n\ninfector\n2323\n0.65\n6\n6\n0\n2697\n0\n\n\nsource\n2323\n0.65\n5\n7\n0\n2\n0\n\n\nage\n107\n0.98\n1\n2\n0\n75\n0\n\n\nage_unit\n7\n1.00\n5\n6\n0\n2\n0\n\n\nfever\n258\n0.96\n2\n3\n0\n2\n0\n\n\nchills\n258\n0.96\n2\n3\n0\n2\n0\n\n\ncough\n258\n0.96\n2\n3\n0\n2\n0\n\n\naches\n258\n0.96\n2\n3\n0\n2\n0\n\n\nvomit\n258\n0.96\n2\n3\n0\n2\n0\n\n\ntime_admission\n844\n0.87\n5\n5\n0\n1091\n0\n\n\nmerged_header\n0\n1.00\n1\n1\n0\n1\n0\n\n\n…28\n0\n1.00\n1\n1\n0\n1\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\ngeneration\n7\n1.00\n16.60\n5.71\n0.00\n13.00\n16.00\n20.00\n37.00\n▁▆▇▂▁\n\n\ninfection.date\n2322\n0.65\n41868.65\n221.02\n41008.00\n41876.00\n41916.00\n41969.00\n42121.00\n▁▁▁▃▇\n\n\nhosp.date\n7\n1.00\n41882.22\n218.91\n41019.00\n41889.00\n41927.00\n41983.00\n42124.00\n▁▁▁▃▇\n\n\ndate_of_outcome\n1068\n0.84\n41893.00\n217.58\n41043.00\n41896.00\n41938.00\n41994.00\n42159.00\n▁▁▁▆▇\n\n\nfacility_id\n1512\n0.77\n4.69\n1.73\n1.00\n4.00\n5.00\n6.00\n7.00\n▃▁▃▃▇\n\n\nlon\n7\n1.00\n-13.23\n0.02\n-13.27\n-13.25\n-13.23\n-13.22\n-13.21\n▅▃▃▅▇\n\n\nlat\n7\n1.00\n8.47\n0.01\n8.45\n8.46\n8.47\n8.48\n8.49\n▅▇▇▇▆\n\n\nrow_num\n0\n1.00\n3240.91\n1857.83\n1.00\n1647.50\n3241.00\n4836.50\n6481.00\n▇▇▇▇▇\n\n\nwt_kg\n7\n1.00\n52.69\n18.59\n-11.00\n41.00\n54.00\n66.00\n111.00\n▁▃▇▅▁\n\n\nht_cm\n7\n1.00\n125.25\n49.57\n4.00\n91.00\n130.00\n159.00\n295.00\n▂▅▇▂▁\n\n\nct_blood\n7\n1.00\n21.26\n1.67\n16.00\n20.00\n22.00\n22.00\n26.00\n▁▃▇▃▁\n\n\ntemp\n158\n0.98\n38.60\n0.95\n35.20\n38.30\n38.80\n39.20\n40.80\n▁▂▂▇▁\n\n\n\n\n\n\nfacilities.xlsx\n\n\nopenxlsx::read.xlsx(\"./datasets/facilities.xlsx\") %&gt;% \n  skim()\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n7\n\n\nNumber of columns\n2\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n1\n\n\nnumeric\n1\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nfacility_name\n0\n1\n5\n35\n0\n7\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nfacility_id\n0\n1\n4\n2.16\n1\n2.5\n4\n5.5\n7\n▇▃▃▃▇"
+    "objectID": "resources.html#textbooks",
+    "href": "resources.html#textbooks",
+    "title": "Resources",
+    "section": "Textbooks",
+    "text": "Textbooks\n\nR for Data Science: Import, Tidy, Transform, Visualize, and Model Data by Garrett Grolemund and Hadley Wickham\nLink\n\nThe Epidemiologist R Handbook Link"
   },
   {
-    "objectID": "datasets.html#download-the-instructional-datasets",
-    "href": "datasets.html#download-the-instructional-datasets",
-    "title": "Datasets",
-    "section": "",
-    "text": "The main data set for use in lectures is split into 2 tables. This is a data on a fictional Ebola outbreak, expanded by the handbook team from the ebola_sim practice dataset in the outbreaks package.\n\nlinelist_raw.xlsx\n\n\nlibrary(tidyverse)\n\nWarning: package 'ggplot2' was built under R version 4.3.2\n\n\nWarning: package 'tidyr' was built under R version 4.3.3\n\n\nWarning: package 'readr' was built under R version 4.3.3\n\n\nWarning: package 'dplyr' was built under R version 4.3.3\n\n\nWarning: package 'stringr' was built under R version 4.3.3\n\n\nWarning: package 'lubridate' was built under R version 4.3.3\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(openxlsx)\n\nWarning: package 'openxlsx' was built under R version 4.3.2\n\nlibrary(skimr)\n\nWarning: package 'skimr' was built under R version 4.3.3\n\nopenxlsx::read.xlsx(\"./datasets/linelist_raw.xlsx\") %&gt;% \n  skim()\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n6611\n\n\nNumber of columns\n28\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n16\n\n\nnumeric\n12\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\ncase_id\n137\n0.98\n6\n6\n0\n5888\n0\n\n\ndate.onset\n293\n0.96\n10\n10\n0\n580\n0\n\n\noutcome\n1500\n0.77\n5\n7\n0\n2\n0\n\n\ngender\n324\n0.95\n1\n1\n0\n2\n0\n\n\ninfector\n2323\n0.65\n6\n6\n0\n2697\n0\n\n\nsource\n2323\n0.65\n5\n7\n0\n2\n0\n\n\nage\n107\n0.98\n1\n2\n0\n75\n0\n\n\nage_unit\n7\n1.00\n5\n6\n0\n2\n0\n\n\nfever\n258\n0.96\n2\n3\n0\n2\n0\n\n\nchills\n258\n0.96\n2\n3\n0\n2\n0\n\n\ncough\n258\n0.96\n2\n3\n0\n2\n0\n\n\naches\n258\n0.96\n2\n3\n0\n2\n0\n\n\nvomit\n258\n0.96\n2\n3\n0\n2\n0\n\n\ntime_admission\n844\n0.87\n5\n5\n0\n1091\n0\n\n\nmerged_header\n0\n1.00\n1\n1\n0\n1\n0\n\n\n…28\n0\n1.00\n1\n1\n0\n1\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\ngeneration\n7\n1.00\n16.60\n5.71\n0.00\n13.00\n16.00\n20.00\n37.00\n▁▆▇▂▁\n\n\ninfection.date\n2322\n0.65\n41868.65\n221.02\n41008.00\n41876.00\n41916.00\n41969.00\n42121.00\n▁▁▁▃▇\n\n\nhosp.date\n7\n1.00\n41882.22\n218.91\n41019.00\n41889.00\n41927.00\n41983.00\n42124.00\n▁▁▁▃▇\n\n\ndate_of_outcome\n1068\n0.84\n41893.00\n217.58\n41043.00\n41896.00\n41938.00\n41994.00\n42159.00\n▁▁▁▆▇\n\n\nfacility_id\n1512\n0.77\n4.69\n1.73\n1.00\n4.00\n5.00\n6.00\n7.00\n▃▁▃▃▇\n\n\nlon\n7\n1.00\n-13.23\n0.02\n-13.27\n-13.25\n-13.23\n-13.22\n-13.21\n▅▃▃▅▇\n\n\nlat\n7\n1.00\n8.47\n0.01\n8.45\n8.46\n8.47\n8.48\n8.49\n▅▇▇▇▆\n\n\nrow_num\n0\n1.00\n3240.91\n1857.83\n1.00\n1647.50\n3241.00\n4836.50\n6481.00\n▇▇▇▇▇\n\n\nwt_kg\n7\n1.00\n52.69\n18.59\n-11.00\n41.00\n54.00\n66.00\n111.00\n▁▃▇▅▁\n\n\nht_cm\n7\n1.00\n125.25\n49.57\n4.00\n91.00\n130.00\n159.00\n295.00\n▂▅▇▂▁\n\n\nct_blood\n7\n1.00\n21.26\n1.67\n16.00\n20.00\n22.00\n22.00\n26.00\n▁▃▇▃▁\n\n\ntemp\n158\n0.98\n38.60\n0.95\n35.20\n38.30\n38.80\n39.20\n40.80\n▁▂▂▇▁\n\n\n\n\n\n\nfacilities.xlsx\n\n\nopenxlsx::read.xlsx(\"./datasets/facilities.xlsx\") %&gt;% \n  skim()\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n7\n\n\nNumber of columns\n2\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n1\n\n\nnumeric\n1\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nfacility_name\n0\n1\n5\n35\n0\n7\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nfacility_id\n0\n1\n4\n2.16\n1\n2.5\n4\n5.5\n7\n▇▃▃▃▇"
-  },
-  {
-    "objectID": "materials/1-workshop1/0-welcome/exercise_1.html#activity",
-    "href": "materials/1-workshop1/0-welcome/exercise_1.html#activity",
-    "title": "Exploring Data for Patterns",
-    "section": "Activity",
-    "text": "Activity\n\nPatterns are the essence of data exploration and our eyes’ ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.\n\n\nGenetic profiles of cancer\nThese datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).\n\n\n\nTable 1: Mutational status for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\nGene B\n0\n0\n0\n0\n1\n1\n1\n0\n1\n1\n\n\nGene C\n0\n0\n1\n0\n0\n0\n1\n1\n1\n1\n\n\nGene D\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n\n\nGene E\n0\n1\n1\n0\n1\n0\n0\n0\n1\n0\n\n\n\n\n\n\n\n\n\nTable 2: Expression levels for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n2\n1\n1\n2\n2\n0\n2\n1\n1\n2\n\n\nGene B\n1\n1\n2\n1\n0\n0\n0\n2\n0\n0\n\n\nGene C\n1\n1\n3\n1\n2\n2\n3\n0\n3\n0\n\n\nGene D\n0\n0\n2\n1\n3\n3\n2\n1\n1\n1\n\n\nGene E\n1\n3\n3\n1\n3\n1\n2\n1\n3\n2\n\n\n\n\n\n\n\n\n          1. Think about the problem on your own for 5 minutes.\n          2. In your groups, discuss and create different visualizations to highlight underlying patterns\n          3. Summarize the group’s approach\n          4. Elect/volunteer a spokesperson to present the solution\n\n\nConsider the following concepts when creating your visualizations\n\n\n\n\nPatterns\nPatterns are the essence of data exploration. What kinds of representation will produce the most meaningful insights?\n   \n\n\nEncodings\nSome visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends?\n  \n\n\n\n\nColor\nColor is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?\n   \n\n\nSalience and Relevance\nPop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant?"
-  },
-  {
-    "objectID": "materials/1-workshop1/0-welcome/slides.html#section",
-    "href": "materials/1-workshop1/0-welcome/slides.html#section",
-    "title": "Welcome to the workshop",
-    "section": "",
-    "text": "Goals for this session\n\n\nGet familiar with R-Studio\nSet expectations for today\nGet excited!"
-  },
-  {
-    "objectID": "materials/1-workshop1/0-welcome/slides.html#section-1",
-    "href": "materials/1-workshop1/0-welcome/slides.html#section-1",
-    "title": "Welcome to the workshop",
-    "section": "",
-    "text": "Workshop materials are at:\nhttps://ecotopic.github.io/Rworkshop/"
-  },
-  {
-    "objectID": "materials/1-workshop1/0-welcome/slides.html#practicalities",
-    "href": "materials/1-workshop1/0-welcome/slides.html#practicalities",
-    "title": "Welcome to the workshop",
-    "section": "Practicalities",
-    "text": "Practicalities\n\nWiFi:\nNetwork: KTB Free Wifi (no password needed)\nNetwork AHRI Password: @hR1W1F1!17\nNetwork CAPRISA-Corp Password: corp@caprisa17\nBathrooms are out the lobby, opposite this venue."
-  },
-  {
-    "objectID": "materials/1-workshop1/0-welcome/slides.html#your-instructors",
-    "href": "materials/1-workshop1/0-welcome/slides.html#your-instructors",
-    "title": "Welcome to the workshop",
-    "section": "Your Instructors",
-    "text": "Your Instructors\nWho are we?\n\nJohan van der Molen (CAPRISA)\nAaron Abai (Ragon Institute of MGH, MIT and Harvard)\nDr. Afrah Khairallah (AHRI)\nBertha Baye (AHRI)\nAsavela Kama (CAPRISA)"
-  },
-  {
-    "objectID": "materials/1-workshop1/0-welcome/slides.html#lets-make-this-workshop-work-for-all",
-    "href": "materials/1-workshop1/0-welcome/slides.html#lets-make-this-workshop-work-for-all",
-    "title": "Welcome to the workshop",
-    "section": "Let’s make this workshop work for all",
-    "text": "Let’s make this workshop work for all\n\n\nYou belong here. This workshop is intended for a wide-audience with a focus on beginners. If you feel out of place - it’s our problem, not yours!\nStay committed. This workshop is intended to show you some data-analysis tools and leave you with skills you can really use. With practice you will hone these skills. Commit to stay engaged for best results, for you and those around you!\nThis is a challenging but friendly environment. We are here to learn and grow. In order to make the right environment please follow “the 4 social rules” and code-of-conduct."
-  },
-  {
-    "objectID": "materials/1-workshop1/0-welcome/slides.html#the-premise-of-the-workshop",
-    "href": "materials/1-workshop1/0-welcome/slides.html#the-premise-of-the-workshop",
-    "title": "Welcome to the workshop",
-    "section": "The premise of the workshop",
-    "text": "The premise of the workshop\nWe will be using a fictional but true-to-life “medium dimensional” dataset that we’ll use for all instruction\n\nThis is a fictional Ebola outbreak, expanded by the handbook team from the ebola_sim practice dataset in the outbreaks package.\nFrom this website: The Epidemiologist R Handbook\n\nWhy this format\n\nHands on.\nThis is the first time running this new workshop - please give lots of feedback on how to improve it for next time.\nHowever, many of you in the room know a lot more immunology/epidemiology - and even if you know none you can learn R and generalize it to your research."
-  },
-  {
-    "objectID": "materials/1-workshop1/0-welcome/slides.html#the-content-of-this-workshop",
-    "href": "materials/1-workshop1/0-welcome/slides.html#the-content-of-this-workshop",
-    "title": "Welcome to the workshop",
-    "section": "The content of this workshop",
-    "text": "The content of this workshop\n\nThis is probably too much material to get through today!\n\nAs instructors we’re going to be trying to teach at the right pace to keep everyone learning.\n\nThe materials will stay on the website forever for you to work through at your own pace.\n\n\n\n\nback to module"
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/index.html#creating-objects-in-r",
-    "href": "materials/1-workshop1/2-intro-to-r/index.html#creating-objects-in-r",
-    "title": "Introduction to R",
-    "section": "Creating objects in R",
-    "text": "Creating objects in R\nYou can get output from R simply by typing math in the console:\n\n3 + 5\n\n[1] 8\n\n12 / 7\n\n[1] 1.714286\n\n\nHowever, to do useful and interesting things, we need to assign values to objects. To create an object, we need to give it a name followed by the assignment operator &lt;-, and the value we want to give it:\n\nweight_kg &lt;- 55\n\n&lt;- is the assignment operator we will use in this course. It assigns values on the right to objects on the left. So, after executing x &lt;- 3, the value of x is 3. For historical reasons, you can also use = for assignments, but not in every context. Because of the slight differences in syntax, it is good practice to always use &lt;- for assignments.\nIn RStudio, typing Alt + - (push Alt at the same time as the - key) will write &lt;- in a single keystroke in a PC, while typing Option + - (push Option at the same time as the - key) does the same in a Mac.\nObjects can be given almost any name such as x, current_temperature, or subject_id. Here are some further guidelines on naming objects:\n\nYou want your object names to be explicit and not too long.\nThey cannot start with a number (2x is not valid, but x2 is).\nR is case sensitive, so for example, weight_kg is different from Weight_kg.\nThere are some names that cannot be used because they are the names of fundamental functions in R (e.g., if, else, for, see here for a complete list). In general, even if it’s allowed, it’s best to not use other function names (e.g., c, T, mean, data, df, weights). If in doubt, check the help to see if the name is already in use.\nIt’s best to avoid dots (.) within names. Many function names in R itself have them and dots also have a special meaning (methods) in R and other programming languages. To avoid confusion, don’t include dots in names.\nIt is recommended to use nouns for object names and verbs for function names.\nBe consistent in the styling of your code, such as where you put spaces, how you name objects, etc. Styles can include “lower_snake”, “UPPER_SNAKE”, “lowerCamelCase”, “UpperCamelCase”, etc. Using a consistent coding style makes your code clearer to read for your future self and your collaborators. In R, three popular style guides come from Google, Jean Fan and the tidyverse. The tidyverse style is very comprehensive and may seem overwhelming at first. You can install the lintr package to automatically check for issues in the styling of your code.\n\n\n\n\n\n\n\nObjects vs. variables\n\n\n\nWhat are known as objects in R are known as variables in many other programming languages. Depending on the context, object and variable can have drastically different meanings. However, in this lesson, the two words are used synonymously. For more information see: https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects\n\n\nWhen assigning a value to an object, R does not print anything. You can force R to print the value by using parentheses or by typing the object name:\n\nweight_kg &lt;- 55    # doesn't print anything\n(weight_kg &lt;- 55)  # but putting parenthesis around the call prints the value of `weight_kg`\n\n[1] 55\n\nweight_kg          # and so does typing the name of the object\n\n[1] 55\n\n\nNow that R has weight_kg in memory, we can do arithmetic with it. For instance, we may want to convert this weight into pounds (weight in pounds is 2.2 times the weight in kg):\n\n2.2 * weight_kg\n\n[1] 121\n\n\nWe can also change an object’s value by assigning it a new one:\n\nweight_kg &lt;- 57.5\n2.2 * weight_kg\n\n[1] 126.5\n\n\nThis means that assigning a value to one object does not change the values of other objects. For example, let’s store the animal’s weight in pounds in a new object, weight_lb:\n\nweight_lb &lt;- 2.2 * weight_kg\n\nand then change weight_kg to 100.\n\nweight_kg &lt;- 100\n\nWhat do you think is the current content of the object weight_lb? 126.5 or 220?\n\nSaving your code\nUp to now, your code has been in the console. This is useful for quick queries but not so helpful if you want to revisit your work for any reason. A script can be opened by pressing Ctrl + Shift + N. It is wise to save your script file immediately. To do this press Ctrl + S. This will open a dialogue box where you can decide where to save your script file, and what to name it. The .R file extension is added automatically and ensures your file will open with RStudio.\nDon’t forget to save your work periodically by pressing Ctrl + S.\n\n\nComments\nThe comment character in R is #. Anything to the right of a # in a script will be ignored by R. It is useful to leave notes and explanations in your scripts. For convenience, RStudio provides a keyboard shortcut to comment or uncomment a paragraph: after selecting the lines you want to comment, press at the same time on your keyboard Ctrl + Shift + C. If you only want to comment out one line, you can put the cursor at any location of that line (i.e. no need to select the whole line), then press Ctrl + Shift + C.\n\n\nChallenge\nWhat are the values after each statement in the following?\n\nmass &lt;- 47.5            # mass?\nage  &lt;- 122             # age?\nmass &lt;- mass * 2.0      # mass?\nage  &lt;- age - 20        # age?\nmass_index &lt;- mass/age  # mass_index?\n\n\n\nFunctions and their arguments\nFunctions are “canned scripts” that automate more complicated sets of commands including operations assignments, etc. Many functions are predefined, or can be made available by importing R packages (more on that later). A function usually takes one or more inputs called arguments. Functions often (but not always) return a value. A typical example would be the function sqrt(). The input (the argument) must be a number, and the return value (in fact, the output) is the square root of that number. Executing a function (‘running it’) is called calling the function. An example of a function call is:\n\nweight_kg &lt;- sqrt(10)\n\nHere, the value of 10 is given to the sqrt() function, the sqrt() function calculates the square root, and returns the value which is then assigned to the object weight_kg. This function takes one argument, other functions might take several.\nThe return ‘value’ of a function need not be numerical (like that of sqrt()), and it also does not need to be a single item: it can be a set of things, or even a dataset. We’ll see that when we read data files into R.\nArguments can be anything, not only numbers or filenames, but also other objects. Exactly what each argument means differs per function, and must be looked up in the documentation (see below). Some functions take arguments which may either be specified by the user, or, if left out, take on a default value: these are called options. Options are typically used to alter the way the function operates, such as whether it ignores ‘bad values’, or what symbol to use in a plot. However, if you want something specific, you can specify a value of your choice which will be used instead of the default.\nLet’s try a function that can take multiple arguments: round().\n\nround(3.14159)\n\n[1] 3\n\n\nHere, we’ve called round() with just one argument, 3.14159, and it has returned the value 3. That’s because the default is to round to the nearest whole number. If we want more digits we can see how to do that by getting information about the round function. We can use args(round) to find what arguments it takes, or look at the help for this function using ?round.\n\nargs(round)\n\nfunction (x, digits = 0) \nNULL\n\n\n\n?round\n\nWe see that if we want a different number of digits, we can type digits = 2 or however many we want.\n\nround(3.14159, digits = 2)\n\n[1] 3.14\n\n\nIf you provide the arguments in the exact same order as they are defined you don’t have to name them:\n\nround(3.14159, 2)\n\n[1] 3.14\n\n\nAnd if you do name the arguments, you can switch their order:\n\nround(digits = 2, x = 3.14159)\n\n[1] 3.14\n\n\nIt’s good practice to put the non-optional arguments (like the number you’re rounding) first in your function call, and to then specify the names of all optional arguments. If you don’t, someone reading your code might have to look up the definition of a function with unfamiliar arguments to understand what you’re doing.",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 2</b>: Intro to R and Rstudio"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/index.html#vectors-and-data-types",
-    "href": "materials/1-workshop1/2-intro-to-r/index.html#vectors-and-data-types",
-    "title": "Introduction to R",
-    "section": "Vectors and data types",
-    "text": "Vectors and data types\nA vector is the most common and basic data type in R, and is pretty much the workhorse of R. A vector is composed by a series of values, which can be either numbers or characters. We can assign a series of values to a vector using the c() function. For example we can create a vector of animal weights and assign it to a new object weight_g:\n\nweight_g &lt;- c(50, 60, 65, 82)\nweight_g\n\n[1] 50 60 65 82\n\n\nA vector can also contain characters:\n\nanimals &lt;- c(\"mouse\", \"rat\", \"dog\")\nanimals\n\n[1] \"mouse\" \"rat\"   \"dog\"  \n\n\nThe quotes around “mouse”, “rat”, etc. are essential here. Without the quotes R will assume objects have been created called mouse, rat and dog. As these objects don’t exist in R’s memory, there will be an error message.\nThere are many functions that allow you to inspect the content of a vector. length() tells you how many elements are in a particular vector:\n\nlength(weight_g)\n\n[1] 4\n\nlength(animals)\n\n[1] 3\n\n\nAn important feature of a vector, is that all of the elements are the same type of data. The function class() indicates what kind of object you are working with:\n\nclass(weight_g)\n\n[1] \"numeric\"\n\nclass(animals)\n\n[1] \"character\"\n\n\nThe function str() provides an overview of the structure of an object and its elements. It is a useful function when working with large and complex objects:\n\nstr(weight_g)\n\n num [1:4] 50 60 65 82\n\nstr(animals)\n\n chr [1:3] \"mouse\" \"rat\" \"dog\"\n\n\nYou can use the c() function to add other elements to your vector:\n\nweight_g &lt;- c(weight_g, 90) # add to the end of the vector\nweight_g &lt;- c(30, weight_g) # add to the beginning of the vector\nweight_g\n\n[1] 30 50 60 65 82 90\n\n\nIn the first line, we take the original vector weight_g, add the value 90 to the end of it, and save the result back into weight_g. Then we add the value 30 to the beginning, again saving the result back into weight_g.\nWe can do this over and over again to grow a vector, or assemble a dataset. As we program, this may be useful to add results that we are collecting or calculating.\nAn atomic vector is the simplest R data type and is a linear vector of a single type. Above, we saw 2 of the 6 main atomic vector types that R uses: \"character\" and \"numeric\" (or \"double\"). These are the basic building blocks that all R objects are built from. The other 4 atomic vector types are:\n\n\"logical\" for TRUE and FALSE (the boolean data type)\n\"integer\" for integer numbers (e.g., 2L, the L indicates to R that it’s an integer)\n\"complex\" to represent complex numbers with real and imaginary parts (e.g., 1 + 4i) and that’s all we’re going to say about them\n\"raw\" for bitstreams that we won’t discuss further\n\nYou can check the type of your vector using the typeof() function and inputting your vector as the argument.\nVectors are one of the many data structures that R uses. Other important ones are lists (list), matrices (matrix), data frames (data.frame), factors (factor) and arrays (array).\n\nChallenge\n\nWe’ve seen that atomic vectors can be of type character, numeric (or double), integer, and logical. But what happens if we try to mix these types in a single vector?\n\n\nSolution. R implicitly converts them to all be the same type\n\n\nWhat will happen in each of these examples? (hint: use class() to check the data type of your objects):\nnum_char &lt;- c(1, 2, 3, \"a\")\nnum_logical &lt;- c(1, 2, 3, TRUE)\nchar_logical &lt;- c(\"a\", \"b\", \"c\", TRUE)\ntricky &lt;- c(1, 2, 3, \"4\")\nWhy do you think it happens?\n\n\nSolution. Vectors can be of only one data type. R tries to convert (coerce) the content of this vector to find a “common denominator” that doesn’t lose any information.\n\n\nHow many values in combined_logical are \"TRUE\" (as a character) in the following example (reusing the 2 ..._logicals from above):\ncombined_logical &lt;- c(num_logical, char_logical)\n\n\nSolution. Only one. There is no memory of past data types, and the coercion happens the first time the vector is evaluated. Therefore, the TRUE in num_logical gets converted into a 1 before it gets converted into \"1\" in combined_logical.\n\n\nYou’ve probably noticed that objects of different types get converted into a single, shared type within a vector. In R, we call converting objects from one class into another class coercion. These conversions happen according to a hierarchy, whereby some types get preferentially coerced into other types. Can you draw a diagram that represents the hierarchy of how these data types are coerced?\n\n\nSolution. logical → numeric → character ← logical",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 2</b>: Intro to R and Rstudio"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/index.html#subsetting-vectors",
-    "href": "materials/1-workshop1/2-intro-to-r/index.html#subsetting-vectors",
-    "title": "Introduction to R",
-    "section": "Subsetting vectors",
-    "text": "Subsetting vectors\nIf we want to extract one or several values from a vector, we must provide one or several indices in square brackets. For instance:\n\nanimals &lt;- c(\"mouse\", \"rat\", \"dog\", \"cat\")\nanimals[2]\n\n[1] \"rat\"\n\nanimals[c(3, 2)]\n\n[1] \"dog\" \"rat\"\n\n\nWe can also repeat the indices to create an object with more elements than the original one:\n\nmore_animals &lt;- animals[c(1, 2, 3, 2, 1, 4)]\nmore_animals\n\n[1] \"mouse\" \"rat\"   \"dog\"   \"rat\"   \"mouse\" \"cat\"  \n\n\nR indices start at 1. Programming languages like Fortran, MATLAB, Julia, and R start counting at 1, because that’s what human beings typically do. Languages in the C family (including C++, Java, Perl, and Python) count from 0 because that’s simpler for computers to do.",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 2</b>: Intro to R and Rstudio"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/index.html#missing-data",
-    "href": "materials/1-workshop1/2-intro-to-r/index.html#missing-data",
-    "title": "Introduction to R",
-    "section": "Missing data",
-    "text": "Missing data\nAs R was designed to analyze datasets, it includes the concept of missing data (which is uncommon in other programming languages). Missing data are represented in vectors as NA.\nWhen doing operations on numbers, most functions will return NA if the data you are working with include missing values. This feature makes it harder to overlook the cases where you are dealing with missing data. You can add the argument na.rm = TRUE to calculate the result as if the missing values were removed (rm stands for ReMoved) first.\n\nheights &lt;- c(2, 4, 4, NA, 6)\nmean(heights)\n\n[1] NA\n\nmax(heights)\n\n[1] NA\n\nmean(heights, na.rm = TRUE)\n\n[1] 4\n\nmax(heights, na.rm = TRUE)\n\n[1] 6\n\n\nIf your data include missing values, you may want to become familiar with the functions is.na(), na.omit(), and complete.cases(). See below for examples.\n\n## Extract those elements which are not missing values.\nheights[!is.na(heights)]\n\n[1] 2 4 4 6\n\n## Returns the object with incomplete cases removed.\n#The returned object is an atomic vector of type `\"numeric\"` (or #`\"double\"`).\nna.omit(heights)\n\n[1] 2 4 4 6\nattr(,\"na.action\")\n[1] 4\nattr(,\"class\")\n[1] \"omit\"\n\n## Extract those elements which are complete cases.\n#The returned object is an atomic vector of type `\"numeric\"` (or #`\"double\"`).\nheights[complete.cases(heights)]\n\n[1] 2 4 4 6\n\n\nRecall that you can use the typeof() function to find the type of your atomic vector.\n\nChallenge\n\nUsing this vector of heights in inches, create a new vector, heights_no_na, with the NAs removed.\n\nheights &lt;- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)\n\nUse the function median() to calculate the median of the heights vector.\nUse R to figure out how many people in the set are taller than 67 inches.\n\n\nSolution. \n\nheights &lt;- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)\n\n# 1.\nheights_no_na &lt;- heights[!is.na(heights)]\n# or\nheights_no_na &lt;- na.omit(heights)\n# or\nheights_no_na &lt;- heights[complete.cases(heights)]\n\n# 2.\nmedian(heights, na.rm = TRUE)\n\n[1] 64\n\n# 3.\nheights_above_67 &lt;- heights_no_na[heights_no_na &gt; 67]\nlength(heights_above_67)\n\n[1] 6\n\n\n\n\nNow that we have learned how to write scripts, and the basics of R’s data structures, we are ready to start working with the Portal dataset we have been using in the other lessons, and learn about data frames.\n\n\n&lt;- is used to assign values on the right to objects on the left\nCode should be saved within the Source pane in RStudio to help you return to your code later.\n\n‘#’ can be used to add comments to your code.\nFunctions can automate more complicated sets of commands, and require arguments as inputs.\nVectors are composed by a series of values and can take many forms.\nData structures in R include ‘vector’, ‘list’, ‘matrix’, ‘data.frame’, ‘factor’, and ‘array’.\nVectors can be subset by indexing or through logical vectors.\nMany functions exist to remove missing data from data structures.",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 2</b>: Intro to R and Rstudio"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html",
-    "href": "materials/1-workshop1/4-tidyverse-201/index.html",
-    "title": "More data wrangling and data visualization with the tidyverse",
-    "section": "",
-    "text": "malaria_district_month\n\n# A tibble: 4 × 5\n  District   May   Jun   Jul   Aug\n  &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 Dingo       73  2168 16934  5381\n2 Spring     397  2236 24974  6726\n3 Barnard     NA   282  9870  3434\n4 Bolo        NA  4371 21286  6538\n\nmalaria_long &lt;- malaria_district_month %&gt;% \n  pivot_longer(\n    cols = May:Aug,\n    names_to = \"month\",\n    values_to = \"cases\"\n  )\n\nmalaria_long\n\n# A tibble: 16 × 3\n   District month cases\n   &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;\n 1 Dingo    May      73\n 2 Dingo    Jun    2168\n 3 Dingo    Jul   16934\n 4 Dingo    Aug    5381\n 5 Spring   May     397\n 6 Spring   Jun    2236\n 7 Spring   Jul   24974\n 8 Spring   Aug    6726\n 9 Barnard  May      NA\n10 Barnard  Jun     282\n11 Barnard  Jul    9870\n12 Barnard  Aug    3434\n13 Bolo     May      NA\n14 Bolo     Jun    4371\n15 Bolo     Jul   21286\n16 Bolo     Aug    6538",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 4</b>: More data wrangling and data visualization"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-data",
-    "href": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-data",
-    "title": "More data wrangling and data visualization with the tidyverse",
-    "section": "",
-    "text": "malaria_district_month\n\n# A tibble: 4 × 5\n  District   May   Jun   Jul   Aug\n  &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 Dingo       73  2168 16934  5381\n2 Spring     397  2236 24974  6726\n3 Barnard     NA   282  9870  3434\n4 Bolo        NA  4371 21286  6538\n\nmalaria_long &lt;- malaria_district_month %&gt;% \n  pivot_longer(\n    cols = May:Aug,\n    names_to = \"month\",\n    values_to = \"cases\"\n  )\n\nmalaria_long\n\n# A tibble: 16 × 3\n   District month cases\n   &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;\n 1 Dingo    May      73\n 2 Dingo    Jun    2168\n 3 Dingo    Jul   16934\n 4 Dingo    Aug    5381\n 5 Spring   May     397\n 6 Spring   Jun    2236\n 7 Spring   Jul   24974\n 8 Spring   Aug    6726\n 9 Barnard  May      NA\n10 Barnard  Jun     282\n11 Barnard  Jul    9870\n12 Barnard  Aug    3434\n13 Bolo     May      NA\n14 Bolo     Jun    4371\n15 Bolo     Jul   21286\n16 Bolo     Aug    6538",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 4</b>: More data wrangling and data visualization"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-longer",
-    "href": "materials/1-workshop1/4-tidyverse-201/index.html#pivot-longer",
-    "title": "More data wrangling and data visualization with the tidyverse",
-    "section": "pivot longer",
-    "text": "pivot longer\n\nmalaria_facility_count_data &lt;- readRDS(\"./../../../datasets/malaria_facility_count_data.rds\")\n\nmalaria_facility_count_data\n\n# A tibble: 3,038 × 10\n   location_name data_date  submitted_date Province District `malaria_rdt_0-4`\n   &lt;chr&gt;         &lt;date&gt;     &lt;date&gt;         &lt;chr&gt;    &lt;chr&gt;                &lt;int&gt;\n 1 Facility 1    2020-08-11 2020-08-12     North    Spring                  11\n 2 Facility 2    2020-08-11 2020-08-12     North    Bolo                    11\n 3 Facility 3    2020-08-11 2020-08-12     North    Dingo                    8\n 4 Facility 4    2020-08-11 2020-08-12     North    Bolo                    16\n 5 Facility 5    2020-08-11 2020-08-12     North    Bolo                     9\n 6 Facility 6    2020-08-11 2020-08-12     North    Dingo                    3\n 7 Facility 6    2020-08-10 2020-08-12     North    Dingo                    4\n 8 Facility 5    2020-08-10 2020-08-12     North    Bolo                    15\n 9 Facility 5    2020-08-09 2020-08-12     North    Bolo                    11\n10 Facility 5    2020-08-08 2020-08-12     North    Bolo                    19\n# ℹ 3,028 more rows\n# ℹ 4 more variables: `malaria_rdt_5-14` &lt;int&gt;, malaria_rdt_15 &lt;int&gt;,\n#   malaria_tot &lt;int&gt;, newid &lt;int&gt;\n\n# provide column with a tidyselect helper function\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    )\n\n# A tibble: 12,152 × 8\n   location_name data_date  submitted_date Province District newid name    value\n   &lt;chr&gt;         &lt;date&gt;     &lt;date&gt;         &lt;chr&gt;    &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;int&gt;\n 1 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    11\n 2 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    12\n 3 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    23\n 4 Facility 1    2020-08-11 2020-08-12     North    Spring       1 malari…    46\n 5 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…    11\n 6 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…    10\n 7 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…     5\n 8 Facility 2    2020-08-11 2020-08-12     North    Bolo         2 malari…    26\n 9 Facility 3    2020-08-11 2020-08-12     North    Dingo        3 malari…     8\n10 Facility 3    2020-08-11 2020-08-12     North    Dingo        3 malari…     5\n# ℹ 12,142 more rows",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 4</b>: More data wrangling and data visualization"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#plot",
-    "href": "materials/1-workshop1/4-tidyverse-201/index.html#plot",
-    "title": "More data wrangling and data visualization with the tidyverse",
-    "section": "plot",
-    "text": "plot\n\nmalaria_facility_count_data %&gt;% \n  ggplot(aes(x = data_date, y = malaria_tot)) + geom_col()\n\nWarning: Removed 686 rows containing missing values or values outside the scale range\n(`geom_col()`).",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 4</b>: More data wrangling and data visualization"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#plot-order",
-    "href": "materials/1-workshop1/4-tidyverse-201/index.html#plot-order",
-    "title": "More data wrangling and data visualization with the tidyverse",
-    "section": "plot order",
-    "text": "plot order\nSay you want to plot the amount of cases per age group\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  #mutate(month = factor(month, levels = c(\"May\", \"Jun\", \"Jul\", \"Aug\"))) %&gt;% \n  ggplot(aes(x = name, y = value)) + geom_col()\n\nWarning: Removed 2744 rows containing missing values or values outside the scale range\n(`geom_col()`).\n\n\n\n\n\n\n\n\n\nThe order on the x-axis is not right\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  ggplot(aes(x = name, y = value)) + geom_col()\n\nWarning: Removed 2744 rows containing missing values or values outside the scale range\n(`geom_col()`).",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 4</b>: More data wrangling and data visualization"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#add-labels",
-    "href": "materials/1-workshop1/4-tidyverse-201/index.html#add-labels",
-    "title": "More data wrangling and data visualization with the tidyverse",
-    "section": "add labels",
-    "text": "add labels\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  ggplot(aes(x = name, y = value)) + \n  geom_col() + \n  labs(x = \"age category\",\n       y = \"cases\")\n\nWarning: Removed 2744 rows containing missing values or values outside the scale range\n(`geom_col()`).",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 4</b>: More data wrangling and data visualization"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#exclude-totals",
-    "href": "materials/1-workshop1/4-tidyverse-201/index.html#exclude-totals",
-    "title": "More data wrangling and data visualization with the tidyverse",
-    "section": "Exclude Totals",
-    "text": "Exclude Totals\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  filter(name != \"malaria_tot\") %&gt;% \n  ggplot(aes(x = name, y = value)) + \n  geom_col() + \n  labs(x = \"age category\",\n       y = \"cases\")\n\nWarning: Removed 2058 rows containing missing values or values outside the scale range\n(`geom_col()`).",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 4</b>: More data wrangling and data visualization"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#categorise-by-district",
-    "href": "materials/1-workshop1/4-tidyverse-201/index.html#categorise-by-district",
-    "title": "More data wrangling and data visualization with the tidyverse",
-    "section": "categorise by District",
-    "text": "categorise by District\n\nmalaria_facility_count_data %&gt;% \n  pivot_longer(\n    cols = starts_with(\"malaria_\")\n    ) %&gt;% \n  mutate(name = factor(name, levels = c(\"malaria_rdt_0-4\", \"malaria_rdt_5-14\", \"malaria_rdt_15\", \"malaria_tot\"))) %&gt;% \n  filter(name != \"malaria_tot\") %&gt;% \n  ggplot(aes(x = name, y = value, fill = District)) + \n  geom_col() + \n  labs(x = \"age category\",\n       y = \"cases\")\n\nWarning: Removed 2058 rows containing missing values or values outside the scale range\n(`geom_col()`).",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 4</b>: More data wrangling and data visualization"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#joining",
-    "href": "materials/1-workshop1/4-tidyverse-201/index.html#joining",
-    "title": "More data wrangling and data visualization with the tidyverse",
-    "section": "Joining",
-    "text": "Joining",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 4</b>: More data wrangling and data visualization"
-    ]
-  },
-  {
-    "objectID": "materials/1-workshop1/4-tidyverse-201/index.html#table-1",
-    "href": "materials/1-workshop1/4-tidyverse-201/index.html#table-1",
-    "title": "More data wrangling and data visualization with the tidyverse",
-    "section": "Table 1",
-    "text": "Table 1\nhttps://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html\n\nlibrary(gtsummary)\n\nlinelist_cleaned &lt;- readRDS(\"./../../../datasets/linelist_cleaned.rds\")\n\nlinelist_cleaned %&gt;% \n  select(gender, age_cat, hospital, bmi) %&gt;% \n  tbl_summary(by = gender) %&gt;% \n  add_p() %&gt;% \n  bold_labels()\n\n278 observations missing `gender` have been removed. To include these observations, use `forcats::fct_na_value_to_level()` on `gender` column before passing to `tbl_summary()`.\n\n\nThere was an error in 'add_p()/add_difference()' for variable 'age_cat', p-value omitted:\nError in stats::fisher.test(structure(c(1L, 1L, 7L, 4L, 1L, 4L, 4L, 1L, : FEXACT error 7(location). LDSTP=17610 is too small for this problem,\n  (pastp=410.112, ipn_0:=ipoin[itp=246]=5459, stp[ipn_0]=419.544).\nIncrease workspace or consider using 'simulate.p.value=TRUE'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nf, N = 2,8071\nm, N = 2,8031\np-value2\n\n\n\n\nage_cat\n\n\n\n\n\n\n\n\n    0-4\n640 (23%)\n416 (15%)\n\n\n\n\n    5-9\n641 (23%)\n412 (15%)\n\n\n\n\n    10-14\n518 (18%)\n383 (14%)\n\n\n\n\n    15-19\n359 (13%)\n364 (13%)\n\n\n\n\n    20-29\n468 (17%)\n575 (21%)\n\n\n\n\n    30-49\n179 (6.4%)\n557 (20%)\n\n\n\n\n    50-69\n2 (&lt;0.1%)\n91 (3.2%)\n\n\n\n\n    70+\n0 (0%)\n5 (0.2%)\n\n\n\n\nhospital\n\n\n\n\n0.7\n\n\n    Central Hospital\n202 (7.2%)\n230 (8.2%)\n\n\n\n\n    Military Hospital\n421 (15%)\n435 (16%)\n\n\n\n\n    Missing\n700 (25%)\n696 (25%)\n\n\n\n\n    Other\n418 (15%)\n423 (15%)\n\n\n\n\n    Port Hospital\n857 (31%)\n823 (29%)\n\n\n\n\n    St. Mark's Maternity Hospital (SMMH)\n209 (7.4%)\n196 (7.0%)\n\n\n\n\nbmi\n37 (27, 63)\n29 (23, 40)\n&lt;0.001\n\n\n\n1 n (%); Median (IQR)\n\n\n2 Pearson’s Chi-squared test; Wilcoxon rank sum test",
-    "crumbs": [
-      "Installation",
-      "<em>1. Reproducible Data Analysis with R</em>",
-      "<b>Module 4</b>: More data wrangling and data visualization"
-    ]
+    "objectID": "resources.html#definitions-from-glosario",
+    "href": "resources.html#definitions-from-glosario",
+    "title": "Resources",
+    "section": "Definitions from Glosario",
+    "text": "Definitions from Glosario\nFurther definitions at Glosario\nArgument: one of possibly several expressions that are passed to a function. Oftentimes parameter and arugument are used interchangably, even though techincally parameter refers to the variable and argument refers to the value.\nAssignment operator: Symbol that assigns values on the right to an object on the left. Looks like &lt;-. Keyboard shortcut is Alt + -\nComment: Text written in a script that is not treated as code to be run, but rather as text that describes what the code is doing. These are usually short notes, beginning with a #\nComprehensive R Archive Network (CRAN): A public repository of R packages.\nData frame: A two-dimensional data structure for storing tabular data in memory. Rows represent records and columns represent variables.\nFunction: A code block which gathers a sequence of operations into a whole, preserving it for ongoing use by defining a set of tasks that takes zero or more required and optional arguments as inputs and returns expected outputs (return values), if any. Functions enable repeating these defined tasks with one command, known as a function call.\nNA: A special value used to represent data that is not available.\nPipe operator: The %&gt;% used to make the output of one function the input of the next.\nPackage: A collection of code, data, and documentation that can be distributed and re-used. Also referred to in some languages as a library or module.\nParameter: A variable specified in a function definition whose value is passed to the function when the function is called. Parameters and arguments are distinct, but related concepts. Parameters are variables and arguments are the values assigned to those variables. In practice though these terms are often used interchangeably.\nPositional argument: An argument to a function that gets its value according to its place in the function’s definition, as opposed to a named argument that is explicitly matched by name.\nReproducible research: The practice of describing and documenting research results in such a way that another researcher or person can re-run the analysis code on the same data to obtain the same result.\nTibble: A modern replacement for R’s data frame, which stores tabular data in columns and rows, defined and used in the tidyverse. Almost always when you are working with a data frame, you are actually working with a tibble.\nTidy data: Tabular data that satisfies three conditions that facilitate initial cleaning, and later exploration and analysis—(1) each variable forms a column, (2) each observation forms a row, and (3) each type of observation unit forms a table.\nTidyverse: A collection of R packages for operating on tabular data in consistent ways.\nVariable: A name in a program that has some data associated with it. A variable’s value can be changed after definition.\nVector: A sequence of values that have all the same type. Vectors are the fundamental data structure in R; a scalar is just a vector with exactly one element."
   }
 ]
