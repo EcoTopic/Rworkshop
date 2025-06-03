@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Data Analysis in R - Intro to data visualization and data wrangling with the</title>
+<title>Introduction to Data Analysis in R - Intro to data wrangling and visualization with the</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -91,6 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -102,12 +109,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Introduction to Data Analysis in R</span>
     </a>
@@ -119,43 +125,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../Install_R_and_R-studio.pdf" rel="" target="">
- <span class="menu-text">Installation</span></a>
+    <a class="nav-link" href="../../../Install_R_and_R-studio.pdf"> 
+<span class="menu-text">Installation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../datasets.html" rel="" target="">
- <span class="menu-text">Datasets</span></a>
+    <a class="nav-link" href="../../../datasets.html"> 
+<span class="menu-text">Datasets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../resources.html" rel="" target="">
- <span class="menu-text">Resources</span></a>
+    <a class="nav-link" href="../../../resources.html"> 
+<span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/elsherbini/durban-data-science-for-biology" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/elsherbini/durban-data-science-for-biology"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><em>1. Reproducible Data Analysis with R</em></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/3-tidyverse-101/index.html"><b>Module 3</b>: Intro to data visualization and data wrangling with the <code>tidyverse</code></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><em>1. Reproducible Data Analysis with R</em></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/3-tidyverse-101/index.html"><b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -175,38 +181,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/1-workshop1/1-data-generation/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 1</b>: How data analysis is informed by data generation</span></a>
+  <a href="../../../materials/1-workshop1/1-before-we-start/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: Before we start</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 2</b>: Intro to R, Rstudio, and Quarto</span></a>
+ <span class="menu-text"><b>Module 2</b>: Intro to R and Rstudio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><b>Module 3</b>: Intro to data visualization and data wrangling with the <code>tidyverse</code></span></a>
+ <span class="menu-text"><b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/1-workshop1/4-tidyverse-201/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 4</b>: Data wrangling and more data visualization</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../materials/1-workshop1/5-tableone/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 5</b>: <code>tableone</code> and its Basic Statistics</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../materials/1-workshop1/6-hypothesis-testing/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 6</b>: Data transformations and more statistics</span></a>
+ <span class="menu-text"><b>Module 4</b>: More data wrangling and data visualization</span></a>
   </div>
 </li>
       </ul>
@@ -214,34 +208,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#data-visualization-activity" id="toc-data-visualization-activity" class="nav-link" data-scroll-target="#data-visualization-activity">Data Visualization Activity</a>
+  <li><a href="#transition-to-r" id="toc-transition-to-r" class="nav-link active" data-scroll-target="#transition-to-r">Transition to R</a></li>
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse">Tidyverse</a>
   <ul class="collapse">
-  <li><a href="#genetic-profiles-of-cancer" id="toc-genetic-profiles-of-cancer" class="nav-link" data-scroll-target="#genetic-profiles-of-cancer">Genetic profiles of cancer</a></li>
+  <li><a href="#import-raw-data" id="toc-import-raw-data" class="nav-link" data-scroll-target="#import-raw-data">Import raw data</a></li>
   </ul></li>
-  <li><a href="#coding-exercise-3.1" id="toc-coding-exercise-3.1" class="nav-link" data-scroll-target="#coding-exercise-3.1">Coding exercise 3.1</a>
+  <li><a href="#view-the-data" id="toc-view-the-data" class="nav-link" data-scroll-target="#view-the-data">View the data</a></li>
+  <li><a href="#inspecting-the-data" id="toc-inspecting-the-data" class="nav-link" data-scroll-target="#inspecting-the-data">Inspecting the data</a></li>
+  <li><a href="#automatic-cleaning" id="toc-automatic-cleaning" class="nav-link" data-scroll-target="#automatic-cleaning">Automatic cleaning</a>
   <ul class="collapse">
-  <li><a href="#basic-use-of-ggplot" id="toc-basic-use-of-ggplot" class="nav-link" data-scroll-target="#basic-use-of-ggplot">Basic use of ggplot</a></li>
-  <li><a href="#more-complex-geoms" id="toc-more-complex-geoms" class="nav-link" data-scroll-target="#more-complex-geoms">More complex geoms</a></li>
-  <li><a href="#adding-color" id="toc-adding-color" class="nav-link" data-scroll-target="#adding-color">Adding color</a></li>
-  <li><a href="#using-aesthetics-as-parameters" id="toc-using-aesthetics-as-parameters" class="nav-link" data-scroll-target="#using-aesthetics-as-parameters">Using aesthetics as parameters</a></li>
+  <li><a href="#manual-name-cleaning" id="toc-manual-name-cleaning" class="nav-link" data-scroll-target="#manual-name-cleaning">Manual name cleaning</a></li>
+  <li><a href="#selecting-some-columns" id="toc-selecting-some-columns" class="nav-link" data-scroll-target="#selecting-some-columns">Selecting some columns</a></li>
   </ul></li>
+  <li><a href="#keep-columns" id="toc-keep-columns" class="nav-link" data-scroll-target="#keep-columns">Keep columns</a></li>
+  <li><a href="#deduplication" id="toc-deduplication" class="nav-link" data-scroll-target="#deduplication">Deduplication</a></li>
+  <li><a href="#column-creation-and-transformation" id="toc-column-creation-and-transformation" class="nav-link" data-scroll-target="#column-creation-and-transformation">Column creation and transformation</a></li>
+  <li><a href="#transform-data-type" id="toc-transform-data-type" class="nav-link" data-scroll-target="#transform-data-type">Transform data type</a></li>
+  <li><a href="#filter-rows" id="toc-filter-rows" class="nav-link" data-scroll-target="#filter-rows">Filter rows</a></li>
+  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count">count</a></li>
+  <li><a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise">summarise</a>
+  <ul class="collapse">
+  <li><a href="#summarise-grouped" id="toc-summarise-grouped" class="nav-link" data-scroll-target="#summarise-grouped">summarise grouped</a></li>
+  </ul></li>
+  <li><a href="#save-you-data-for-later" id="toc-save-you-data-for-later" class="nav-link" data-scroll-target="#save-you-data-for-later">Save you data for later</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><em>1. Reproducible Data Analysis with R</em></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/3-tidyverse-101/index.html"><b>Module 3</b>: Intro to data wrangling with the <code>tidyverse</code></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Intro to data visualization and data wrangling with the<br>
+<h1 class="title">Intro to data wrangling and visualization with the<br>
 <pre>tidyverse</pre></h1>
 </div>
 
@@ -255,348 +260,370 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
+
 <blockquote class="blockquote">
-<p>Learn the elements of scientific data visualization and how to use them with <code>ggplot2</code></p>
+<p>Learn about importing messy data, making it tidy and making plots</p>
 </blockquote>
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../../../materials/1-workshop1/3-tidyverse-101/slides.html">Make slides full screen</a></p>
-<iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
-<p><br>
-</p>
+<section id="transition-to-r" class="level2">
+<h2 class="anchored" data-anchor-id="transition-to-r"><a href="https://www.epirhandbook.com/en/transition-to-r.html#transition-to-r">Transition to R</a></h2>
 </section>
-<section id="data-visualization-activity" class="level2">
-<h2 class="anchored" data-anchor-id="data-visualization-activity">Data Visualization Activity</h2>
-<p><em>reproduced from a Schmidt Science Fellowship activity, thanks to Fatima Hussain</em></p>
-<blockquote class="blockquote">
-<p>Patterns are the essence of data exploration and our eyes’ ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.</p>
-</blockquote>
-<section id="genetic-profiles-of-cancer" class="level3">
-<h3 class="anchored" data-anchor-id="genetic-profiles-of-cancer">Genetic profiles of cancer</h3>
-<p>These datasets contains 10 cancer samples. <a href="#tbl-1">Table&nbsp;1</a> describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). <a href="#tbl-2">Table&nbsp;2</a> summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).</p>
-<div id="tbl-1" class="anchored">
-<table class="table-striped table-bordered table-sm small table">
-<caption>Table&nbsp;1: Mutational status for a set of genes</caption>
-<colgroup>
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>sample -&gt;</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-<th>10</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Gene A</strong></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td><strong>Gene B</strong></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td><strong>Gene C</strong></td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td><strong>Gene D</strong></td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td><strong>Gene E</strong></td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
+<section id="tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverse">Tidyverse</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="tbl-2" class="anchored">
-<table class="table-striped table-bordered table-sm small table">
-<caption>Table&nbsp;2: Expression levels for a set of genes</caption>
-<colgroup>
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>sample -&gt;</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-<th>10</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Gene A</strong></td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>2</td>
-<td>2</td>
-<td>0</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td><strong>Gene B</strong></td>
-<td>1</td>
-<td>1</td>
-<td>2</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td><strong>Gene C</strong></td>
-<td>1</td>
-<td>1</td>
-<td>3</td>
-<td>1</td>
-<td>2</td>
-<td>2</td>
-<td>3</td>
-<td>0</td>
-<td>3</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td><strong>Gene D</strong></td>
-<td>0</td>
-<td>0</td>
-<td>2</td>
-<td>1</td>
-<td>3</td>
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td><strong>Gene E</strong></td>
-<td>1</td>
-<td>3</td>
-<td>3</td>
-<td>1</td>
-<td>3</td>
-<td>1</td>
-<td>2</td>
-<td>1</td>
-<td>3</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
+<section id="import-raw-data" class="level3">
+<h3 class="anchored" data-anchor-id="import-raw-data">Import raw data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>linelist_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"./../../../datasets/linelist_raw.xlsx"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>facilities <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"./../../../datasets/facilities.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><br>
-</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Think about the problem on your own for 5 minutes.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. In your groups, discuss and create different visualizations to highlight underlying patterns<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Summarize the group’s approach<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Elect/volunteer a spokesperson to present the solution</p>
-<p><br>
-</p>
-<p><strong>Consider the following concepts when creating your visualizations</strong></p>
 </section>
-<div class="grid">
-<div class="g-col-12 text-center">
-<section id="patterns" class="level3">
-<h3 class="anchored" data-anchor-id="patterns">Patterns</h3>
-<p>Patterns are the essence of data exploration. What kinds of representation will produce the most meaningful insights?</p>
-<p><img src="images/ws_patterns1.png" class="img-fluid" width="200"> <img src="images/ws_patterns2.png" class="img-fluid" width="200"> <img src="images/ws_patterns3.png" class="img-fluid" width="200"> <img src="images/ws_patterns4.png" class="img-fluid" width="200"></p>
 </section>
-<section id="encodings" class="level3">
-<h3 class="anchored" data-anchor-id="encodings">Encodings</h3>
-<p>Some visual estimations are easier to make than others. How might you use <strong>encodings</strong> that are less accurate but otherwise better at conveying overall trends?</p>
-<p><img src="images/ws_encod1.png" class="img-fluid" style="width:45.0%"> <img src="images/ws_encod2.png" class="img-fluid" style="width:45.0%"> <img src="images/ws_encod3.png" class="img-fluid" style="width:45.0%"></p>
-</section>
+<section id="view-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="view-the-data">View the data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>linelist_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,611 × 28
+   case_id generation `infection date`    `date onset` `hosp date`        
+   &lt;chr&gt;        &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;        &lt;dttm&gt;             
+ 1 5fe599           4 2014-05-08 00:00:00 2014-05-13   2014-05-15 00:00:00
+ 2 8689b7           4 NA                  2014-05-13   2014-05-14 00:00:00
+ 3 11f8ea           2 NA                  2014-05-16   2014-05-18 00:00:00
+ 4 b8812a           3 2014-05-04 00:00:00 2014-05-18   2014-05-20 00:00:00
+ 5 893f25           3 2014-05-18 00:00:00 2014-05-21   2014-05-22 00:00:00
+ 6 be99c8           3 2014-05-03 00:00:00 2014-05-22   2014-05-23 00:00:00
+ 7 07e3e8           4 2014-05-22 00:00:00 2014-05-27   2014-05-29 00:00:00
+ 8 369449           4 2014-05-28 00:00:00 2014-06-02   2014-06-03 00:00:00
+ 9 f393b4           4 NA                  2014-06-05   2014-06-06 00:00:00
+10 1389ca           4 NA                  2014-06-05   2014-06-07 00:00:00
+# ℹ 6,601 more rows
+# ℹ 23 more variables: date_of_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,
+#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,
+#   age &lt;chr&gt;, age_unit &lt;chr&gt;, row_num &lt;dbl&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;,
+#   ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;,
+#   vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, merged_header &lt;chr&gt;,
+#   ...28 &lt;chr&gt;</code></pre>
 </div>
-<div class="g-col-12 text-center">
-<section id="color" class="level3">
-<h3 class="anchored" data-anchor-id="color">Color</h3>
-<p><strong>Color</strong> is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?</p>
-<p><img src="images/ws_color1.png" class="img-fluid" style="width:19.0%"> <img src="images/ws_color2.png" class="img-fluid" style="width:19.0%"> <img src="images/ws_color3.png" class="img-fluid" style="width:19.0%"> <img src="images/ws_color4.png" class="img-fluid" style="width:19.0%"></p>
-</section>
-<section id="salience-and-relevance" class="level3">
-<h3 class="anchored" data-anchor-id="salience-and-relevance">Salience and Relevance</h3>
-<p>Pop-out effects enable quick recognition. Are the most <strong>noticeable</strong> elements of your visualizations also the most <strong>relevant</strong>?</p>
-<p><img src="images/ws_salience2.png" class="img-fluid" style="width:90.0%"></p>
-</section>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>facilities</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  facility_id facility                            
+        &lt;dbl&gt; &lt;chr&gt;                               
+1           1 Central Hospital                    
+2           2 Military Hospital                   
+3           3 Missing                             
+4           4 Other                               
+5           5 Port Hospital                       
+6           6 St. Mark's Maternity Hospital (SMMH)</code></pre>
 </div>
 </div>
 </section>
-<section id="coding-exercise-3.1" class="level2">
-<h2 class="anchored" data-anchor-id="coding-exercise-3.1">Coding exercise 3.1</h2>
-<p>For this exercise we’ll be using the instructional dataset. <a href="../../../datasets.html">Download the dataset here</a>.</p>
-<p>In this worksheet, we will discuss a core concept of ggplot, the mapping of data values onto aesthetics.</p>
-<p>We will be using the R package <code>tidyverse</code>, which includes <code>ggplot()</code> and related functions.</p>
-<p>Copy the following code chunk into your quarto document. Notice the error in the <code>read_csv()</code> line - it wants you to supply the <code>file</code> name to read. Fix the error!</p>
+<section id="inspecting-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="inspecting-the-data">Inspecting the data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># load the tidyverse library</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we want to use the data in the visit_clinical_measurements file</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>clinical_measurements <span class="ot">&lt;-</span> <span class="fu">read_csv</span>() <span class="co"># read in your data </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in read_csv(): argument "file" is missing, with no default</code></pre>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(linelist_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [6,611 × 28] (S3: tbl_df/tbl/data.frame)
+ $ case_id        : chr [1:6611] "5fe599" "8689b7" "11f8ea" "b8812a" ...
+ $ generation     : num [1:6611] 4 4 2 3 3 3 4 4 4 4 ...
+ $ infection date : POSIXct[1:6611], format: "2014-05-08" NA ...
+ $ date onset     : chr [1:6611] "2014-05-13" "2014-05-13" "2014-05-16" "2014-05-18" ...
+ $ hosp date      : POSIXct[1:6611], format: "2014-05-15" "2014-05-14" ...
+ $ date_of_outcome: POSIXct[1:6611], format: NA "2014-05-18" ...
+ $ outcome        : chr [1:6611] NA "Recover" "Recover" NA ...
+ $ gender         : chr [1:6611] "m" "f" "m" "f" ...
+ $ facility_id    : num [1:6611] 5 NA 7 6 4 6 NA NA NA NA ...
+ $ lon            : num [1:6611] -13.2 -13.2 -13.2 -13.2 -13.2 ...
+ $ lat            : num [1:6611] 8.47 8.45 8.46 8.48 8.46 ...
+ $ infector       : chr [1:6611] "f547d6" NA NA "f90f5f" ...
+ $ source         : chr [1:6611] "other" NA NA "other" ...
+ $ age            : chr [1:6611] "2" "3" "56" "18" ...
+ $ age_unit       : chr [1:6611] "years" "years" "years" "years" ...
+ $ row_num        : num [1:6611] 1 2 3 4 5 6 7 8 9 10 ...
+ $ wt_kg          : num [1:6611] 27 25 91 41 36 56 47 0 86 69 ...
+ $ ht_cm          : num [1:6611] 48 59 238 135 71 116 87 11 226 174 ...
+ $ ct_blood       : num [1:6611] 22 22 21 23 23 21 21 22 22 22 ...
+ $ fever          : chr [1:6611] "no" NA NA "no" ...
+ $ chills         : chr [1:6611] "no" NA NA "no" ...
+ $ cough          : chr [1:6611] "yes" NA NA "no" ...
+ $ aches          : chr [1:6611] "no" NA NA "no" ...
+ $ vomit          : chr [1:6611] "yes" NA NA "no" ...
+ $ temp           : num [1:6611] 36.8 36.9 36.9 36.8 36.9 37.6 37.3 37 36.4 35.9 ...
+ $ time_admission : chr [1:6611] NA "09:36" "16:48" "11:22" ...
+ $ merged_header  : chr [1:6611] "a" "a" "a" "a" ...
+ $ ...28          : chr [1:6611] "b" "b" "b" "b" ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#then show the first few rows</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clinical_measurements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'clinical_measurements' not found</code></pre>
-</div>
-</div>
-<section id="basic-use-of-ggplot" class="level3">
-<h3 class="anchored" data-anchor-id="basic-use-of-ggplot">Basic use of ggplot</h3>
-<p>In the most basic use of ggplot, we call the <code>ggplot()</code> function with a dataset and an aesthetic mapping (created with <code>aes()</code>), and then we add a geom, such as <code>geom_line()</code> to draw lines or <code>geom_point()</code> to draw points.</p>
-<p>Try this for yourself. Map the column <code>ph</code> onto the x axis and the column <code>crp_blood</code> onto the y axis, and use <code>geom_line()</code> to display the data.</p>
-<p>Whenever you see <code>___</code> in the code below, that means you should swap it in with your own code.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Try again. Now use <code>geom_point()</code> instead of <code>geom_line()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>And now swap which column you map to x and which to y.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="more-complex-geoms" class="level3">
-<h3 class="anchored" data-anchor-id="more-complex-geoms">More complex geoms</h3>
-<p>You can use other geoms to make different types of plots. For example, <code>geom_boxplot()</code> will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Put <code>nugent_score</code> on the x axis, <code>ph</code> on the y axis, and use <code>geom_boxplot()</code>.</p>
+<section id="automatic-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="automatic-cleaning">Automatic cleaning</h2>
+<p>The function <code>clean_names()</code> from the package <strong>janitor</strong> standardizes column names and makes them unique by doing the following:</p>
+<ul>
+<li>Converts all names to consist of only underscores, numbers, and letters</li>
+<li>Accented characters are transliterated to ASCII (e.g.&nbsp;german o with umlaut becomes “o”, spanish “enye” becomes “n”)</li>
+<li>Capitalization preference for the new column names can be specified using the case = argument (“snake” is default, alternatives include “sentence”, “title”, “small_camel”…)</li>
+</ul>
+<p>Here is an online <a href="https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#cleaning">vignette</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe the raw dataset through the function clean_names(), assign result as "linelist"  </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> linelist_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># see the new column names</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(linelist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "case_id"         "generation"      "infection_date"  "date_onset"     
+ [5] "hosp_date"       "date_of_outcome" "outcome"         "gender"         
+ [9] "facility_id"     "lon"             "lat"             "infector"       
+[13] "source"          "age"             "age_unit"        "row_num"        
+[17] "wt_kg"           "ht_cm"           "ct_blood"        "fever"          
+[21] "chills"          "cough"           "aches"           "vomit"          
+[25] "temp"            "time_admission"  "merged_header"   "x28"            </code></pre>
 </div>
-<p>Now try swapping the x and y axis <code>geom_jitter()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now try swapping the x and y axis</p>
+<section id="manual-name-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="manual-name-cleaning">Manual name cleaning</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">##################################################################################</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> linelist_raw <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># standardize column name syntax</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># manually re-name columns</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>           <span class="co"># NEW name             # OLD name</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">date_infection       =</span> infection_date,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">date_hospitalisation =</span> hosp_date,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">date_outcome         =</span> date_of_outcome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="adding-color" class="level3">
-<h3 class="anchored" data-anchor-id="adding-color">Adding color</h3>
-<p>Try again with <code>geom_jitter()</code>, this time using <code>ph</code> as the location along the y axis and <code>arm</code> for the color. Remember to check the <code>ggplot</code> cheat sheet, or type <code>?geom_jitter()</code> in the console to and look at the “Aesthetics” section if you get stuck.</p>
+<section id="selecting-some-columns" class="level3">
+<h3 class="anchored" data-anchor-id="selecting-some-columns">Selecting some columns</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date_infection, date_hospitalisation, date_outcome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,611 × 3
+   date_infection      date_hospitalisation date_outcome       
+   &lt;dttm&gt;              &lt;dttm&gt;               &lt;dttm&gt;             
+ 1 2014-05-08 00:00:00 2014-05-15 00:00:00  NA                 
+ 2 NA                  2014-05-14 00:00:00  2014-05-18 00:00:00
+ 3 NA                  2014-05-18 00:00:00  2014-05-30 00:00:00
+ 4 2014-05-04 00:00:00 2014-05-20 00:00:00  NA                 
+ 5 2014-05-18 00:00:00 2014-05-22 00:00:00  2014-05-29 00:00:00
+ 6 2014-05-03 00:00:00 2014-05-23 00:00:00  2014-05-24 00:00:00
+ 7 2014-05-22 00:00:00 2014-05-29 00:00:00  2014-06-01 00:00:00
+ 8 2014-05-28 00:00:00 2014-06-03 00:00:00  2014-06-07 00:00:00
+ 9 NA                  2014-06-06 00:00:00  2014-06-18 00:00:00
+10 NA                  2014-06-07 00:00:00  2014-06-09 00:00:00
+# ℹ 6,601 more rows</code></pre>
 </div>
-<p>(Hint: Try adding <code>size = 3</code> as a parameter to the <code>geom_jitter()</code> to create larger points.)</p>
+</div>
 </section>
-<section id="using-aesthetics-as-parameters" class="level3">
-<h3 class="anchored" data-anchor-id="using-aesthetics-as-parameters">Using aesthetics as parameters</h3>
-<p>Many of the aesthetics (such as <code>color</code>, <code>fill</code>, and also <code>size</code> to change line size or point thickness) can be used as parameters inside a geom rather than inside an <code>aes()</code> statement. The difference is that when you use an aesthetic as a parameter, you specify a specific value, such as <code>color = "blue"</code>, rather than a mapping, such as <code>aes(color = arm)</code>. Notice the difference: Inside the <code>aes()</code> function, we don’t actually specify the specific color values, ggplot does that for us. We only say that we want the data values of the <code>arm</code> column to correspond to different colors. (We will learn later how to tell ggplot to use specific colors in this mapping.)</p>
-<p>Try this with the boxplot example from the previous section. Map <code>arm</code> onto the <code>fill</code> aesthetic but set the color of the lines to <code>"navyblue"</code>.</p>
+</section>
+<section id="keep-columns" class="level2">
+<h2 class="anchored" data-anchor-id="keep-columns">Keep columns</h2>
+<p>Select only the columns you want to remain</p>
+<p>Put their names in the <code>select()</code> command, with no quotation marks. They will appear in the data frame in the order you provide. Note that if you include a column that does not exist, R will return an error (see use of <code>any_of()</code> below if you want no error in this situation).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># linelist dataset is piped through select() command, and names() prints just the column names</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(case_id, date_onset, date_hospitalisation, fever) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>()  <span class="co"># display the column names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "case_id"              "date_onset"           "date_hospitalisation"
+[4] "fever"               </code></pre>
 </div>
-<p>Now do the reverse. Map arm onto the line colors of the boxplot, but will the box with the color <code>"navyblue"</code>.</p>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Also, by using the 'minus' sign (-) you can deselect columns</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>x28)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,611 × 27
+   case_id generation date_infection      date_onset date_hospitalisation
+   &lt;chr&gt;        &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;      &lt;dttm&gt;              
+ 1 5fe599           4 2014-05-08 00:00:00 2014-05-13 2014-05-15 00:00:00 
+ 2 8689b7           4 NA                  2014-05-13 2014-05-14 00:00:00 
+ 3 11f8ea           2 NA                  2014-05-16 2014-05-18 00:00:00 
+ 4 b8812a           3 2014-05-04 00:00:00 2014-05-18 2014-05-20 00:00:00 
+ 5 893f25           3 2014-05-18 00:00:00 2014-05-21 2014-05-22 00:00:00 
+ 6 be99c8           3 2014-05-03 00:00:00 2014-05-22 2014-05-23 00:00:00 
+ 7 07e3e8           4 2014-05-22 00:00:00 2014-05-27 2014-05-29 00:00:00 
+ 8 369449           4 2014-05-28 00:00:00 2014-06-02 2014-06-03 00:00:00 
+ 9 f393b4           4 NA                  2014-06-05 2014-06-06 00:00:00 
+10 1389ca           4 NA                  2014-06-05 2014-06-07 00:00:00 
+# ℹ 6,601 more rows
+# ℹ 22 more variables: date_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,
+#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,
+#   age &lt;chr&gt;, age_unit &lt;chr&gt;, row_num &lt;dbl&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;,
+#   ct_blood &lt;dbl&gt;, fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;,
+#   vomit &lt;chr&gt;, temp &lt;dbl&gt;, time_admission &lt;chr&gt;, merged_header &lt;chr&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use any_of() to ignore none existent column names</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">any_of</span>(<span class="fu">c</span>(<span class="st">"case_id"</span>, <span class="st">"peanut_butter"</span>, <span class="st">"date_onset"</span>, <span class="st">"date_hospitalisation"</span>, <span class="st">"fever"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "case_id"              "date_onset"           "date_hospitalisation"
+[4] "fever"               </code></pre>
+</div>
+</div>
+</section>
+<section id="deduplication" class="level2">
+<h2 class="anchored" data-anchor-id="deduplication">Deduplication</h2>
+<p>The package dplyr offers the <code>distinct()</code> function. This function examines every row and reduce the data frame to only the unique rows. That is, it removes rows that are 100% duplicates.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CLEANING 'PIPE' CHAIN (starts with raw data and pipes it through cleaning steps)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">##################################################################################</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># begin cleaning pipe chain</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="do">###########################</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> linelist_raw <span class="sc">%&gt;%</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># standardize column name syntax</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># manually re-name columns</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>           <span class="co"># NEW name             # OLD name</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">date_infection       =</span> infection_date,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">date_hospitalisation =</span> hosp_date,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">date_outcome         =</span> date_of_outcome) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove column</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(row_num, merged_header, x28)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># de-duplicate</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Great, that’s all for now! If you are done, but a green sticky note on your laptop!</p>
+</section>
+<section id="column-creation-and-transformation" class="level2">
+<h2 class="anchored" data-anchor-id="column-creation-and-transformation">Column creation and transformation</h2>
+<p>We recommend using the dplyr function <code>mutate()</code> to add a new column, or to modify an existing one.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi =</span> wt_kg <span class="sc">/</span> (ht_cm<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="transform-data-type" class="level2">
+<h2 class="anchored" data-anchor-id="transform-data-type">Transform data type</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># age is stored as character</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,608 × 1
+   age  
+   &lt;chr&gt;
+ 1 2    
+ 2 3    
+ 3 56   
+ 4 18   
+ 5 3    
+ 6 16   
+ 7 16   
+ 8 0    
+ 9 61   
+10 27   
+# ℹ 6,598 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use mutate to change</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age =</span> <span class="fu">as.numeric</span>(age),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">date_infection =</span> <span class="fu">ymd</span>(date_infection))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="filter-rows" class="level2">
+<h2 class="anchored" data-anchor-id="filter-rows">Filter rows</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>linelist_female <span class="ot">&lt;-</span> linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"f"</span>)   <span class="co"># keep only rows where gender is equal to "f"</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>linelist_female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,139 × 26
+   case_id generation date_infection date_onset date_hospitalisation
+   &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;         &lt;chr&gt;      &lt;dttm&gt;              
+ 1 8689b7           4 NA             2014-05-13 2014-05-14 00:00:00 
+ 2 b8812a           3 2014-05-04     2014-05-18 2014-05-20 00:00:00 
+ 3 be99c8           3 2014-05-03     2014-05-22 2014-05-23 00:00:00 
+ 4 07e3e8           4 2014-05-22     2014-05-27 2014-05-29 00:00:00 
+ 5 369449           4 2014-05-28     2014-06-02 2014-06-03 00:00:00 
+ 6 1389ca           4 NA             2014-06-05 2014-06-07 00:00:00 
+ 7 2eaa9a           5 2014-06-07     2014-06-17 2014-06-17 00:00:00 
+ 8 bbfa93           6 2014-06-09     2014-06-18 2014-06-20 00:00:00 
+ 9 f50e8a          10 NA             2014-06-22 2014-06-23 00:00:00 
+10 3a7673           8 NA             2014-06-23 2014-06-24 00:00:00 
+# ℹ 3,129 more rows
+# ℹ 21 more variables: date_outcome &lt;dttm&gt;, outcome &lt;chr&gt;, gender &lt;chr&gt;,
+#   facility_id &lt;dbl&gt;, lon &lt;dbl&gt;, lat &lt;dbl&gt;, infector &lt;chr&gt;, source &lt;chr&gt;,
+#   age &lt;dbl&gt;, age_unit &lt;chr&gt;, wt_kg &lt;dbl&gt;, ht_cm &lt;dbl&gt;, ct_blood &lt;dbl&gt;,
+#   fever &lt;chr&gt;, chills &lt;chr&gt;, cough &lt;chr&gt;, aches &lt;chr&gt;, vomit &lt;chr&gt;,
+#   temp &lt;dbl&gt;, time_admission &lt;chr&gt;, bmi &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="count" class="level2">
+<h2 class="anchored" data-anchor-id="count">count</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  gender     n
+  &lt;chr&gt;  &lt;int&gt;
+1 f       3139
+2 m       3146
+3 &lt;NA&gt;     323</code></pre>
+</div>
+</div>
+</section>
+<section id="summarise" class="level2">
+<h2 class="anchored" data-anchor-id="summarise">summarise</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min_infection_date =</span> <span class="fu">min</span>(date_infection, <span class="at">na.rm =</span> T),</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_infection_date =</span> <span class="fu">max</span>(date_infection, <span class="at">na.rm =</span> T),</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_age =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  min_infection_date max_infection_date mean_age
+  &lt;date&gt;             &lt;date&gt;                &lt;dbl&gt;
+1 2012-04-09         2015-04-27             16.1</code></pre>
+</div>
+</div>
+<section id="summarise-grouped" class="level3">
+<h3 class="anchored" data-anchor-id="summarise-grouped">summarise grouped</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min_infection_date =</span> <span class="fu">min</span>(date_infection, <span class="at">na.rm =</span> T),</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_infection_date =</span> <span class="fu">max</span>(date_infection, <span class="at">na.rm =</span> T),</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_age =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  gender min_infection_date max_infection_date mean_age
+  &lt;chr&gt;  &lt;date&gt;             &lt;date&gt;                &lt;dbl&gt;
+1 f      2012-05-16         2015-04-27             12.7
+2 m      2012-04-09         2015-04-24             19.5
+3 &lt;NA&gt;   2012-09-13         2015-04-17             15.4</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="save-you-data-for-later" class="level2">
+<h2 class="anchored" data-anchor-id="save-you-data-for-later">Save you data for later</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(linelist, <span class="st">"./data/clean_linelist.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -679,10 +706,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/EcoTopic\.github\.io\/Rworkshop\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -692,8 +736,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -705,7 +758,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -749,6 +925,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -774,6 +951,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -835,26 +1038,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 2</b>: Intro to R, Rstudio, and Quarto</span>
+      <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="pagination-link" aria-label="<b>Module 2</b>: Intro to R and Rstudio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 2</b>: Intro to R and Rstudio</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../materials/1-workshop1/4-tidyverse-201/index.html" class="pagination-link">
-        <span class="nav-page-text"><b>Module 4</b>: Data wrangling and more data visualization</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../materials/1-workshop1/4-tidyverse-201/index.html" class="pagination-link" aria-label="<b>Module 4</b>: More data wrangling and data visualization">
+        <span class="nav-page-text"><b>Module 4</b>: More data wrangling and data visualization</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">© 2023. Huge thanks to <a href="https://github.com/andrewpbray">Andrew P. Bray</a> and <a href="https://github.com/clauswilke">Claus O. Wilke</a> for open source code and sharing content.</div>   
+    <div class="nav-footer-left">
+<p>© 2023. Huge thanks to <a href="https://github.com/andrewpbray">Andrew P. Bray</a> and <a href="https://github.com/clauswilke">Claus O. Wilke</a> for open source code and sharing content.</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right">This page is built with <i class="fa-solid fa-heart"></i> and <a href="https://quarto.org/">Quarto</a>.</div>
+    <div class="nav-footer-right">
+<p>This page is built with <i class="fa-solid fa-heart"></i> and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
   </div>
 </footer>
+
 
 
 
