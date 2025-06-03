@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Data Analysis in R - More data wrangling and data visualization with the tidyverse</title>
+<title>More data wrangling and data visualization with the tidyverse – Introduction to Data Analysis in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -142,17 +142,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><em>1. Reproducible Data Analysis with R</em></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/4-tidyverse-201/index.html"><b>Module 4</b>: More data wrangling and data visualization</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -165,9 +165,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text"><em>1. Reproducible Data Analysis with R</em></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -582,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>#Uighur</code></pre>
+<pre><code>Warning: package 'gtsummary' was built under R version 4.4.1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>linelist_cleaned <span class="sc">%&gt;%</span> </span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gender, age_cat, hospital, bmi) <span class="sc">%&gt;%</span> </span>
@@ -590,33 +590,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>278 observations missing `gender` have been removed. To include these observations, use `forcats::fct_na_value_to_level()` on `gender` column before passing to `tbl_summary()`.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>There was an error in 'add_p()/add_difference()' for variable 'age_cat', p-value omitted:
-Error in stats::fisher.test(structure(c(1L, 1L, 7L, 4L, 1L, 4L, 4L, 1L, : FEXACT error 7(location). LDSTP=17610 is too small for this problem,
-  (pastp=410.112, ipn_0:=ipoin[itp=246]=5459, stp[ipn_0]=419.544).
-Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
+<pre><code>278 missing rows in the "gender" column have been removed.
+The following errors were returned during `add_p()`:
+✖ For variable `age_cat` (`gender`) and "estimate", "p.value", "conf.low", and
+  "conf.high" statistics: FEXACT error 7(location). LDSTP=17610 is too small
+  for this problem, (pastp=410.112, ipn_0:=ipoin[itp=246]=5459,
+  stp[ipn_0]=419.544). Increase workspace or consider using
+  'simulate.p.value=TRUE'</code></pre>
 </div>
 <div class="cell-output-display">
-<div>
-<div id="bvloyfkqke" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bvloyfkqke table {
+<div id="fnheqpmvsw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fnheqpmvsw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bvloyfkqke thead, #bvloyfkqke tbody, #bvloyfkqke tfoot, #bvloyfkqke tr, #bvloyfkqke td, #bvloyfkqke th {
+#fnheqpmvsw thead, #fnheqpmvsw tbody, #fnheqpmvsw tfoot, #fnheqpmvsw tr, #fnheqpmvsw td, #fnheqpmvsw th {
   border-style: none;
 }
 
-#bvloyfkqke p {
+#fnheqpmvsw p {
   margin: 0;
   padding: 0;
 }
 
-#bvloyfkqke .gt_table {
+#fnheqpmvsw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -642,12 +641,12 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#bvloyfkqke .gt_caption {
+#fnheqpmvsw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bvloyfkqke .gt_title {
+#fnheqpmvsw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -659,7 +658,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-bottom-width: 0;
 }
 
-#bvloyfkqke .gt_subtitle {
+#fnheqpmvsw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -671,7 +670,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-top-width: 0;
 }
 
-#bvloyfkqke .gt_heading {
+#fnheqpmvsw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -683,13 +682,13 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#bvloyfkqke .gt_bottom_border {
+#fnheqpmvsw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bvloyfkqke .gt_col_headings {
+#fnheqpmvsw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -704,7 +703,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#bvloyfkqke .gt_col_heading {
+#fnheqpmvsw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -724,7 +723,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   overflow-x: hidden;
 }
 
-#bvloyfkqke .gt_column_spanner_outer {
+#fnheqpmvsw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -736,15 +735,15 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 4px;
 }
 
-#bvloyfkqke .gt_column_spanner_outer:first-child {
+#fnheqpmvsw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bvloyfkqke .gt_column_spanner_outer:last-child {
+#fnheqpmvsw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bvloyfkqke .gt_column_spanner {
+#fnheqpmvsw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -756,11 +755,11 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   width: 100%;
 }
 
-#bvloyfkqke .gt_spanner_row {
+#fnheqpmvsw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bvloyfkqke .gt_group_heading {
+#fnheqpmvsw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -786,7 +785,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   text-align: left;
 }
 
-#bvloyfkqke .gt_empty_group_heading {
+#fnheqpmvsw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -801,15 +800,15 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   vertical-align: middle;
 }
 
-#bvloyfkqke .gt_from_md > :first-child {
+#fnheqpmvsw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bvloyfkqke .gt_from_md > :last-child {
+#fnheqpmvsw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bvloyfkqke .gt_row {
+#fnheqpmvsw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -828,7 +827,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   overflow-x: hidden;
 }
 
-#bvloyfkqke .gt_stub {
+#fnheqpmvsw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -841,7 +840,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 5px;
 }
 
-#bvloyfkqke .gt_stub_row_group {
+#fnheqpmvsw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -855,15 +854,15 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   vertical-align: top;
 }
 
-#bvloyfkqke .gt_row_group_first td {
+#fnheqpmvsw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bvloyfkqke .gt_row_group_first th {
+#fnheqpmvsw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bvloyfkqke .gt_summary_row {
+#fnheqpmvsw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -873,16 +872,16 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 5px;
 }
 
-#bvloyfkqke .gt_first_summary_row {
+#fnheqpmvsw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bvloyfkqke .gt_first_summary_row.thick {
+#fnheqpmvsw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bvloyfkqke .gt_last_summary_row {
+#fnheqpmvsw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -892,7 +891,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#bvloyfkqke .gt_grand_summary_row {
+#fnheqpmvsw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -902,7 +901,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 5px;
 }
 
-#bvloyfkqke .gt_first_grand_summary_row {
+#fnheqpmvsw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -912,7 +911,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#bvloyfkqke .gt_last_grand_summary_row_top {
+#fnheqpmvsw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -922,11 +921,11 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#bvloyfkqke .gt_striped {
+#fnheqpmvsw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bvloyfkqke .gt_table_body {
+#fnheqpmvsw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -935,7 +934,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#bvloyfkqke .gt_footnotes {
+#fnheqpmvsw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -949,7 +948,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#bvloyfkqke .gt_footnote {
+#fnheqpmvsw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -958,7 +957,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 5px;
 }
 
-#bvloyfkqke .gt_sourcenotes {
+#fnheqpmvsw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -972,7 +971,7 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#bvloyfkqke .gt_sourcenote {
+#fnheqpmvsw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -980,68 +979,77 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
   padding-right: 5px;
 }
 
-#bvloyfkqke .gt_left {
+#fnheqpmvsw .gt_left {
   text-align: left;
 }
 
-#bvloyfkqke .gt_center {
+#fnheqpmvsw .gt_center {
   text-align: center;
 }
 
-#bvloyfkqke .gt_right {
+#fnheqpmvsw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bvloyfkqke .gt_font_normal {
+#fnheqpmvsw .gt_font_normal {
   font-weight: normal;
 }
 
-#bvloyfkqke .gt_font_bold {
+#fnheqpmvsw .gt_font_bold {
   font-weight: bold;
 }
 
-#bvloyfkqke .gt_font_italic {
+#fnheqpmvsw .gt_font_italic {
   font-style: italic;
 }
 
-#bvloyfkqke .gt_super {
+#fnheqpmvsw .gt_super {
   font-size: 65%;
 }
 
-#bvloyfkqke .gt_footnote_marks {
+#fnheqpmvsw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bvloyfkqke .gt_asterisk {
+#fnheqpmvsw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bvloyfkqke .gt_indent_1 {
+#fnheqpmvsw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bvloyfkqke .gt_indent_2 {
+#fnheqpmvsw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bvloyfkqke .gt_indent_3 {
+#fnheqpmvsw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bvloyfkqke .gt_indent_4 {
+#fnheqpmvsw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bvloyfkqke .gt_indent_5 {
+#fnheqpmvsw .gt_indent_5 {
   text-indent: 25px;
+}
+
+#fnheqpmvsw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#fnheqpmvsw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -1050,10 +1058,10 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
 </colgroup>
 <thead>
 <tr class="header gt_col_headings">
-<th id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
-<th id="<strong>f</strong>, N = 2,807<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>f</strong>, N = 2,807<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-<th id="<strong>m</strong>, N = 2,803<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>m</strong>, N = 2,803<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-<th id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
+<th id="label" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
+<th id="stat_1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>f</strong><br> N = 2,807<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="stat_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>m</strong><br> N = 2,803<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="p.value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -1180,16 +1188,15 @@ Increase workspace or consider using 'simulate.p.value=TRUE'</code></pre>
 </tr>
 </tbody><tfoot class="gt_footnotes">
 <tr class="even">
-<td colspan="4" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n (%); Median (IQR)</td>
+<td colspan="4" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> n (%); Median (Q1, Q3)</td>
 </tr>
 <tr class="odd">
-<td colspan="4" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Pearson’s Chi-squared test; Wilcoxon rank sum test</td>
+<td colspan="4" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> Pearson’s Chi-squared test; Wilcoxon rank sum test</td>
 </tr>
 </tfoot>
 
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -1233,18 +1240,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1276,7 +1272,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/EcoTopic\.github\.io\/Rworkshop\/");
@@ -1284,7 +1302,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
